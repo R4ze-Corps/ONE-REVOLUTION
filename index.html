@@ -1234,23 +1234,7 @@
 
                                     <div>
                                         <span class="block text-[10px] uppercase tracking-wider text-gray-400 mb-3">Item entregue</span>
-                                        <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
-                                            <button class="bg-[#0A0A0A] border border-brand-pink/40 p-4 rounded-xl text-left hover:border-brand-pink transition-all">
-                                                <i class="fa-solid fa-cube text-brand-pink mb-3"></i>
-                                                <p class="text-[13px] font-bold">Peças</p>
-                                                <span class="text-[11px] text-gray-500">Meta 300</span>
-                                            </button>
-                                            <button class="bg-[#0A0A0A] border border-white/10 p-4 rounded-xl text-left hover:border-brand-pink transition-all">
-                                                <i class="fa-solid fa-gem text-gray-400 mb-3"></i>
-                                                <p class="text-[13px] font-bold">Minérios</p>
-                                                <span class="text-[11px] text-gray-500">Meta 180</span>
-                                            </button>
-                                            <button class="bg-[#0A0A0A] border border-white/10 p-4 rounded-xl text-left hover:border-brand-pink transition-all">
-                                                <i class="fa-solid fa-boxes-stacked text-gray-400 mb-3"></i>
-                                                <p class="text-[13px] font-bold">Extras</p>
-                                                <span class="text-[11px] text-gray-500">Opcional</span>
-                                            </button>
-                                        </div>
+                                        <div id="central-farm-products" class="grid grid-cols-1 sm:grid-cols-3 gap-3"></div>
                                     </div>
 
                                     <div class="grid grid-cols-1 sm:grid-cols-[1fr_auto] gap-3">
@@ -1814,9 +1798,10 @@
                 <div class="bg-ios-card dark:bg-ios-darkCard rounded-[24px] shadow-sm border border-black/5 dark:border-white/5 p-5">
                     <h3 class="font-bold text-[20px] mb-4">Criar produto</h3>
                     <div class="grid gap-3 rounded-[20px] border border-black/5 bg-gray-100 p-4 dark:border-white/5 dark:bg-gray-800">
-                        <label class="grid gap-2 text-[13px] font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wider">Produto<input class="bg-white dark:bg-gray-900 text-black dark:text-white rounded-2xl px-4 py-3 outline-none border border-black/5 dark:border-white/5 focus:border-brand-pink" placeholder="Ex: Peças" /></label>
-                        <label class="grid gap-2 text-[13px] font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wider">Meta<input type="number" class="bg-white dark:bg-gray-900 text-black dark:text-white rounded-2xl px-4 py-3 outline-none border border-black/5 dark:border-white/5 focus:border-brand-pink" placeholder="300" /></label>
-                        <button class="inline-flex items-center justify-center gap-2 rounded-2xl bg-brand-pink px-4 py-3 text-[14px] font-bold text-white transition active:scale-95"><i class="fa-solid fa-plus"></i>Criar produto</button>
+                        <label class="grid gap-2 text-[13px] font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wider">Produto<input id="farm-product-name" class="bg-white dark:bg-gray-900 text-black dark:text-white rounded-2xl px-4 py-3 outline-none border border-black/5 dark:border-white/5 focus:border-brand-pink" placeholder="Ex: Peças" /></label>
+                        <label class="grid gap-2 text-[13px] font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wider">Meta<input id="farm-product-goal" type="number" class="bg-white dark:bg-gray-900 text-black dark:text-white rounded-2xl px-4 py-3 outline-none border border-black/5 dark:border-white/5 focus:border-brand-pink" placeholder="300" /></label>
+                        <button onclick="addFarmProduct()" class="inline-flex items-center justify-center gap-2 rounded-2xl bg-brand-pink px-4 py-3 text-[14px] font-bold text-white transition active:scale-95"><i class="fa-solid fa-plus"></i>Criar produto</button>
+                        <div id="farm-products-list" class="grid gap-2"></div>
                     </div>
                 </div>
             </section>
@@ -3202,6 +3187,72 @@ function createCentralAction() {
         if (shouldClose) closeCentralFarmMemberList();
     }
 
+    const defaultFarmProducts = [
+        { id: 'pecas', name: 'Peças', goal: 300 },
+        { id: 'minerios', name: 'Minérios', goal: 180 },
+        { id: 'extras', name: 'Extras', goal: 0 }
+    ];
+
+    function getFarmProducts() {
+        try {
+            const saved = JSON.parse(localStorage.getItem('oneFarmProducts') || 'null');
+            return Array.isArray(saved) && saved.length ? saved : defaultFarmProducts;
+        } catch {
+            return defaultFarmProducts;
+        }
+    }
+
+    function saveFarmProducts(products) {
+        localStorage.setItem('oneFarmProducts', JSON.stringify(products));
+    }
+
+    function renderCentralFarmProducts() {
+        const container = document.getElementById('central-farm-products');
+        if (!container) return;
+
+        const iconClasses = ['fa-cube', 'fa-gem', 'fa-boxes-stacked'];
+        container.innerHTML = getFarmProducts().map((product, index) => `
+            <button type="button" data-farm-product-id="${product.id}" class="bg-[#0A0A0A] border ${index === 0 ? 'border-brand-pink/40' : 'border-white/10'} p-4 rounded-xl text-left hover:border-brand-pink transition-all">
+                <i class="fa-solid ${iconClasses[index % iconClasses.length]} ${index === 0 ? 'text-brand-pink' : 'text-gray-400'} mb-3"></i>
+                <p class="text-[13px] font-bold">${escapeHtml(product.name)}</p>
+                <span class="text-[11px] text-gray-500">${product.goal ? `Meta ${product.goal}` : 'Opcional'}</span>
+            </button>
+        `).join('');
+    }
+
+    function renderFarmProductSettings() {
+        const list = document.getElementById('farm-products-list');
+        if (!list) return;
+
+        list.innerHTML = getFarmProducts().map((product) => `
+            <div class="flex items-center justify-between gap-3 rounded-2xl bg-white px-4 py-3 text-[13px] font-bold text-black dark:bg-gray-900 dark:text-white">
+                <span>${escapeHtml(product.name)}</span>
+                <span class="text-gray-500">${product.goal ? `Meta ${product.goal}` : 'Opcional'}</span>
+            </div>
+        `).join('');
+    }
+
+    function addFarmProduct() {
+        const nameInput = document.getElementById('farm-product-name');
+        const goalInput = document.getElementById('farm-product-goal');
+        const name = nameInput?.value.trim();
+        const goal = Number(goalInput?.value || 0);
+
+        if (!name) {
+            showToast('Informe o nome do produto.', 'error');
+            return;
+        }
+
+        const products = getFarmProducts();
+        products.push({ id: `produto-${Date.now()}`, name, goal: Number.isNaN(goal) ? 0 : goal });
+        saveFarmProducts(products);
+        if (nameInput) nameInput.value = '';
+        if (goalInput) goalInput.value = '';
+        renderFarmProductSettings();
+        renderCentralFarmProducts();
+        showToast('Produto criado e sincronizado.', 'success');
+    }
+
     function submitCentralFarm() {
         const quantity = document.getElementById('central-farm-quantity')?.value;
         const member = document.getElementById('central-farm-member-select')?.value || 'membro selecionado';
@@ -3221,6 +3272,8 @@ function createCentralAction() {
      updateCartBadge();
      updateHubGreeting();
      updatePendingRegistrationCount();
+     renderFarmProductSettings();
+     renderCentralFarmProducts();
      document.addEventListener('pointermove', updateAnimatedBackgroundPosition);
         setCentralFarmMode('any', true);
         selectCentralFarmMember(0, false);

@@ -1,0 +1,112 @@
+[
+  {
+    "route": "/app-demo",
+    "firstLoadUncompressedJsBytes": 520477,
+    "firstLoadChunkPaths": [
+      ".next\\static\\chunks\\05-c3ty_6dwfk.js",
+      ".next\\static\\chunks\\14mrh2-p_w84d.js",
+      ".next\\static\\chunks\\1rxncug86bump.js",
+      ".next\\static\\chunks\\3z5q_p4msz2ha.js",
+      ".next\\static\\chunks\\15orcrkp-_9ct.js",
+      ".next\\static\\chunks\\2nykiepra7i1k.js",
+      ".next\\static\\chunks\\07u_h6i539_wj.js",
+      ".next\\static\\chunks\\turbopack-3gtektv3c62t6.js"
+    ]
+  },
+  {
+    "route": "/_not-found",
+    "firstLoadUncompressedJsBytes": 514649,
+    "firstLoadChunkPaths": [
+      ".next\\static\\chunks\\05-c3ty_6dwfk.js",
+      ".next\\static\\chunks\\14mrh2-p_w84d.js",
+      ".next\\static\\chunks\\3z5q_p4msz2ha.js",
+      ".next\\static\\chunks\\15orcrkp-_9ct.js",
+      ".next\\static\\chunks\\2nykiepra7i1k.js",
+      ".next\\static\\chunks\\07u_h6i539_wj.js",
+      ".next\\static\\chunks\\turbopack-3gtektv3c62t6.js"
+    ]
+  },
+  {
+    "route": "/",
+    "firstLoadUncompressedJsBytes": 361801,
+    "firstLoadChunkPaths": [
+      ".next\\static\\chunks\\14xfadyw-283_.js",
+      ".next\\static\\chunks\\0py3fx1ri9s0w.js",
+      ".next\\static\\chunks\\turbopack-3d3vtu2epk3m2.js",
+      ".next\\static\\chunks\\2369glarvwtpi.js",
+      ".next\\static\\chunks\\turbopack-1p8f7wszd3npq.js"
+    ]
+  },
+  {
+    "route": "/api/bot-credentials",
+    "firstLoadUncompressedJsBytes": 334378,
+    "firstLoadChunkPaths": [
+      ".next\\static\\chunks\\2369glarvwtpi.js",
+      ".next\\static\\chunks\\0py3fx1ri9s0w.js",
+      ".next\\static\\chunks\\turbopack-1p8f7wszd3npq.js"
+    ]
+  },
+  {
+    "route": "/api/database-events",
+    "firstLoadUncompressedJsBytes": 334378,
+    "firstLoadChunkPaths": [
+      ".next\\static\\chunks\\2369glarvwtpi.js",
+      ".next\\static\\chunks\\0py3fx1ri9s0w.js",
+      ".next\\static\\chunks\\turbopack-1p8f7wszd3npq.js"
+    ]
+  },
+  {
+    "route": "/api/discord/members",
+    "firstLoadUncompressedJsBytes": 334378,
+    "firstLoadChunkPaths": [
+      ".next\\static\\chunks\\2369glarvwtpi.js",
+      ".next\\static\\chunks\\0py3fx1ri9s0w.js",
+      ".next\\static\\chunks\\turbopack-1p8f7wszd3npq.js"
+    ]
+  },
+  {
+    "route": "/api/discord/roles",
+    "firstLoadUncompressedJsBytes": 334378,
+    "firstLoadChunkPaths": [
+      ".next\\static\\chunks\\2369glarvwtpi.js",
+      ".next\\static\\chunks\\0py3fx1ri9s0w.js",
+      ".next\\static\\chunks\\turbopack-1p8f7wszd3npq.js"
+    ]
+  },
+  {
+    "route": "/api/farm-settings",
+    "firstLoadUncompressedJsBytes": 334378,
+    "firstLoadChunkPaths": [
+      ".next\\static\\chunks\\2369glarvwtpi.js",
+      ".next\\static\\chunks\\0py3fx1ri9s0w.js",
+      ".next\\static\\chunks\\turbopack-1p8f7wszd3npq.js"
+    ]
+  },
+  {
+    "route": "/api/register-requests",
+    "firstLoadUncompressedJsBytes": 334378,
+    "firstLoadChunkPaths": [
+      ".next\\static\\chunks\\2369glarvwtpi.js",
+      ".next\\static\\chunks\\0py3fx1ri9s0w.js",
+      ".next\\static\\chunks\\turbopack-1p8f7wszd3npq.js"
+    ]
+  },
+  {
+    "route": "/api/register-requests/[id]",
+    "firstLoadUncompressedJsBytes": 334378,
+    "firstLoadChunkPaths": [
+      ".next\\static\\chunks\\2369glarvwtpi.js",
+      ".next\\static\\chunks\\0py3fx1ri9s0w.js",
+      ".next\\static\\chunks\\turbopack-1p8f7wszd3npq.js"
+    ]
+  },
+  {
+    "route": "/api/register-settings",
+    "firstLoadUncompressedJsBytes": 334378,
+    "firstLoadChunkPaths": [
+      ".next\\static\\chunks\\2369glarvwtpi.js",
+      ".next\\static\\chunks\\0py3fx1ri9s0w.js",
+      ".next\\static\\chunks\\turbopack-1p8f7wszd3npq.js"
+    ]
+  }
+]
