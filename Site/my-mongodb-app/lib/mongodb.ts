@@ -1,5 +1,6 @@
 import { MongoClient } from "mongodb";
 import { attachDatabasePool } from "@vercel/functions";
+import dns from "dns";
 
 const uri = process.env.MONGODB_URI || process.env.one_MONGODB_URI;
 
@@ -10,6 +11,10 @@ if (!uri) {
 }
 
 const options = { appName: "devrel.template.nextjs" };
+
+if (uri.startsWith("mongodb+srv://")) {
+  dns.setServers(["1.1.1.1", "8.8.8.8"]);
+}
 
 let client: MongoClient;
 

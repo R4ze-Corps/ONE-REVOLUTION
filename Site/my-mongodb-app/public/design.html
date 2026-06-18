@@ -569,7 +569,7 @@
                         </div>
 
                         <div class="lg:w-2/3 flex flex-col bg-gray-50/70 dark:bg-[#0A0A0A]/20">
-                            <div class="p-10 lg:p-12 grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-9 content-center flex-1">
+                    <div class="p-10 lg:p-12 grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-9 content-center flex-1">
                                 <div class="group">
                                     <p class="text-[11px] text-gray-500 dark:text-gray-400 font-bold uppercase tracking-[0.2em] mb-2 flex items-center">
                                         <i class="fa-solid fa-phone text-gray-400 dark:text-gray-500 group-hover:text-brand-pink mr-2 transition-colors"></i>Telefone
@@ -611,6 +611,18 @@
                         </div>
                     </div>
                 </article>
+                <div class="flex flex-col gap-3 rounded-[24px] border border-black/5 bg-ios-card p-5 shadow-sm dark:border-white/5 dark:bg-ios-darkCard sm:flex-row sm:items-center sm:justify-between">
+                    <div>
+                        <p class="text-[12px] font-bold uppercase tracking-wider text-brand-pink">Entrada</p>
+                        <h3 class="mt-1 text-[20px] font-bold">Solicitar registro</h3>
+                        <p class="mt-1 text-[13px] text-gray-500 dark:text-gray-400">Disponivel para usuarios com o Cargo de Registro.</p>
+                    </div>
+                    <button onclick="openRegisterModal()" class="inline-flex items-center justify-center gap-2 rounded-2xl bg-brand-pink px-5 py-3 text-[15px] font-semibold text-white shadow-lg shadow-brand-pink/25 transition active:scale-95">
+                        <i class="fa-solid fa-user-plus"></i>
+                        Registrar
+                    </button>
+                </div>
+                <div id="central-approved-register-list" class="grid gap-4"></div>
                 <article class="hidden bg-ios-card dark:bg-ios-darkCard rounded-[24px] shadow-sm border border-black/5 dark:border-white/5 overflow-hidden">
                     <div class="p-5 bg-brand-pink/10 border-b border-brand-pink/15 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                         <div class="flex items-center gap-4">
@@ -1537,24 +1549,34 @@
                                     <p class="text-[13px] text-gray-500 dark:text-gray-400 mt-1">Defina os cargos usados no fluxo de entrada pelo Discord.</p>
                                 </div>
                             </div>
-                            <button onclick="showToast('Configurações de registro salvas.', 'success')" class="bg-brand-pink text-white px-4 py-2 rounded-full font-semibold text-[14px] shadow-lg shadow-brand-pink/25">Salvar cargos</button>
+                            <button onclick="saveRegisterRoles()" class="bg-brand-pink text-white px-4 py-2 rounded-full font-semibold text-[14px] shadow-lg shadow-brand-pink/25">Salvar cargos</button>
                         </div>
                         <div class="p-5 grid gap-4">
                             <label class="grid gap-2 bg-gray-100 dark:bg-gray-800 rounded-[20px] p-4 border border-black/5 dark:border-white/5 text-[12px] font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wider">
                                 <span><i class="fa-solid fa-door-open text-brand-pink mr-1.5"></i>Cargo de Registro</span>
-                                <input id="panel-register-entry-role" class="bg-transparent text-black dark:text-white text-[16px] font-semibold outline-none" value="@Registro" placeholder="Cargo ao entrar no Discord" />
+                                <select id="panel-register-entry-role" class="bg-transparent text-black dark:text-white text-[16px] font-semibold outline-none">
+                                    <option value="">Carregue os cargos do Discord</option>
+                                </select>
                                 <small class="normal-case tracking-normal text-[12px] text-gray-500 dark:text-gray-400">Cargo entregue automaticamente quando o usuário entra no servidor.</small>
                             </label>
                             <label class="grid gap-2 bg-gray-100 dark:bg-gray-800 rounded-[20px] p-4 border border-black/5 dark:border-white/5 text-[12px] font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wider">
                                 <span><i class="fa-solid fa-user-shield text-brand-pink mr-1.5"></i>Cargo de Membro</span>
-                                <input id="panel-register-member-role" class="bg-transparent text-black dark:text-white text-[16px] font-semibold outline-none" value="@Membro" placeholder="Cargo aprovado" />
+                                <select id="panel-register-member-role" class="bg-transparent text-black dark:text-white text-[16px] font-semibold outline-none">
+                                    <option value="">Carregue os cargos do Discord</option>
+                                </select>
                                 <small class="normal-case tracking-normal text-[12px] text-gray-500 dark:text-gray-400">Cargo aplicado quando o registro pendente for aprovado.</small>
                             </label>
                             <label class="grid gap-2 bg-gray-100 dark:bg-gray-800 rounded-[20px] p-4 border border-black/5 dark:border-white/5 text-[12px] font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wider">
                                 <span><i class="fa-solid fa-bullhorn text-brand-pink mr-1.5"></i>Cargo de Mencionar Todos</span>
-                                <input id="panel-register-mention-role" class="bg-transparent text-black dark:text-white text-[16px] font-semibold outline-none" value="@Todos os Membros" placeholder="Cargo para menções gerais" />
+                                <select id="panel-register-mention-role" class="bg-transparent text-black dark:text-white text-[16px] font-semibold outline-none">
+                                    <option value="">Carregue os cargos do Discord</option>
+                                </select>
                                 <small class="normal-case tracking-normal text-[12px] text-gray-500 dark:text-gray-400">Cargo usado para avisos e chamadas gerais da equipe.</small>
                             </label>
+                            <button onclick="loadDiscordRoles()" class="inline-flex items-center justify-center gap-2 bg-gray-100 dark:bg-gray-800 text-brand-pink px-4 py-3 rounded-2xl font-semibold text-[14px] transition-transform active:scale-95">
+                                <i class="fa-solid fa-rotate"></i>
+                                Carregar cargos do Discord
+                            </button>
                         </div>
                     </section>
 
@@ -1923,6 +1945,11 @@
                                 </button>
                             </div>
                         </label>
+
+                        <label class="grid gap-2 text-[13px] font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wider">
+                            ID DO SERVIDOR DISCORD
+                            <input id="discord-guild-id" type="text" inputmode="numeric" autocomplete="off" placeholder="Digite o ID do servidor" class="w-full bg-gray-100 dark:bg-gray-800 text-black dark:text-white rounded-2xl px-4 py-3 outline-none border border-black/5 dark:border-white/5 focus:border-brand-pink transition-colors" />
+                        </label>
                     </div>
 
                     <div class="p-5 bg-ios-bg/50 dark:bg-black/30 border-t border-ios-separator dark:border-ios-darkSeparator flex flex-col sm:flex-row gap-3 sm:justify-end">
@@ -2047,6 +2074,57 @@
 
 <!-- Toast Container (Top for iOS feel) -->
 <div id="toast-container" class="fixed top-20 left-1/2 transform -translate-x-1/2 z-50 flex flex-col gap-3 pointer-events-none w-[90%] max-w-sm"></div>
+
+<div id="register-modal" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/60 px-4 py-8 backdrop-blur-sm">
+    <form onsubmit="submitRegisterRequest(event)" class="w-full max-w-2xl overflow-hidden rounded-[24px] border border-black/10 dark:border-white/10 bg-ios-card dark:bg-ios-darkCard shadow-2xl">
+        <div class="flex items-center justify-between gap-4 border-b border-ios-separator dark:border-ios-darkSeparator p-5">
+            <div>
+                <p class="text-[12px] font-bold uppercase tracking-wider text-brand-pink">Registrar</p>
+                <h3 class="mt-1 text-[24px] font-bold leading-tight">Ficha de entrada</h3>
+            </div>
+            <button type="button" onclick="closeRegisterModal()" class="h-10 w-10 rounded-full text-gray-400 transition hover:bg-black/5 hover:text-brand-pink dark:hover:bg-white/10">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+        </div>
+        <div class="grid max-h-[72vh] gap-4 overflow-y-auto p-5 md:grid-cols-2">
+            <label class="grid gap-2 text-[13px] font-bold uppercase tracking-wider text-gray-500 dark:text-gray-400">
+                ID Discord do candidato
+                <input id="register-discord-user-id" type="text" inputmode="numeric" class="rounded-2xl border border-black/5 bg-gray-100 px-4 py-3 text-black outline-none transition focus:border-brand-pink dark:border-white/5 dark:bg-gray-800 dark:text-white" placeholder="ID do usuario no Discord" />
+            </label>
+            <label class="grid gap-2 text-[13px] font-bold uppercase tracking-wider text-gray-500 dark:text-gray-400">
+                Nome
+                <input id="register-name" type="text" class="rounded-2xl border border-black/5 bg-gray-100 px-4 py-3 text-black outline-none transition focus:border-brand-pink dark:border-white/5 dark:bg-gray-800 dark:text-white" placeholder="Nome do personagem" />
+            </label>
+            <label class="grid gap-2 text-[13px] font-bold uppercase tracking-wider text-gray-500 dark:text-gray-400">
+                ID
+                <input id="register-game-id" type="text" class="rounded-2xl border border-black/5 bg-gray-100 px-4 py-3 text-black outline-none transition focus:border-brand-pink dark:border-white/5 dark:bg-gray-800 dark:text-white" placeholder="ID no servidor" />
+            </label>
+            <label class="grid gap-2 text-[13px] font-bold uppercase tracking-wider text-gray-500 dark:text-gray-400">
+                Telefone
+                <input id="register-phone" type="text" class="rounded-2xl border border-black/5 bg-gray-100 px-4 py-3 text-black outline-none transition focus:border-brand-pink dark:border-white/5 dark:bg-gray-800 dark:text-white" placeholder="Telefone" />
+            </label>
+            <label class="grid gap-2 text-[13px] font-bold uppercase tracking-wider text-gray-500 dark:text-gray-400">
+                Recrutador
+                <select id="register-recruiter" class="rounded-2xl border border-black/5 bg-gray-100 px-4 py-3 text-black outline-none transition focus:border-brand-pink dark:border-white/5 dark:bg-gray-800 dark:text-white">
+                    <option value="">Carregando usuarios...</option>
+                </select>
+            </label>
+            <label class="grid gap-2 text-[13px] font-bold uppercase tracking-wider text-gray-500 dark:text-gray-400">
+                Indicado
+                <select id="register-indicated" class="rounded-2xl border border-black/5 bg-gray-100 px-4 py-3 text-black outline-none transition focus:border-brand-pink dark:border-white/5 dark:bg-gray-800 dark:text-white">
+                    <option value="">Carregando usuarios...</option>
+                </select>
+            </label>
+        </div>
+        <div class="flex flex-col gap-3 border-t border-ios-separator bg-ios-bg/50 p-5 dark:border-ios-darkSeparator dark:bg-black/30 sm:flex-row sm:justify-end">
+            <button type="button" onclick="closeRegisterModal()" class="inline-flex items-center justify-center rounded-2xl bg-gray-100 px-5 py-3 text-[15px] font-semibold text-gray-600 transition active:scale-95 dark:bg-gray-800 dark:text-gray-300">Cancelar</button>
+            <button type="submit" class="inline-flex items-center justify-center gap-2 rounded-2xl bg-brand-pink px-5 py-3 text-[15px] font-semibold text-white shadow-lg shadow-brand-pink/25 transition active:scale-95">
+                <i class="fa-solid fa-paper-plane"></i>
+                Enviar Registrar
+            </button>
+        </div>
+    </form>
+</div>
 
     <script>
         // --- Data ---
@@ -2175,15 +2253,29 @@
             icon.className = shouldShow ? 'fa-solid fa-eye-slash text-sm' : 'fa-solid fa-eye text-sm';
         }
 
+        let savedCredentials = {
+            hasOneToken: false,
+            hasDiscordToken: false,
+            guildId: ''
+        };
+        let savedRegisterSettings = null;
+        let discordMembers = [];
+        let registerRequests = [];
+        let approvedRegisterRequests = [];
+
         function updateConfigurationState(connected = false) {
             const oneToken = document.getElementById('one-token')?.value.trim();
             const discordToken = document.getElementById('discord-token')?.value.trim();
-            const hasBoth = Boolean(oneToken && discordToken);
+            const discordGuildId = document.getElementById('discord-guild-id')?.value.trim();
+            const hasOneToken = Boolean(oneToken || savedCredentials.hasOneToken);
+            const hasDiscordToken = Boolean(discordToken || savedCredentials.hasDiscordToken);
+            const hasGuildId = Boolean(discordGuildId || savedCredentials.guildId);
+            const hasBoth = Boolean(hasOneToken && hasDiscordToken && hasGuildId);
 
-            document.getElementById('one-token-state').textContent = oneToken ? 'Inserido' : 'Vazio';
-            document.getElementById('one-token-state').className = oneToken ? 'text-[13px] font-semibold text-green-500' : 'text-[13px] font-semibold text-gray-400';
-            document.getElementById('discord-token-state').textContent = discordToken ? 'Inserido' : 'Vazio';
-            document.getElementById('discord-token-state').className = discordToken ? 'text-[13px] font-semibold text-green-500' : 'text-[13px] font-semibold text-gray-400';
+            document.getElementById('one-token-state').textContent = oneToken ? 'Inserido' : savedCredentials.hasOneToken ? 'Salvo' : 'Vazio';
+            document.getElementById('one-token-state').className = hasOneToken ? 'text-[13px] font-semibold text-green-500' : 'text-[13px] font-semibold text-gray-400';
+            document.getElementById('discord-token-state').textContent = discordToken ? 'Inserido' : savedCredentials.hasDiscordToken ? 'Salvo' : 'Vazio';
+            document.getElementById('discord-token-state').className = hasDiscordToken ? 'text-[13px] font-semibold text-green-500' : 'text-[13px] font-semibold text-gray-400';
 
             const statusDot = document.getElementById('config-status-dot');
             const statusText = document.getElementById('config-status-text');
@@ -2194,34 +2286,485 @@
             connectionState.className = connected && hasBoth ? 'text-[13px] font-semibold text-green-500' : hasBoth ? 'text-[13px] font-semibold text-brand-pink' : 'text-[13px] font-semibold text-gray-400';
         }
 
-        function testConfiguration() {
-            updateConfigurationState(true);
-            const oneToken = document.getElementById('one-token').value.trim();
-            const discordToken = document.getElementById('discord-token').value.trim();
-            showToast(oneToken && discordToken ? 'Conexao validada.' : 'Preencha os dois tokens.', oneToken && discordToken ? 'success' : 'error');
+        async function loadSavedCredentials() {
+            try {
+                const response = await fetch('/api/bot-credentials');
+                const payload = await response.json();
+
+                if (!response.ok) {
+                    throw new Error(payload.error || 'Nao foi possivel carregar as credenciais.');
+                }
+
+                savedCredentials = {
+                    hasOneToken: Boolean(payload.credentials?.hasOneToken),
+                    hasDiscordToken: Boolean(payload.credentials?.hasDiscordToken),
+                    guildId: payload.credentials?.guildId || ''
+                };
+
+                const oneTokenInput = document.getElementById('one-token');
+                const discordTokenInput = document.getElementById('discord-token');
+                const guildIdInput = document.getElementById('discord-guild-id');
+
+                if (oneTokenInput && savedCredentials.hasOneToken) {
+                    oneTokenInput.placeholder = `ONE TOKEN salvo (${payload.credentials.oneTokenPreview})`;
+                }
+
+                if (discordTokenInput && savedCredentials.hasDiscordToken) {
+                    discordTokenInput.placeholder = `TOKEN DISCORD salvo (${payload.credentials.discordTokenPreview})`;
+                }
+
+                if (guildIdInput && savedCredentials.guildId && !guildIdInput.value.trim()) {
+                    guildIdInput.value = savedCredentials.guildId;
+                }
+
+                updateConfigurationState(false);
+                await loadSavedRegisterSettings();
+            } catch (error) {
+                showToast(error.message || 'Erro ao carregar credenciais.', 'error');
+            }
         }
 
-        function saveConfiguration() {
+        async function loadSavedRegisterSettings() {
+            const guildId = document.getElementById('discord-guild-id')?.value.trim() || savedCredentials.guildId;
+            const url = guildId ? `/api/register-settings?guildId=${encodeURIComponent(guildId)}` : '/api/register-settings';
+
+            try {
+                const response = await fetch(url);
+                const payload = await response.json();
+
+                if (!response.ok) {
+                    throw new Error(payload.error || 'Nao foi possivel carregar os cargos salvos.');
+                }
+
+                savedRegisterSettings = payload.settings || null;
+                applySavedRegisterRoles();
+            } catch (error) {
+                showToast(error.message || 'Erro ao carregar cargos salvos.', 'error');
+            }
+        }
+
+        async function loadDiscordMembers() {
+            try {
+                const response = await fetch('/api/discord/members');
+                const payload = await response.json();
+
+                if (!response.ok) {
+                    throw new Error(payload.error || 'Nao foi possivel carregar os usuarios.');
+                }
+
+                discordMembers = payload.members || [];
+                fillDiscordMemberSelect('register-recruiter');
+                fillDiscordMemberSelect('register-indicated');
+            } catch (error) {
+                showToast(error.message || 'Erro ao carregar usuarios.', 'error');
+            }
+        }
+
+        function fillDiscordMemberSelect(selectId) {
+            const select = document.getElementById(selectId);
+            if (!select) return;
+
+            select.innerHTML = '<option value="">Selecione um usuario</option>';
+            discordMembers.forEach((member) => {
+                const option = document.createElement('option');
+                option.value = member.id;
+                option.textContent = member.name;
+                option.dataset.memberName = member.name;
+                select.appendChild(option);
+            });
+        }
+
+        function openRegisterModal() {
+            const modal = document.getElementById('register-modal');
+            const userIdInput = document.getElementById('register-discord-user-id');
+            if (userIdInput && !userIdInput.value.trim()) {
+                userIdInput.value = localStorage.getItem('oneCurrentDiscordUserId') || '';
+            }
+            modal?.classList.remove('hidden');
+            modal?.classList.add('flex');
+
+            if (!discordMembers.length) loadDiscordMembers();
+        }
+
+        function closeRegisterModal() {
+            const modal = document.getElementById('register-modal');
+            modal?.classList.add('hidden');
+            modal?.classList.remove('flex');
+        }
+
+        async function submitRegisterRequest(event) {
+            event.preventDefault();
+
+            const discordUserId = document.getElementById('register-discord-user-id')?.value.trim();
+            const name = document.getElementById('register-name')?.value.trim();
+            const gameId = document.getElementById('register-game-id')?.value.trim();
+            const phone = document.getElementById('register-phone')?.value.trim();
+            const recruiter = getSelectedMember('register-recruiter');
+            const indicated = getSelectedMember('register-indicated');
+
+            if (!discordUserId || !name || !gameId || !phone || !recruiter || !indicated) {
+                showToast('Preencha todos os campos do registro.', 'error');
+                return;
+            }
+
+            try {
+                localStorage.setItem('oneCurrentDiscordUserId', discordUserId);
+                const response = await fetch('/api/register-requests', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ discordUserId, name, gameId, phone, recruiter, indicated })
+                });
+                const payload = await response.json();
+
+                if (!response.ok) {
+                    throw new Error(payload.error || 'Nao foi possivel enviar o registro.');
+                }
+
+                closeRegisterModal();
+                event.target.reset();
+                showToast('Registro enviado para aprovacao.', 'success');
+                await loadRegisterRequests();
+            } catch (error) {
+                showToast(error.message || 'Erro ao enviar registro.', 'error');
+            }
+        }
+
+        function getSelectedMember(selectId) {
+            const select = document.getElementById(selectId);
+            const option = select?.selectedOptions?.[0];
+            if (!select?.value || !option) return null;
+
+            return {
+                id: select.value,
+                name: option.dataset.memberName || option.textContent
+            };
+        }
+
+        async function testConfiguration() {
+            updateConfigurationState(true);
+            const discordGuildId = document.getElementById('discord-guild-id').value.trim() || savedCredentials.guildId;
+
+            if (!discordGuildId) {
+                showToast('Informe o ID do servidor.', 'error');
+                return;
+            }
+
+            await loadDiscordRoles();
+        }
+
+        async function saveConfiguration() {
             updateConfigurationState(false);
             const oneToken = document.getElementById('one-token').value.trim();
             const discordToken = document.getElementById('discord-token').value.trim();
-            showToast(oneToken && discordToken ? 'Configuracao salva.' : 'Preencha os dois tokens.', oneToken && discordToken ? 'success' : 'error');
+            const discordGuildId = document.getElementById('discord-guild-id').value.trim();
+
+            try {
+                const response = await fetch('/api/bot-credentials', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ oneToken, discordToken, guildId: discordGuildId })
+                });
+                const payload = await response.json();
+
+                if (!response.ok) {
+                    throw new Error(payload.error || 'Nao foi possivel salvar a configuracao.');
+                }
+
+                savedCredentials = {
+                    hasOneToken: Boolean(payload.credentials?.hasOneToken),
+                    hasDiscordToken: Boolean(payload.credentials?.hasDiscordToken),
+                    guildId: payload.credentials?.guildId || ''
+                };
+
+                document.getElementById('one-token').value = '';
+                document.getElementById('discord-token').value = '';
+                await loadSavedCredentials();
+                updateConfigurationState(true);
+                showToast('Configuracao salva no banco de dados.', 'success');
+            } catch (error) {
+                showToast(error.message || 'Erro ao salvar configuracao.', 'error');
+            }
         }
 
-    function saveBotSettings() {
-        showToast('Ajustes do bot salvos.');
+    async function saveBotSettings() {
+        const activePanel = document.querySelector('.panel-section:not(.hidden)')?.id;
+
+        if (activePanel === 'panel-section-registrar') {
+            await saveRegisterRoles();
+            return;
+        }
+
+        showToast('Abra uma categoria configuravel para salvar os ajustes.');
     }
 
-    function resolvePendingRegistration(button, status) {
-        const item = button.closest('.panel-pending-register');
-        const name = item?.querySelector('h4')?.textContent?.trim() || 'Registro';
-        item?.remove();
+    async function loadDiscordRoles() {
+        const botToken = document.getElementById('discord-token')?.value.trim();
+        const guildId = document.getElementById('discord-guild-id')?.value.trim() || savedCredentials.guildId;
+
+        if (!guildId) {
+            showToast('Informe o ID do servidor.', 'error');
+            switchView('configure');
+            return;
+        }
+
+        try {
+            showToast('Buscando cargos do Discord...', 'info');
+            const response = await fetch('/api/discord/roles', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ botToken, guildId })
+            });
+            const payload = await response.json();
+
+            if (!response.ok) {
+                throw new Error(payload.error || 'Nao foi possivel carregar os cargos.');
+            }
+
+            fillRegisterRoleSelects(payload.roles || []);
+            updateConfigurationState(true);
+            showToast('Cargos carregados do Discord.', 'success');
+        } catch (error) {
+            showToast(error.message || 'Erro ao carregar cargos.', 'error');
+        }
+    }
+
+    function fillRegisterRoleSelects(roles) {
+        const selects = [
+            document.getElementById('panel-register-entry-role'),
+            document.getElementById('panel-register-member-role'),
+            document.getElementById('panel-register-mention-role')
+        ];
+
+        selects.forEach((select) => {
+            if (!select) return;
+            const previousValue = select.value;
+            select.innerHTML = '<option value="">Selecione um cargo</option>';
+            roles.forEach((role) => {
+                const option = document.createElement('option');
+                option.value = role.id;
+                option.textContent = `@${role.name}`;
+                option.dataset.roleName = role.name;
+                select.appendChild(option);
+            });
+            if (previousValue && roles.some((role) => role.id === previousValue)) {
+                select.value = previousValue;
+            }
+        });
+
+        applySavedRegisterRoles();
+    }
+
+    function applySavedRegisterRoles() {
+        if (!savedRegisterSettings?.roles) return;
+
+        setRegisterRoleSelect('panel-register-entry-role', savedRegisterSettings.roles.entry);
+        setRegisterRoleSelect('panel-register-member-role', savedRegisterSettings.roles.member);
+        setRegisterRoleSelect('panel-register-mention-role', savedRegisterSettings.roles.mention);
+    }
+
+    function setRegisterRoleSelect(selectId, role) {
+        if (!role?.id) return;
+
+        const select = document.getElementById(selectId);
+        if (!select) return;
+
+        const existingOption = Array.from(select.options).find((option) => option.value === role.id);
+        if (!existingOption) {
+            const option = document.createElement('option');
+            option.value = role.id;
+            option.textContent = `@${role.name}`;
+            option.dataset.roleName = role.name;
+            select.appendChild(option);
+        }
+
+        select.value = role.id;
+    }
+
+    function getSelectedRole(selectId) {
+        const select = document.getElementById(selectId);
+        const option = select?.selectedOptions?.[0];
+        if (!select?.value || !option) return null;
+
+        return {
+            id: select.value,
+            name: option.dataset.roleName || option.textContent.replace(/^@/, '')
+        };
+    }
+
+    async function saveRegisterRoles() {
+        const guildId = document.getElementById('discord-guild-id')?.value.trim() || savedCredentials.guildId;
+        const roles = {
+            entry: getSelectedRole('panel-register-entry-role'),
+            member: getSelectedRole('panel-register-member-role'),
+            mention: getSelectedRole('panel-register-mention-role')
+        };
+
+        if (!guildId || !roles.entry || !roles.member || !roles.mention) {
+            showToast('Carregue e selecione os tres cargos antes de salvar.', 'error');
+            return;
+        }
+
+        try {
+            const response = await fetch('/api/register-settings', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ guildId, roles })
+            });
+            const payload = await response.json();
+
+            if (!response.ok) {
+                throw new Error(payload.error || 'Nao foi possivel salvar os cargos.');
+            }
+
+            savedRegisterSettings = payload.settings;
+            applySavedRegisterRoles();
+            showToast('Cargos salvos no banco de dados.', 'success');
+        } catch (error) {
+            showToast(error.message || 'Erro ao salvar cargos.', 'error');
+        }
+    }
+
+    async function loadRegisterRequests() {
+        try {
+            const [pendingResponse, approvedResponse] = await Promise.all([
+                fetch('/api/register-requests?status=pending'),
+                fetch('/api/register-requests?status=approved')
+            ]);
+            const pendingPayload = await pendingResponse.json();
+            const approvedPayload = await approvedResponse.json();
+
+            if (!pendingResponse.ok) {
+                throw new Error(pendingPayload.error || 'Nao foi possivel carregar registros pendentes.');
+            }
+
+            if (!approvedResponse.ok) {
+                throw new Error(approvedPayload.error || 'Nao foi possivel carregar registros aprovados.');
+            }
+
+            registerRequests = pendingPayload.requests || [];
+            approvedRegisterRequests = approvedPayload.requests || [];
+            renderPendingRegistrations();
+            renderApprovedRegistrations();
+        } catch (error) {
+            showToast(error.message || 'Erro ao carregar registros.', 'error');
+        }
+    }
+
+    function renderPendingRegistrations() {
+        const list = document.getElementById('panel-pending-register-list');
+        if (!list) return;
+
+        if (!registerRequests.length) {
+            list.innerHTML = '<div class="rounded-[20px] border border-dashed border-black/10 p-5 text-center text-[13px] font-semibold text-gray-500 dark:border-white/10 dark:text-gray-400">Nenhum registro pendente.</div>';
+            updatePendingRegistrationCount();
+            return;
+        }
+
+        list.innerHTML = registerRequests.map((request) => `
+            <article class="panel-pending-register rounded-[20px] border border-black/5 bg-gray-100 p-4 dark:border-white/5 dark:bg-gray-800">
+                <div class="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+                    <button type="button" onclick="togglePendingRegistrationDetails('${request.id}')" class="flex min-w-0 flex-1 items-center gap-3 text-left">
+                        ${renderUserAvatar(request)}
+                        <div class="min-w-0">
+                            <h4 class="truncate text-[16px] font-bold">${escapeHtml(request.name)}</h4>
+                            <p class="text-[12px] text-gray-500 dark:text-gray-400">${escapeHtml(request.discordName || 'Discord')} aguardando aprovacao</p>
+                        </div>
+                    </button>
+                    <div class="flex gap-2">
+                        <button onclick="resolvePendingRegistration('${request.id}', 'approve')" class="rounded-full bg-emerald-500 px-4 py-2 text-[12px] font-black text-white transition hover:bg-emerald-600">Aprovar</button>
+                        <button onclick="resolvePendingRegistration('${request.id}', 'reject')" class="rounded-full bg-rose-500 px-4 py-2 text-[12px] font-black text-white transition hover:bg-rose-600">Recusar</button>
+                    </div>
+                </div>
+                <div id="pending-register-details-${request.id}" class="mt-4 hidden rounded-2xl bg-white/70 p-4 text-[13px] dark:bg-black/20">
+                    <div class="grid gap-3 md:grid-cols-2">
+                        <p><strong>ID:</strong> ${escapeHtml(request.gameId)}</p>
+                        <p><strong>Telefone:</strong> ${escapeHtml(request.phone)}</p>
+                        <p><strong>Recrutador:</strong> ${escapeHtml(request.recruiter?.name || '-')}</p>
+                        <p><strong>Indicado:</strong> ${escapeHtml(request.indicated?.name || '-')}</p>
+                    </div>
+                </div>
+            </article>
+        `).join('');
         updatePendingRegistrationCount();
-        showToast(status === 'approved' ? `${name} aprovado.` : `${name} recusado.`, status === 'approved' ? 'success' : 'error');
+    }
+
+    function renderApprovedRegistrations() {
+        const list = document.getElementById('central-approved-register-list');
+        if (!list) return;
+
+        if (!approvedRegisterRequests.length) {
+            list.innerHTML = '<div class="rounded-[24px] border border-dashed border-black/10 bg-ios-card p-5 text-center text-[13px] font-semibold text-gray-500 dark:border-white/10 dark:bg-ios-darkCard dark:text-gray-400">Nenhum registro aprovado ainda.</div>';
+            return;
+        }
+
+        list.innerHTML = approvedRegisterRequests.map((request) => `
+            <article class="overflow-hidden rounded-[24px] border border-black/5 bg-ios-card shadow-sm dark:border-white/5 dark:bg-ios-darkCard">
+                <div class="flex flex-col gap-5 p-5 sm:flex-row sm:items-center">
+                    ${renderUserAvatar(request, 'h-16 w-16 text-[18px]')}
+                    <div class="min-w-0 flex-1">
+                        <p class="text-[12px] font-bold uppercase tracking-wider text-brand-pink">Registro aprovado</p>
+                        <h3 class="mt-1 truncate text-[24px] font-bold">${escapeHtml(request.gameId)} | ${escapeHtml(request.name)}</h3>
+                        <p class="mt-1 text-[13px] text-gray-500 dark:text-gray-400">${escapeHtml(request.discordName || 'Discord')}</p>
+                    </div>
+                </div>
+                <div class="grid gap-4 border-t border-ios-separator p-5 dark:border-ios-darkSeparator md:grid-cols-2 xl:grid-cols-4">
+                    <p class="text-[13px]"><span class="block text-[11px] font-bold uppercase tracking-wider text-gray-500">Telefone</span><strong>${escapeHtml(request.phone)}</strong></p>
+                    <p class="text-[13px]"><span class="block text-[11px] font-bold uppercase tracking-wider text-gray-500">Recrutador</span><strong>${escapeHtml(request.recruiter?.name || '-')}</strong></p>
+                    <p class="text-[13px]"><span class="block text-[11px] font-bold uppercase tracking-wider text-gray-500">Indicado</span><strong>${escapeHtml(request.indicated?.name || '-')}</strong></p>
+                    <p class="text-[13px]"><span class="block text-[11px] font-bold uppercase tracking-wider text-gray-500">Discord ID</span><strong>${escapeHtml(request.discordUserId)}</strong></p>
+                </div>
+            </article>
+        `).join('');
+    }
+
+    function togglePendingRegistrationDetails(requestId) {
+        document.getElementById(`pending-register-details-${requestId}`)?.classList.toggle('hidden');
+    }
+
+    async function resolvePendingRegistration(requestId, action) {
+        try {
+            const response = await fetch(`/api/register-requests/${requestId}`, {
+                method: 'PATCH',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ action })
+            });
+            const payload = await response.json();
+
+            if (!response.ok) {
+                throw new Error(payload.error || 'Nao foi possivel resolver o registro.');
+            }
+
+            showToast(action === 'approve' ? 'Registro aprovado e cargos aplicados.' : 'Registro recusado.', action === 'approve' ? 'success' : 'error');
+            await loadRegisterRequests();
+        } catch (error) {
+            showToast(error.message || 'Erro ao resolver registro.', 'error');
+        }
+    }
+
+    function renderUserAvatar(request, sizeClass = 'h-11 w-11 text-[13px]') {
+        if (request.avatarUrl) {
+            return `<img src="${escapeHtml(request.avatarUrl)}" alt="" class="${sizeClass} shrink-0 rounded-full object-cover" />`;
+        }
+
+        return `<span class="${sizeClass} shrink-0 rounded-full bg-brand-pink text-white flex items-center justify-center font-black">${getInitials(request.name)}</span>`;
+    }
+
+    function getInitials(value) {
+        return (value || '?').split(' ').filter(Boolean).slice(0, 2).map((part) => part[0]).join('').toUpperCase();
+    }
+
+    function escapeHtml(value) {
+        return String(value || '').replace(/[&<>"']/g, (character) => ({
+            '&': '&amp;',
+            '<': '&lt;',
+            '>': '&gt;',
+            '"': '&quot;',
+            "'": '&#039;'
+        }[character]));
     }
 
     function updatePendingRegistrationCount() {
-        const count = document.querySelectorAll('.panel-pending-register').length;
+        const count = registerRequests.length || document.querySelectorAll('.panel-pending-register').length;
         const badge = document.getElementById('panel-pending-register-count');
         if (badge) badge.textContent = count === 1 ? '1 pendente' : `${count} pendentes`;
     }
@@ -2882,6 +3425,8 @@ function createCentralAction() {
      updateCartBadge();
      updateHubGreeting();
      updatePendingRegistrationCount();
+     loadRegisterRequests();
+     loadDiscordMembers();
      document.addEventListener('pointermove', updateAnimatedBackgroundPosition);
         setCentralFarmMode('any');
         selectCentralFarmMember(0, false);
@@ -2889,9 +3434,11 @@ function createCentralAction() {
             const dropdown = document.getElementById('central-farm-member-dropdown');
             if (dropdown && !dropdown.contains(event.target)) closeCentralFarmMemberList();
         });
-        document.getElementById('one-token')?.addEventListener('input', () => updateConfigurationState(false));
+            document.getElementById('one-token')?.addEventListener('input', () => updateConfigurationState(false));
             document.getElementById('discord-token')?.addEventListener('input', () => updateConfigurationState(false));
+            document.getElementById('discord-guild-id')?.addEventListener('input', () => updateConfigurationState(false));
             updateConfigurationState(false);
+            loadSavedCredentials();
             ownedBots.forEach(bot => {
                 if(bot.status === 'online') toggleBotStatus(bot.instanceId);
             });
