@@ -831,7 +831,7 @@
                             <span class="text-[12px] font-semibold text-brand-pink">Ação de hoje</span>
                         </div>
 
-                <article onclick="toggleCentralActionDetails('hoje')" class="group relative bg-[#111111] text-white rounded-2xl border border-white/10 p-5 sm:p-6 overflow-hidden transition-all hover:border-brand-pink hover:shadow-[0_0_0_1px_rgba(0,122,255,0.7),0_0_28px_rgba(0,122,255,0.45),0_18px_55px_-28px_rgba(0,122,255,0.9)] cursor-pointer">
+                <article onclick="toggleCentralActionDetails('hoje', event)" class="group relative bg-[#111111] text-white rounded-2xl border border-white/10 p-5 sm:p-6 overflow-hidden transition-all hover:border-brand-pink hover:shadow-[0_0_0_1px_rgba(0,122,255,0.7),0_0_28px_rgba(0,122,255,0.45),0_18px_55px_-28px_rgba(0,122,255,0.9)] cursor-pointer">
                             <div class="absolute inset-0 bg-gradient-to-br from-brand-pink/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
                             <div class="relative flex flex-col xl:flex-row gap-6">
                                 <div class="flex-1 space-y-4">
@@ -858,14 +858,14 @@
                                 <div class="xl:w-72 flex flex-col justify-center border-t xl:border-t-0 xl:border-l border-white/10 pt-6 xl:pt-0 xl:pl-6">
                                     <div class="flex justify-between items-baseline mb-2">
                                         <span class="text-[13px] text-gray-400">Ocupação</span>
-                                        <span class="text-[24px] font-bold">12<span class="text-white/35 text-[15px] font-normal">/16</span></span>
+                                        <span class="text-[24px] font-bold"><span data-action-occupancy-current>4</span><span class="text-white/35 text-[15px] font-normal">/16</span></span>
                                     </div>
                                     <div class="w-full h-1.5 bg-white/10 rounded-full overflow-hidden mb-6">
-                                        <div class="h-full bg-brand-pink w-[75%] rounded-full"></div>
+                                        <div data-action-occupancy-bar class="h-full bg-brand-pink w-[25%] rounded-full"></div>
                                     </div>
                                     <div class="grid grid-cols-2 gap-3">
-                                    <button onclick="event.stopPropagation()" class="px-4 py-2.5 text-[12px] font-bold bg-brand-pink text-white rounded-lg hover:bg-blue-500 transition-colors">Participar</button>
-                                        <button onclick="event.stopPropagation()" class="px-4 py-2.5 text-[12px] font-bold border border-white/10 text-white rounded-lg hover:border-brand-pink hover:text-brand-pink transition-colors">Reserva</button>
+                                    <button data-action-participate-button onclick="toggleActionParticipation(this, event)" class="px-4 py-2.5 text-[12px] font-bold bg-brand-pink text-white rounded-lg hover:bg-blue-500 transition-colors">Participar</button>
+                                        <button data-action-reserve-button onclick="toggleActionReservation(this, event)" class="px-4 py-2.5 text-[12px] font-bold border border-white/10 text-white rounded-lg hover:border-brand-pink hover:text-brand-pink transition-colors">Reserva</button>
                                     </div>
                                     <p class="text-[12px] text-gray-500 mt-4 flex items-center justify-between gap-3">
                                         <span>3 reservas na fila</span>
@@ -874,42 +874,24 @@
                                 </div>
                             </div>
                             <div id="central-action-details-hoje" class="relative hidden mt-6 pt-6 border-t border-white/10 space-y-5">
-                                <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
-                                    <div class="bg-white/[0.03] rounded-lg p-3">
-                                        <span class="block text-[10px] uppercase tracking-wider text-gray-500">Perímetro</span>
-                                        <strong class="block text-[13px] mt-1">Banco, garagem e cofre</strong>
-                                    </div>
-                                    <div class="bg-white/[0.03] rounded-lg p-3">
-                                        <span class="block text-[10px] uppercase tracking-wider text-gray-500">Entrada</span>
-                                        <strong class="block text-[13px] mt-1">Equipe alfa pela lateral</strong>
-                                    </div>
-                                    <div class="bg-white/[0.03] rounded-lg p-3">
-                                        <span class="block text-[10px] uppercase tracking-wider text-gray-500">Regra principal</span>
-                                        <strong class="block text-[13px] mt-1">Aguardar ordem da Direção</strong>
-                                    </div>
-                                </div>
                                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
                                     <div class="bg-white/[0.03] rounded-xl border border-white/10 overflow-hidden">
                                         <div class="px-4 py-3 border-b border-white/10 flex items-center justify-between">
                                             <h6 class="text-[11px] font-bold uppercase tracking-[0.18em] text-gray-400">Escalados</h6>
-                                            <span class="text-[11px] font-black text-brand-pink bg-brand-pink/10 px-2 py-1 rounded-full">4 pessoas</span>
+                                            <span class="text-[11px] font-black text-amber-500 bg-amber-500/10 px-2 py-1 rounded-full">4 pessoas</span>
                                         </div>
                                         <div class="divide-y divide-white/5">
                                             <div class="flex items-center justify-between gap-3 px-4 py-3">
-                                                <span class="flex items-center gap-3 min-w-0"><i class="fa-solid fa-user-shield text-brand-pink text-[12px]"></i><strong class="text-[13px] truncate">Direção Raze</strong></span>
-                                                <span class="text-[12px] text-gray-400">Comando</span>
+                                                <span class="flex items-center gap-3 min-w-0"><i class="fa-solid fa-user text-amber-500 text-[12px]"></i><strong class="text-[13px] truncate">Direção Raze</strong></span><button onclick="removeActionPlayer(this, event)" class="h-7 w-7 rounded-lg text-gray-500 transition hover:bg-rose-500/10 hover:text-rose-500" title="Remover player"><i class="fa-solid fa-xmark text-[12px]"></i></button>
                                             </div>
                                             <div class="flex items-center justify-between gap-3 px-4 py-3">
-                                                <span class="flex items-center gap-3 min-w-0"><i class="fa-solid fa-crosshairs text-brand-pink text-[12px]"></i><strong class="text-[13px] truncate">Carlos Silva</strong></span>
-                                                <span class="text-[12px] text-gray-400">Entrada</span>
+                                                <span class="flex items-center gap-3 min-w-0"><i class="fa-solid fa-user text-amber-500 text-[12px]"></i><strong class="text-[13px] truncate">Carlos Silva</strong></span><button onclick="removeActionPlayer(this, event)" class="h-7 w-7 rounded-lg text-gray-500 transition hover:bg-rose-500/10 hover:text-rose-500" title="Remover player"><i class="fa-solid fa-xmark text-[12px]"></i></button>
                                             </div>
                                             <div class="flex items-center justify-between gap-3 px-4 py-3">
-                                                <span class="flex items-center gap-3 min-w-0"><i class="fa-solid fa-shield-halved text-brand-pink text-[12px]"></i><strong class="text-[13px] truncate">Maria Souza</strong></span>
-                                                <span class="text-[12px] text-gray-400">Cobertura</span>
+                                                <span class="flex items-center gap-3 min-w-0"><i class="fa-solid fa-user text-amber-500 text-[12px]"></i><strong class="text-[13px] truncate">Maria Souza</strong></span><button onclick="removeActionPlayer(this, event)" class="h-7 w-7 rounded-lg text-gray-500 transition hover:bg-rose-500/10 hover:text-rose-500" title="Remover player"><i class="fa-solid fa-xmark text-[12px]"></i></button>
                                             </div>
                                             <div class="flex items-center justify-between gap-3 px-4 py-3">
-                                                <span class="flex items-center gap-3 min-w-0"><i class="fa-solid fa-kit-medical text-brand-pink text-[12px]"></i><strong class="text-[13px] truncate">Ana Jardim</strong></span>
-                                                <span class="text-[12px] text-gray-400">Suporte</span>
+                                                <span class="flex items-center gap-3 min-w-0"><i class="fa-solid fa-user text-amber-500 text-[12px]"></i><strong class="text-[13px] truncate">Ana Jardim</strong></span><button onclick="removeActionPlayer(this, event)" class="h-7 w-7 rounded-lg text-gray-500 transition hover:bg-rose-500/10 hover:text-rose-500" title="Remover player"><i class="fa-solid fa-xmark text-[12px]"></i></button>
                                             </div>
                                         </div>
                                     </div>
@@ -933,6 +915,7 @@
                                 </div>
                             </div>
                         </article>
+                        <div id="central-featured-actions" class="mt-4 grid grid-cols-1 gap-4"></div>
                     </section>
 
                     <section class="space-y-8">
@@ -948,7 +931,7 @@
                                 </span>
                             </div>
 
-                            <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
+                            <div id="central-scheduled-actions" class="grid grid-cols-1 lg:grid-cols-2 gap-4">
                                 <article class="bg-[#111111] text-white border border-white/10 p-5 rounded-xl hover:border-brand-pink/30 transition-colors">
                                     <div class="flex justify-between items-start mb-6">
                                         <span class="text-[10px] font-bold text-amber-500 uppercase tracking-widest bg-amber-500/10 px-2.5 py-1 rounded">Organizando</span>
@@ -1009,7 +992,7 @@
                                 </span>
                             </div>
 
-                            <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
+                            <div id="central-ended-actions" class="grid grid-cols-1 lg:grid-cols-2 gap-4">
                                 <article class="bg-[#111111] text-white border border-white/10 p-5 rounded-xl opacity-75 hover:opacity-95 transition-opacity">
                                     <div class="flex justify-between items-start mb-6">
                                         <span class="text-[10px] font-bold text-white/35 uppercase tracking-widest bg-white/5 px-2.5 py-1 rounded">Encerrado</span>
@@ -1712,7 +1695,7 @@
                             </div>
                         </div>
                         <div class="flex flex-wrap gap-2">
-                            <button onclick="showToast('Nova ação criada.')" class="bg-brand-pink text-white px-4 py-2 rounded-full font-semibold text-[14px] shadow-lg shadow-brand-pink/25">Nova ação</button>
+                            <button onclick="createCentralAction()" class="bg-brand-pink text-white px-4 py-2 rounded-full font-semibold text-[14px] shadow-lg shadow-brand-pink/25">Nova ação</button>
                             <label class="bg-gray-100 dark:bg-gray-800 text-brand-pink px-4 py-2 rounded-full font-semibold text-[14px] cursor-pointer">Importar JSON<input type="file" accept="application/json" class="hidden" onchange="showToast('JSON importado.')" /></label>
                         </div>
                     </div>
@@ -1806,37 +1789,36 @@
                 <div class="bg-ios-card dark:bg-ios-darkCard rounded-[24px] shadow-sm border border-black/5 dark:border-white/5 p-5">
                     <h3 class="font-bold text-[20px] mb-4">Punições</h3>
                     <div class="grid gap-4">
-                        <label class="grid gap-2 text-[13px] font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wider">1ª advertência<input class="bg-gray-100 dark:bg-gray-800 text-black dark:text-white rounded-2xl px-4 py-3 outline-none border border-black/5 dark:border-white/5 focus:border-brand-pink" placeholder="@Adv 1" /></label>
-                        <label class="grid gap-2 text-[13px] font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wider">2ª advertência<input class="bg-gray-100 dark:bg-gray-800 text-black dark:text-white rounded-2xl px-4 py-3 outline-none border border-black/5 dark:border-white/5 focus:border-brand-pink" placeholder="@Adv 2" /></label>
-                        <label class="grid gap-2 text-[13px] font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wider">3ª advertência<input class="bg-gray-100 dark:bg-gray-800 text-black dark:text-white rounded-2xl px-4 py-3 outline-none border border-black/5 dark:border-white/5 focus:border-brand-pink" placeholder="@Adv 3" /></label>
+                        <label class="grid gap-2 text-[13px] font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wider">Advertência verbal<select id="punishment-role-verbal" class="bg-gray-100 dark:bg-gray-800 text-black dark:text-white rounded-2xl px-4 py-3 outline-none border border-black/5 dark:border-white/5 focus:border-brand-pink"><option value="">@Advertência verbal</option></select></label>
+                        <label class="grid gap-2 text-[13px] font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wider">1ª advertência<select id="punishment-role-first" class="bg-gray-100 dark:bg-gray-800 text-black dark:text-white rounded-2xl px-4 py-3 outline-none border border-black/5 dark:border-white/5 focus:border-brand-pink"><option value="">@Adv 1</option></select></label>
+                        <label class="grid gap-2 text-[13px] font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wider">2ª advertência<select id="punishment-role-second" class="bg-gray-100 dark:bg-gray-800 text-black dark:text-white rounded-2xl px-4 py-3 outline-none border border-black/5 dark:border-white/5 focus:border-brand-pink"><option value="">@Adv 2</option></select></label>
+                        <label class="grid gap-2 text-[13px] font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wider">3ª advertência<select id="punishment-role-third" class="bg-gray-100 dark:bg-gray-800 text-black dark:text-white rounded-2xl px-4 py-3 outline-none border border-black/5 dark:border-white/5 focus:border-brand-pink"><option value="">@Adv 3</option></select></label>
                     </div>
                 </div>
                 <div class="bg-ios-card dark:bg-ios-darkCard rounded-[24px] shadow-sm border border-black/5 dark:border-white/5 p-5">
                     <h3 class="font-bold text-[20px] mb-4">Regras de ban</h3>
                     <div class="grid gap-4">
                         <label class="grid gap-2 text-[13px] font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wider">Limite antes do ban<input type="number" class="bg-gray-100 dark:bg-gray-800 text-black dark:text-white rounded-2xl px-4 py-3 outline-none border border-black/5 dark:border-white/5 focus:border-brand-pink" value="3" /></label>
-                        <label class="grid gap-2 text-[13px] font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wider">Canal de log<input class="bg-gray-100 dark:bg-gray-800 text-black dark:text-white rounded-2xl px-4 py-3 outline-none border border-black/5 dark:border-white/5 focus:border-brand-pink" placeholder="#punicoes" /></label>
+                        <label class="grid gap-2 text-[13px] font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wider">Canal de log<select id="punishment-log-channel" class="bg-gray-100 dark:bg-gray-800 text-black dark:text-white rounded-2xl px-4 py-3 outline-none border border-black/5 dark:border-white/5 focus:border-brand-pink"><option value="">#punicoes</option></select></label>
                     </div>
                 </div>
             </section>
 
             <section id="panel-section-farm" class="panel-section hidden grid grid-cols-1 lg:grid-cols-[1.2fr_0.8fr] gap-6">
                 <div class="bg-ios-card dark:bg-ios-darkCard rounded-[24px] shadow-sm border border-black/5 dark:border-white/5 p-5">
-                    <h3 class="font-bold text-[20px] mb-4">Farm</h3>
+                    <h3 class="font-bold text-[20px] mb-4">Cargos de metas</h3>
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
-                        <label class="grid gap-2 text-[13px] font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wider">Categoria das salas<input class="bg-gray-100 dark:bg-gray-800 text-black dark:text-white rounded-2xl px-4 py-3 outline-none border border-black/5 dark:border-white/5 focus:border-brand-pink" placeholder="Categoria Farm" /></label>
-                        <label class="grid gap-2 text-[13px] font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wider">Imagem do painel<input class="bg-gray-100 dark:bg-gray-800 text-black dark:text-white rounded-2xl px-4 py-3 outline-none border border-black/5 dark:border-white/5 focus:border-brand-pink" placeholder="https://" /></label>
-                        <label class="grid gap-2 text-[13px] font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wider">Canal de log<input class="bg-gray-100 dark:bg-gray-800 text-black dark:text-white rounded-2xl px-4 py-3 outline-none border border-black/5 dark:border-white/5 focus:border-brand-pink" placeholder="#logs-farm" /></label>
-                        <label class="grid gap-2 text-[13px] font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wider">Cargo meta concluída<input class="bg-gray-100 dark:bg-gray-800 text-black dark:text-white rounded-2xl px-4 py-3 outline-none border border-black/5 dark:border-white/5 focus:border-brand-pink" placeholder="@Meta OK" /></label>
-                        <label class="grid gap-2 text-[13px] font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wider">Cargo incompleta<input class="bg-gray-100 dark:bg-gray-800 text-black dark:text-white rounded-2xl px-4 py-3 outline-none border border-black/5 dark:border-white/5 focus:border-brand-pink" placeholder="@Meta Parcial" /></label>
-                        <label class="grid gap-2 text-[13px] font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wider">Cargo sem entrega<input class="bg-gray-100 dark:bg-gray-800 text-black dark:text-white rounded-2xl px-4 py-3 outline-none border border-black/5 dark:border-white/5 focus:border-brand-pink" placeholder="@Sem Entrega" /></label>
+                        <label class="grid gap-2 text-[13px] font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wider">Cargo meta concluída<select id="farm-role-complete" class="bg-gray-100 dark:bg-gray-800 text-black dark:text-white rounded-2xl px-4 py-3 outline-none border border-black/5 dark:border-white/5 focus:border-brand-pink"><option>@Meta OK</option></select></label>
+                        <label class="grid gap-2 text-[13px] font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wider">Cargo incompleta<select id="farm-role-incomplete" class="bg-gray-100 dark:bg-gray-800 text-black dark:text-white rounded-2xl px-4 py-3 outline-none border border-black/5 dark:border-white/5 focus:border-brand-pink"><option>@Meta Parcial</option></select></label>
+                        <label class="grid gap-2 text-[13px] font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wider sm:col-span-2">Cargo sem entrega<select id="farm-role-no-delivery" class="bg-gray-100 dark:bg-gray-800 text-black dark:text-white rounded-2xl px-4 py-3 outline-none border border-black/5 dark:border-white/5 focus:border-brand-pink"><option>@Sem Entrega</option></select></label>
                     </div>
                 </div>
                 <div class="bg-ios-card dark:bg-ios-darkCard rounded-[24px] shadow-sm border border-black/5 dark:border-white/5 p-5">
-                    <h3 class="font-bold text-[20px] mb-4">Produtos e metas</h3>
-                    <div class="grid gap-3">
-                        <div class="grid grid-cols-[1fr_90px] gap-3"><input value="Peças" class="bg-gray-100 dark:bg-gray-800 text-black dark:text-white rounded-2xl px-4 py-3 outline-none border border-black/5 dark:border-white/5 focus:border-brand-pink" /><input type="number" value="300" class="bg-gray-100 dark:bg-gray-800 text-black dark:text-white rounded-2xl px-4 py-3 outline-none border border-black/5 dark:border-white/5 focus:border-brand-pink" /></div>
-                        <div class="grid grid-cols-[1fr_90px] gap-3"><input value="Minérios" class="bg-gray-100 dark:bg-gray-800 text-black dark:text-white rounded-2xl px-4 py-3 outline-none border border-black/5 dark:border-white/5 focus:border-brand-pink" /><input type="number" value="180" class="bg-gray-100 dark:bg-gray-800 text-black dark:text-white rounded-2xl px-4 py-3 outline-none border border-black/5 dark:border-white/5 focus:border-brand-pink" /></div>
+                    <h3 class="font-bold text-[20px] mb-4">Criar produto</h3>
+                    <div class="grid gap-3 rounded-[20px] border border-black/5 bg-gray-100 p-4 dark:border-white/5 dark:bg-gray-800">
+                        <label class="grid gap-2 text-[13px] font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wider">Produto<input class="bg-white dark:bg-gray-900 text-black dark:text-white rounded-2xl px-4 py-3 outline-none border border-black/5 dark:border-white/5 focus:border-brand-pink" placeholder="Ex: Peças" /></label>
+                        <label class="grid gap-2 text-[13px] font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wider">Meta<input type="number" class="bg-white dark:bg-gray-900 text-black dark:text-white rounded-2xl px-4 py-3 outline-none border border-black/5 dark:border-white/5 focus:border-brand-pink" placeholder="300" /></label>
+                        <button class="inline-flex items-center justify-center gap-2 rounded-2xl bg-brand-pink px-4 py-3 text-[14px] font-bold text-white transition active:scale-95"><i class="fa-solid fa-plus"></i>Criar produto</button>
                     </div>
                 </div>
             </section>
@@ -1987,8 +1969,8 @@
     <div onclick="event.stopPropagation()" class="w-full max-w-2xl bg-white dark:bg-[#111111] text-gray-950 dark:text-white rounded-2xl border border-black/10 dark:border-white/10 shadow-2xl shadow-black/20 dark:shadow-black/50 overflow-hidden">
         <div class="p-6 border-b border-black/10 dark:border-white/10 flex items-start justify-between gap-4">
             <div>
-                <h3 class="text-[22px] font-black tracking-tight">Criar Ação</h3>
-                <p class="text-[13px] text-gray-500 dark:text-gray-400 mt-1">Configure a ação, quantidade de vagas e horário da operação.</p>
+                <h3 class="text-[22px] font-black tracking-tight">Nova ação</h3>
+                <p class="text-[13px] text-gray-500 dark:text-gray-400 mt-1">Preencha os dados da ação e a quantidade de vagas.</p>
             </div>
             <button onclick="closeCentralActionModal()" class="h-9 w-9 rounded-lg border border-black/10 dark:border-white/10 text-gray-500 dark:text-gray-400 hover:text-brand-pink hover:border-brand-pink transition-colors">
                 <i class="fa-solid fa-xmark"></i>
@@ -1997,23 +1979,26 @@
 
         <div class="p-6 space-y-5">
             <label class="block">
-                <span class="block text-[10px] uppercase tracking-wider text-gray-500 dark:text-gray-400 mb-2">Seletor de ação</span>
-                <select id="central-action-type" onchange="updateCentralActionWeapon()" class="w-full bg-gray-100 dark:bg-[#0A0A0A] border border-black/10 dark:border-white/10 rounded-xl p-4 text-[14px] text-gray-950 dark:text-white outline-none focus:border-brand-pink transition-all">
-                    <option value="banco-central">Banco Central</option>
-                    <option value="joalheria">Joalheria</option>
-                    <option value="aeroporto">Aeroporto</option>
-                    <option value="loja-norte">Loja Norte</option>
-                    <option value="porto-sul">Porto Sul</option>
+                <span class="block text-[10px] uppercase tracking-wider text-gray-500 dark:text-gray-400 mb-2">Nome da Ação</span>
+                <input id="central-action-name" type="text" placeholder="Ex: Banco Central" class="w-full bg-gray-100 dark:bg-[#0A0A0A] border border-black/10 dark:border-white/10 rounded-xl p-4 text-[14px] text-gray-950 dark:text-white outline-none focus:border-brand-pink transition-all" />
+            </label>
+
+            <label class="block">
+                <span class="block text-[10px] uppercase tracking-wider text-gray-500 dark:text-gray-400 mb-2">Categoria</span>
+                <select id="central-action-category" class="w-full bg-gray-100 dark:bg-[#0A0A0A] border border-black/10 dark:border-white/10 rounded-xl p-4 text-[14px] text-gray-950 dark:text-white outline-none focus:border-brand-pink transition-all">
+                    <option value="featured">Em destaque (para ações do dia)</option>
+                    <option value="scheduled">Ações Agendadas (para ações de outro dia)</option>
+                    <option value="ended">Ações Encerradas (histórico)</option>
                 </select>
             </label>
 
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <label class="block">
-                    <span class="block text-[10px] uppercase tracking-wider text-gray-500 dark:text-gray-400 mb-2">Quantidade Min</span>
+                    <span class="block text-[10px] uppercase tracking-wider text-gray-500 dark:text-gray-400 mb-2">Vagas Min</span>
                     <input id="central-action-min" type="number" min="1" placeholder="Ex: 8" class="w-full bg-gray-100 dark:bg-[#0A0A0A] border border-black/10 dark:border-white/10 rounded-xl p-4 text-[14px] text-gray-950 dark:text-white outline-none focus:border-brand-pink transition-all" />
                 </label>
                 <label class="block">
-                    <span class="block text-[10px] uppercase tracking-wider text-gray-500 dark:text-gray-400 mb-2">Quantidade Max</span>
+                    <span class="block text-[10px] uppercase tracking-wider text-gray-500 dark:text-gray-400 mb-2">Vagas Max</span>
                     <input id="central-action-max" type="number" min="1" placeholder="Ex: 16" class="w-full bg-gray-100 dark:bg-[#0A0A0A] border border-black/10 dark:border-white/10 rounded-xl p-4 text-[14px] text-gray-950 dark:text-white outline-none focus:border-brand-pink transition-all" />
                 </label>
             </div>
@@ -2033,7 +2018,7 @@
                 <span class="block text-[10px] uppercase tracking-wider text-gray-500 dark:text-gray-400 mb-2">Armamento</span>
                 <div class="relative">
                     <i class="fa-solid fa-gun absolute left-4 top-1/2 -translate-y-1/2 text-brand-pink text-[13px]"></i>
-                    <input id="central-action-weapon" type="text" readonly class="w-full bg-brand-pink/10 border border-brand-pink/30 rounded-xl py-4 pl-11 pr-4 text-[14px] text-gray-950 dark:text-white font-bold outline-none" />
+                    <input id="central-action-weapon" type="text" placeholder="Ex: Fuzil e pistola" class="w-full bg-gray-100 dark:bg-[#0A0A0A] border border-black/10 dark:border-white/10 rounded-xl py-4 pl-11 pr-4 text-[14px] text-gray-950 dark:text-white outline-none focus:border-brand-pink transition-all" />
                 </div>
             </label>
         </div>
@@ -2323,7 +2308,7 @@ function createCentralAction() {
   setCentralActionMode('create');
   modal.classList.remove('hidden');
   modal.classList.add('flex');
-  updateCentralActionWeapon();
+  resetCentralActionModal();
 }
 
  function closeCentralActionModal() {
@@ -2334,44 +2319,134 @@ function createCentralAction() {
      modal.classList.remove('flex');
  }
 
- function updateCentralActionWeapon() {
-     const type = document.getElementById('central-action-type')?.value;
-     const weapon = document.getElementById('central-action-weapon');
+ function resetCentralActionModal() {
+     ['central-action-name', 'central-action-min', 'central-action-max', 'central-action-date', 'central-action-time', 'central-action-weapon'].forEach((inputId) => {
+         const input = document.getElementById(inputId);
+         if (input) input.value = '';
+     });
+     const category = document.getElementById('central-action-category');
+     if (category) category.value = 'featured';
+ }
 
-     if (weapon) weapon.value = centralActionWeapons[type] || 'Armamento não configurado';
+ function updateCentralActionWeapon() {
+     return;
+ }
+
+ function getCentralActionCategoryStatus(category) {
+     return {
+         featured: 'Iniciando',
+         scheduled: 'Agendada',
+         ended: 'Encerrado'
+     }[category] || 'Agendada';
+ }
+
+ function getCentralActionCategoryContainer(category) {
+     return document.getElementById({
+         featured: 'central-featured-actions',
+         scheduled: 'central-scheduled-actions',
+         ended: 'central-ended-actions'
+     }[category]);
+ }
+
+ function escapeActionText(value) {
+     return String(value || '').replace(/[&<>"']/g, (char) => ({
+         '&': '&amp;',
+         '<': '&lt;',
+         '>': '&gt;',
+         '"': '&quot;',
+         "'": '&#39;'
+     }[char]));
+ }
+
+ function renderCentralCreatedActionCard(action) {
+     const statusStyles = {
+         Iniciando: 'text-emerald-500 bg-emerald-500/10',
+         Agendada: 'text-blue-400 bg-blue-400/10',
+         Encerrado: 'text-white/35 bg-white/5'
+     };
+     const statusClass = statusStyles[action.status] || 'text-amber-500 bg-amber-500/10';
+     const slotLabel = action.minSlots ? `${action.minSlots}-${action.slots} vagas` : `${action.slots} vagas`;
+
+     return `
+         <article class="bg-[#111111] text-white border border-white/10 p-5 rounded-xl hover:border-brand-pink/30 transition-colors">
+             <div class="flex justify-between items-start mb-6">
+                 <span class="text-[10px] font-bold uppercase tracking-widest ${statusClass} px-2.5 py-1 rounded">${escapeActionText(action.status)}</span>
+                 <span class="text-[12px] text-gray-400">${formatCentralActionDate(action.date)} • ${escapeActionText(action.time)}</span>
+             </div>
+             <h5 class="font-bold text-[20px] mb-1">${escapeActionText(action.name)}</h5>
+             <p class="text-[13px] text-gray-400 mb-5">Puxada por: ${escapeActionText(action.leader)}</p>
+             <div class="grid grid-cols-2 gap-3 mb-5">
+                 <div class="bg-white/[0.03] rounded-lg p-3">
+                     <span class="block text-[10px] uppercase tracking-wider text-gray-500">Armamento</span>
+                     <strong class="block text-[13px] mt-1">${escapeActionText(action.weapon)}</strong>
+                 </div>
+                 <div class="bg-white/[0.03] rounded-lg p-3">
+                     <span class="block text-[10px] uppercase tracking-wider text-gray-500">Reservas</span>
+                     <strong class="block text-[13px] mt-1">${action.reserves} membros</strong>
+                 </div>
+             </div>
+             <div class="flex items-center justify-between pt-4 border-t border-white/10">
+                 <span class="text-[13px] font-semibold">${escapeActionText(slotLabel)}</span>
+                 <button class="text-[11px] px-3 py-1.5 border border-white/10 rounded-lg hover:text-brand-pink hover:border-brand-pink transition-colors">Regras</button>
+             </div>
+         </article>
+     `;
+ }
+
+ function renderCentralCreatedActions() {
+     ['featured', 'scheduled', 'ended'].forEach((category) => {
+         const container = getCentralActionCategoryContainer(category);
+         if (container) container.querySelectorAll('[data-created-action-card="true"]').forEach((card) => card.remove());
+     });
+
+     centralEditableActions.filter((action) => action.createdFromModal).forEach((action) => {
+         const container = getCentralActionCategoryContainer(action.category);
+         if (!container) return;
+         const wrapper = document.createElement('div');
+         wrapper.innerHTML = renderCentralCreatedActionCard(action);
+         const card = wrapper.firstElementChild;
+         card.dataset.createdActionCard = 'true';
+         container.appendChild(card);
+     });
  }
 
  function submitCentralActionModal() {
-     const type = document.getElementById('central-action-type')?.value;
+     const name = document.getElementById('central-action-name')?.value.trim();
+     const category = document.getElementById('central-action-category')?.value || 'scheduled';
      const min = Number(document.getElementById('central-action-min')?.value);
      const max = Number(document.getElementById('central-action-max')?.value);
      const date = document.getElementById('central-action-date')?.value;
      const time = document.getElementById('central-action-time')?.value;
+     const weapon = document.getElementById('central-action-weapon')?.value.trim();
 
-     if (!type || !min || !max || !date || !time) {
+     if (!name || !date || !time || !weapon || !min || !max) {
          showToast('Preencha todos os campos da ação.', 'error');
          return;
      }
 
      if (min > max) {
-         showToast('Quantidade Min não pode ser maior que a Max.', 'error');
+         showToast('Vagas Min não pode ser maior que Vagas Max.', 'error');
          return;
      }
 
      closeCentralActionModal();
      centralEditableActions.unshift({
          id: `acao-${Date.now()}`,
-         name: centralActionNames[type] || 'Ação criada',
+         name,
+         category,
          date,
          time,
+         minSlots: min,
          slots: max,
          reserves: 0,
          leader: 'Direção Raze',
-         weapon: centralActionWeapons[type] || 'Armamento não configurado',
-         status: 'Agendada'
+         weapon,
+         status: getCentralActionCategoryStatus(category),
+         createdFromModal: true
      });
      selectedCentralActionId = centralEditableActions[0].id;
      renderCentralActionEditor();
+     renderCentralCreatedActions();
      showToast('Ação criada com sucesso.', 'success');
  }
 
@@ -2460,6 +2535,7 @@ function createCentralAction() {
 
      Object.assign(action, { name, date, time, slots, reserves, leader, status, weapon });
      renderCentralActionEditor();
+     renderCentralCreatedActions();
      showToast('Ação atualizada com sucesso.', 'success');
  }
 
@@ -2470,7 +2546,8 @@ function createCentralAction() {
      return `${day}/${month}/${year}`;
  }
 
-    function toggleCentralActionDetails(actionId) {
+    function toggleCentralActionDetails(actionId, event) {
+        if (event?.target?.closest('button, a, input, select, textarea, label')) return;
         const details = document.getElementById(`central-action-details-${actionId}`);
         const chevron = document.getElementById(`central-action-chevron-${actionId}`);
 
@@ -2478,6 +2555,201 @@ function createCentralAction() {
 
         details.classList.toggle('hidden');
         chevron?.classList.toggle('rotate-180', !details.classList.contains('hidden'));
+    }
+
+    function applyPanelActionCardStyle() {
+        const cards = document.querySelectorAll('#panel-section-acoes article');
+        const actionCards = [
+            {
+                status: 'Iniciando',
+                statusColor: 'text-emerald-400',
+                dotColor: 'bg-emerald-400',
+                time: '21:30',
+                name: 'Banco Central',
+                leader: 'Direção Raze',
+                description: 'lidera a operação principal do dia.',
+                occupied: 12,
+                total: 16,
+                reserves: 3,
+                weapon: 'Fuzil e pistola',
+                disabled: false
+            },
+            {
+                status: 'Organizando',
+                statusColor: 'text-amber-400',
+                dotColor: 'bg-amber-400',
+                time: '20:00',
+                name: 'Joalheria',
+                leader: 'Gerência One',
+                description: 'coordena a próxima ação da escala.',
+                occupied: 8,
+                total: 10,
+                reserves: 2,
+                weapon: 'Pistola',
+                disabled: false
+            },
+            {
+                status: 'Encerrado',
+                statusColor: 'text-gray-500',
+                dotColor: 'bg-gray-500',
+                time: '22:00',
+                name: 'Loja Norte',
+                leader: 'Coordenação',
+                description: 'conduziu o histórico recente da operação.',
+                occupied: 10,
+                total: 10,
+                reserves: 1,
+                weapon: 'Pistola',
+                disabled: true
+            }
+        ];
+
+        document.querySelectorAll('#panel-section-acoes .grid.grid-cols-1.xl\\:grid-cols-2').forEach((grid) => {
+            grid.classList.remove('xl:grid-cols-2');
+        });
+
+        cards.forEach((card, index) => {
+            const action = actionCards[index];
+            if (!action) return;
+            const percent = Math.min(100, Math.round((action.occupied / action.total) * 100));
+            const disabledClasses = action.disabled ? 'opacity-70 grayscale' : '';
+            card.className = `rounded-[22px] border border-white/10 bg-[#070B13] p-4 shadow-lg shadow-black/20 ${disabledClasses}`;
+            card.innerHTML = `
+                <div class="grid gap-5 xl:grid-cols-[1.1fr_1fr_260px] xl:items-center">
+                    <div class="min-w-0">
+                        <div class="mb-4 flex items-center justify-between gap-3">
+                            <span class="inline-flex items-center gap-2 text-[11px] font-black uppercase tracking-[0.18em] ${action.statusColor}">
+                                <span class="h-2 w-2 rounded-full ${action.dotColor}"></span>${action.status}
+                            </span>
+                            <span class="text-[12px] font-bold text-brand-pink">${action.time}</span>
+                        </div>
+                        <h4 class="text-[24px] font-black leading-tight text-white">${action.name}</h4>
+                        <p class="mt-2 text-[13px] text-gray-400">${action.leader} ${action.description}</p>
+                    </div>
+                    <div class="grid gap-3">
+                        <div class="flex items-center justify-between text-[12px] font-bold">
+                            <span class="text-gray-400">Ocupação</span>
+                            <span class="text-white">${action.occupied}/${action.total}</span>
+                        </div>
+                        <div class="h-2 rounded-full bg-white/10">
+                            <div class="h-full rounded-full bg-brand-pink" style="width:${percent}%"></div>
+                        </div>
+                        <div class="grid grid-cols-2 gap-3">
+                            <div class="rounded-[16px] border border-white/10 bg-white/5 p-4">
+                                <p class="text-[10px] font-black uppercase tracking-[0.18em] text-gray-500">Escalados</p>
+                                <strong class="mt-2 block text-[26px] text-white">${action.occupied}</strong>
+                            </div>
+                            <div class="rounded-[16px] border border-white/10 bg-white/5 p-4">
+                                <p class="text-[10px] font-black uppercase tracking-[0.18em] text-gray-500">Reservas</p>
+                                <strong class="mt-2 block text-[26px] text-white">${action.reserves}</strong>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="grid gap-3">
+                        <div class="rounded-[16px] border border-white/10 bg-white/5 p-4">
+                            <p class="text-[10px] font-black uppercase tracking-[0.18em] text-gray-500">Armamento</p>
+                            <strong class="mt-2 block text-[14px] text-white">${action.weapon}</strong>
+                        </div>
+                        <div class="grid grid-cols-2 gap-2">
+                            <button class="rounded-2xl bg-brand-pink px-4 py-3 text-[13px] font-bold text-white ${action.disabled ? 'pointer-events-none opacity-50' : ''}">Participar</button>
+                            <button class="rounded-2xl border border-white/15 bg-white/5 px-4 py-3 text-[13px] font-bold text-white ${action.disabled ? 'pointer-events-none opacity-50' : ''}">Reserva</button>
+                        </div>
+                    </div>
+                </div>
+            `;
+        });
+    }
+
+    applyPanelActionCardStyle();
+
+    function setActionParticipationButton(button, participating, transparent = false) {
+        if (!button) return;
+        button.dataset.participating = participating ? 'true' : 'false';
+        button.textContent = participating ? 'Participando' : 'Participar';
+        button.classList.remove('bg-rose-600', 'hover:bg-rose-700', 'bg-brand-pink', 'hover:bg-blue-500', 'bg-transparent', 'border', 'border-white/10', 'hover:border-brand-pink', 'hover:text-brand-pink');
+
+        if (participating) {
+            button.classList.add('bg-rose-600', 'hover:bg-rose-700');
+        } else if (transparent) {
+            button.classList.add('bg-transparent', 'border', 'border-white/10', 'hover:border-brand-pink', 'hover:text-brand-pink');
+        } else {
+            button.classList.add('bg-brand-pink', 'hover:bg-blue-500');
+        }
+    }
+
+    function setActionReservationButton(button, reserved) {
+        if (!button) return;
+        button.dataset.reserved = reserved ? 'true' : 'false';
+        button.classList.toggle('bg-amber-500', reserved);
+        button.classList.toggle('hover:bg-amber-400', reserved);
+        button.classList.toggle('border-amber-500', reserved);
+        button.classList.toggle('text-black', reserved);
+        button.classList.toggle('border-white/10', !reserved);
+        button.classList.toggle('text-white', !reserved);
+        button.classList.toggle('hover:border-brand-pink', !reserved);
+        button.classList.toggle('hover:text-brand-pink', !reserved);
+    }
+
+    function updateActionRosterCount(list) {
+        const count = list ? Array.from(list.children).length : 0;
+        const actionCard = list?.closest('article');
+        const badge = list?.closest('.rounded-xl')?.querySelector('.rounded-full');
+        const occupancyCurrent = actionCard?.querySelector('[data-action-occupancy-current]');
+        const occupancyBar = actionCard?.querySelector('[data-action-occupancy-bar]');
+        if (badge) badge.textContent = `${count} ${count === 1 ? 'pessoa' : 'pessoas'}`;
+        if (occupancyCurrent) occupancyCurrent.textContent = String(count);
+        if (occupancyBar) occupancyBar.style.width = `${Math.min(100, Math.round((count / 16) * 100))}%`;
+    }
+
+    function removeActionPlayer(button, event) {
+        event?.stopPropagation();
+        const row = button.closest('.flex.items-center.justify-between');
+        const list = row?.parentElement || button.closest('.divide-y');
+        const actionCard = button.closest('article');
+        const wasSelfParticipant = row?.dataset.selfParticipant === 'true';
+        row?.remove();
+        updateActionRosterCount(list);
+
+        if (wasSelfParticipant) {
+            setActionParticipationButton(actionCard?.querySelector('[data-action-participate-button]'), false);
+        }
+    }
+
+    function toggleActionParticipation(button, event) {
+        event?.stopPropagation();
+        const actionCard = button.closest('article');
+        const list = actionCard?.querySelector('.divide-y');
+        const reserveButton = actionCard?.querySelector('[data-action-reserve-button]');
+        if (!list) return;
+
+        if (button.dataset.participating === 'true') {
+            list.querySelector('[data-self-participant="true"]')?.remove();
+            updateActionRosterCount(list);
+            setActionParticipationButton(button, false);
+            return;
+        }
+
+        setActionReservationButton(reserveButton, false);
+        const row = document.createElement('div');
+        row.className = 'flex items-center justify-between gap-3 px-4 py-3';
+        row.dataset.selfParticipant = 'true';
+        row.innerHTML = '<span class="flex items-center gap-3 min-w-0"><i class="fa-solid fa-user text-amber-500 text-[12px]"></i><strong class="text-[13px] truncate">Maria Silva</strong></span><button type="button" onclick="removeActionPlayer(this, event)" class="h-7 w-7 rounded-lg text-gray-500 transition hover:bg-rose-500/10 hover:text-rose-500" title="Remover player"><i class="fa-solid fa-xmark text-[12px]"></i></button>';
+        list.appendChild(row);
+        updateActionRosterCount(list);
+        setActionParticipationButton(button, true);
+    }
+
+    function toggleActionReservation(button, event) {
+        event?.stopPropagation();
+        const actionCard = button.closest('article');
+        const participateButton = actionCard?.querySelector('[data-action-participate-button]');
+        const list = actionCard?.querySelector('.divide-y');
+        const reserved = button.dataset.reserved !== 'true';
+
+        list?.querySelector('[data-self-participant="true"]')?.remove();
+        updateActionRosterCount(list);
+        setActionReservationButton(button, reserved);
+        setActionParticipationButton(participateButton, false, reserved);
     }
 
     // Theme Toggle
