@@ -1162,8 +1162,8 @@
                     <section class="grid grid-cols-1 md:grid-cols-3 gap-4">
                         <article class="bg-[#1A1A1A] text-white p-5 rounded-2xl border border-white/10">
                             <span class="text-[10px] uppercase text-gray-400 font-bold tracking-widest">Meta global</span>
-                            <p class="text-[26px] font-black mt-2">85%</p>
-                            <div class="h-1.5 bg-white/10 rounded-full mt-4 overflow-hidden"><div class="h-full w-[85%] bg-brand-pink rounded-full"></div></div>
+                            <p data-central-farm-global-goal class="text-[26px] font-black mt-2">85%</p>
+                            <div class="h-1.5 bg-white/10 rounded-full mt-4 overflow-hidden"><div data-central-farm-global-bar class="h-full w-[85%] bg-brand-pink rounded-full"></div></div>
                         </article>
                         <article class="bg-[#1A1A1A] text-white p-5 rounded-2xl border border-white/10">
                             <span class="text-[10px] uppercase text-gray-400 font-bold tracking-widest">Entregas hoje</span>
@@ -2500,6 +2500,7 @@
 
         function renderCentralFarmProducts() {
             const container = document.getElementById('central-farm-products');
+            renderCentralFarmGlobalGoal();
             if (!container) return;
 
             const products = farmSettings.products.length
@@ -2518,6 +2519,15 @@
                     <span class="text-[11px] text-gray-500">${product.goal ? `Meta ${product.goal}` : 'Opcional'}</span>
                 </button>
             `).join('');
+        }
+
+        function renderCentralFarmGlobalGoal() {
+            const value = Number(farmSettings.globalGoal || 85);
+            const safeValue = Number.isFinite(value) && value > 0 ? Math.min(100, value) : 85;
+            const label = document.querySelector('[data-central-farm-global-goal]');
+            const bar = document.querySelector('[data-central-farm-global-bar]');
+            if (label) label.textContent = `${safeValue}%`;
+            if (bar) bar.style.width = `${safeValue}%`;
         }
 
         function createFarmProduct() {
@@ -2586,6 +2596,7 @@
                 localStorage.setItem('oneFarmAdminRole', JSON.stringify(goalRoles.admin));
                 renderFarmProducts();
                 fillFarmManagerSelect();
+                renderCentralFarmGlobalGoal();
                 applyCentralFarmAccess();
                 showToast('Configuração de farm salva no banco de dados.', 'success');
             } catch (error) {

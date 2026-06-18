@@ -1162,8 +1162,8 @@
                     <section class="grid grid-cols-1 md:grid-cols-3 gap-4">
                         <article class="bg-[#1A1A1A] text-white p-5 rounded-2xl border border-white/10">
                             <span class="text-[10px] uppercase text-gray-400 font-bold tracking-widest">Meta global</span>
-                            <p class="text-[26px] font-black mt-2">85%</p>
-                            <div class="h-1.5 bg-white/10 rounded-full mt-4 overflow-hidden"><div class="h-full w-[85%] bg-brand-pink rounded-full"></div></div>
+                            <p data-central-farm-global-goal class="text-[26px] font-black mt-2">85%</p>
+                            <div class="h-1.5 bg-white/10 rounded-full mt-4 overflow-hidden"><div data-central-farm-global-bar class="h-full w-[85%] bg-brand-pink rounded-full"></div></div>
                         </article>
                         <article class="bg-[#1A1A1A] text-white p-5 rounded-2xl border border-white/10">
                             <span class="text-[10px] uppercase text-gray-400 font-bold tracking-widest">Entregas hoje</span>
@@ -1811,6 +1811,7 @@
                 <div class="bg-ios-card dark:bg-ios-darkCard rounded-[24px] shadow-sm border border-black/5 dark:border-white/5 p-5">
                     <h3 class="font-bold text-[20px] mb-4">Cargos de metas</h3>
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
+                        <label class="grid gap-2 text-[13px] font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wider sm:col-span-2">Meta global<input id="farm-global-goal" type="number" min="1" max="100" class="bg-gray-100 dark:bg-gray-800 text-black dark:text-white rounded-2xl px-4 py-3 outline-none border border-black/5 dark:border-white/5 focus:border-brand-pink" placeholder="85" /></label>
                         <label class="grid gap-2 text-[13px] font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wider">Cargo meta concluída<select id="farm-role-complete" class="bg-gray-100 dark:bg-gray-800 text-black dark:text-white rounded-2xl px-4 py-3 outline-none border border-black/5 dark:border-white/5 focus:border-brand-pink"><option>@Meta OK</option></select></label>
                         <label class="grid gap-2 text-[13px] font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wider">Cargo incompleta<select id="farm-role-incomplete" class="bg-gray-100 dark:bg-gray-800 text-black dark:text-white rounded-2xl px-4 py-3 outline-none border border-black/5 dark:border-white/5 focus:border-brand-pink"><option>@Meta Parcial</option></select></label>
                         <label class="grid gap-2 text-[13px] font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wider">Cargo sem entrega<select id="farm-role-no-delivery" class="bg-gray-100 dark:bg-gray-800 text-black dark:text-white rounded-2xl px-4 py-3 outline-none border border-black/5 dark:border-white/5 focus:border-brand-pink"><option>@Sem Entrega</option></select></label>
@@ -2551,8 +2552,10 @@
 
     function saveFarmAdminRole() {
         const adminRole = getSelectedRole('farm-role-admin');
+        saveFarmGlobalGoal();
         if (!adminRole) {
-            showToast('Selecione o cargo Administrador de Farm antes de salvar.', 'error');
+            applyCentralFarmAccess();
+            showToast('Meta global salva. Selecione o Administrador de Farm quando carregar os cargos.', 'success');
             return;
         }
         localStorage.setItem('oneFarmAdminRole', JSON.stringify(adminRole));
@@ -2570,7 +2573,32 @@
 
     function applySavedFarmAdminRole() {
         setRegisterRoleSelect('farm-role-admin', getSavedFarmAdminRole());
+        applyCentralFarmGlobalGoal();
         applyCentralFarmAccess();
+    }
+
+    function getSavedFarmGlobalGoal() {
+        const saved = Number(localStorage.getItem('oneFarmGlobalGoal') || 85);
+        return Number.isFinite(saved) && saved > 0 ? Math.min(100, saved) : 85;
+    }
+
+    function saveFarmGlobalGoal() {
+        const input = document.getElementById('farm-global-goal');
+        const value = Number(input?.value || getSavedFarmGlobalGoal());
+        const safeValue = Number.isFinite(value) && value > 0 ? Math.min(100, value) : 85;
+        localStorage.setItem('oneFarmGlobalGoal', String(safeValue));
+        if (input) input.value = String(safeValue);
+        applyCentralFarmGlobalGoal();
+    }
+
+    function applyCentralFarmGlobalGoal() {
+        const value = getSavedFarmGlobalGoal();
+        const input = document.getElementById('farm-global-goal');
+        const label = document.querySelector('[data-central-farm-global-goal]');
+        const bar = document.querySelector('[data-central-farm-global-bar]');
+        if (input && !input.value) input.value = String(value);
+        if (label) label.textContent = `${value}%`;
+        if (bar) bar.style.width = `${value}%`;
     }
 
     function fillDiscordChannelSelects(channels) {
@@ -3855,6 +3883,7 @@ function createCentralAction() {
      loadDiscordMembers();
      renderFarmProductSettings();
      renderCentralFarmProducts();
+     applyCentralFarmGlobalGoal();
      document.addEventListener('pointermove', updateAnimatedBackgroundPosition);
         setCentralFarmMode('any', true);
         selectCentralFarmMember(0, false);
