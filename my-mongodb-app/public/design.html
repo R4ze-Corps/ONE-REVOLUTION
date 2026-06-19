@@ -280,18 +280,24 @@
 <body class="bg-transparent text-black dark:text-white font-sans transition-colors duration-300 antialiased selection:bg-brand-pink/30 selection:text-white">
     <div class="animated-blue-bg" aria-hidden="true"></div>
 
-    <main id="view-login" class="hidden min-h-screen bg-[#02070f] p-0 overflow-hidden relative" aria-label="Entrar no sistema">
-        <section class="absolute inset-0 bg-cover bg-center bg-no-repeat" style="background-image: url('https://r2.fivemanage.com/vLUsF9vzqBOo7DSFHERFX/ChatGPTImage12dejun.de202622_44_04(1).png');"></section>
-        <section class="relative z-10 min-h-screen flex items-center justify-end px-8 sm:px-14 lg:px-20">
-            <div class="flex flex-col items-start text-left max-w-[360px]">
-                <h1 class="text-white text-[24px] sm:text-[34px] font-black tracking-[0.14em] drop-shadow-[0_10px_28px_rgba(0,0,0,0.22)]">ONE NETWORK</h1>
-                <button onclick="loginWithDiscord()" class="group mt-5 inline-flex items-center justify-center gap-2 rounded-[18px] border border-white/25 bg-white/12 px-5 py-3 text-[12px] font-black uppercase tracking-[0.14em] text-white shadow-[0_14px_42px_rgba(0,122,255,0.24)] backdrop-blur-xl transition-all hover:-translate-y-0.5 hover:border-white/45 hover:bg-brand-pink active:scale-95">
-                    <i class="fa-brands fa-discord text-[15px]"></i>
-                    <span>Login via Discord</span>
-                    <span class="grid h-7 w-7 place-items-center rounded-full bg-white text-brand-pink transition group-hover:bg-white/95">
-                        <i class="fa-solid fa-arrow-right text-[11px]"></i>
-                    </span>
-                </button>
+    <main id="view-login" class="hidden fixed inset-0 z-[90] overflow-hidden bg-black/70 px-4 py-8 backdrop-blur-md" aria-label="Entrar no sistema">
+        <section class="absolute inset-0 bg-cover bg-center opacity-45 blur-[3px] scale-105" style="background-image: url('https://r2.fivemanage.com/vLUsF9vzqBOo7DSFHERFX/ChatGPTImage12dejun.de202622_44_04(1).png');"></section>
+        <section class="relative z-10 flex min-h-full items-center justify-center">
+            <div class="w-full max-w-[430px] overflow-hidden rounded-[30px] border border-white/55 bg-black/35 shadow-[0_0_0_4px_rgba(255,255,255,0.18),0_0_34px_rgba(255,255,255,0.24),0_30px_90px_rgba(0,0,0,0.42)] ring-4 ring-white/20 backdrop-blur-2xl dark:text-white">
+                <div class="relative overflow-hidden bg-black/25 px-8 pb-8 pt-9 text-center backdrop-blur-xl">
+                    <div class="absolute inset-0 opacity-30 bg-[radial-gradient(circle_at_25%_18%,rgba(255,255,255,0.22),transparent_18%),radial-gradient(circle_at_75%_10%,rgba(255,255,255,0.14),transparent_14%)]"></div>
+                    <div class="relative mx-auto grid h-24 w-24 place-items-center rounded-[28px] bg-brand-pink text-white">
+                        <img src="https://r2.fivemanage.com/vLUsF9vzqBOo7DSFHERFX/ChatGPTImage31demai.de202613_50_31.png" alt="" class="h-full w-full rounded-[28px] object-cover" />
+                    </div>
+                </div>
+                <div class="bg-black/25 px-8 pb-8 pt-7 text-center backdrop-blur-xl">
+                    <h1 class="text-[24px] font-black tracking-tight text-white">Bem vindo</h1>
+                    <p class="mt-3 text-[15px] font-medium leading-6 text-gray-300">Bem vindo para ter acesso ao sistema one x fa??a login via discord no bot??o abaixo</p>
+                    <button onclick="loginWithDiscord()" class="mt-7 inline-flex w-full items-center justify-center gap-3 rounded-2xl bg-[#5865F2] px-5 py-4 text-[15px] font-black text-white shadow-[0_18px_45px_rgba(88,101,242,0.35)] transition hover:-translate-y-0.5 hover:bg-[#4752c4] active:scale-95">
+                        <i class="fa-brands fa-discord text-[19px]"></i>
+                        Login
+                    </button>
+                </div>
             </div>
         </section>
     </main>
@@ -320,9 +326,9 @@
                         <i class="fa-solid fa-moon text-lg" id="theme-icon"></i>
                     </button>
                     <button onclick="switchView('central'); switchCentralCategory('registrar')" class="group inline-flex items-center gap-2 rounded-full bg-black/5 dark:bg-white/10 hover:bg-black/10 dark:hover:bg-white/15 border border-black/5 dark:border-white/10 py-1.5 pl-1.5 pr-3 transition active:scale-95">
-                        <span class="w-8 h-8 rounded-full bg-brand-pink text-white flex items-center justify-center text-[12px] font-black shadow-lg shadow-brand-pink/20">MS</span>
+                        <span data-discord-initials class="w-8 h-8 rounded-full bg-brand-pink text-white flex items-center justify-center text-[12px] font-black shadow-lg shadow-brand-pink/20">MS</span>
                         <span class="hidden sm:block text-left leading-tight">
-                            <span class="block text-[13px] font-bold text-gray-950 dark:text-white">Maria Silva</span>
+                            <span data-discord-display-name class="block text-[13px] font-bold text-gray-950 dark:text-white">Maria Silva</span>
                             <span class="block text-[11px] font-semibold text-gray-500 dark:text-gray-400">Desenvolvedora Front-end Senior</span>
                         </span>
                     </button>
@@ -337,9 +343,9 @@
             <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-5 mb-8">
                 <div>
                     <h1 class="text-[34px] md:text-[48px] leading-tight font-black tracking-tight">
-                        Olá <span id="hub-greeting-period">Bom dia</span>,
+                        Ol?? <span id="hub-greeting-period">Bom dia</span>,
                         <span id="hub-user-name" class="text-brand-pink">Maria Silva</span>
-                        <span id="hub-greeting-emoji" aria-hidden="true">☀️</span>
+                        <span id="hub-greeting-emoji" aria-hidden="true">??????</span>
                     </h1>
                 </div>
             </div>
@@ -355,11 +361,11 @@
                         </span>
                         </div>
                         <h2 class="text-[30px] md:text-[44px] font-black leading-tight tracking-tight max-w-3xl">DASHBOARD</h2>
-                        <p class="mt-4 text-[15px] md:text-[17px] text-gray-500 dark:text-gray-400 max-w-2xl">Centro de comando da ONE Network com visão geral dos módulos, operação e atalhos principais.</p>
+                        <p class="mt-4 text-[15px] md:text-[17px] text-gray-500 dark:text-gray-400 max-w-2xl">Centro de comando da ONE Network com vis??o geral dos m??dulos, opera????o e atalhos principais.</p>
 
                         <div class="grid grid-cols-2 md:grid-cols-4 gap-3 mt-8">
                             <div class="rounded-[24px] bg-white/80 dark:bg-white/10 border border-black/5 dark:border-white/10 p-4">
-                                <span class="text-[11px] font-black uppercase tracking-[0.16em] text-gray-400">Ações</span>
+                                <span class="text-[11px] font-black uppercase tracking-[0.16em] text-gray-400">A????es</span>
                                 <strong class="block text-[30px] leading-none mt-3">03</strong>
                                 <span class="text-[12px] text-emerald-600 dark:text-emerald-300 font-bold">1 hoje</span>
                             </div>
@@ -376,7 +382,7 @@
                             <div class="rounded-[24px] bg-white/80 dark:bg-white/10 border border-black/5 dark:border-white/10 p-4">
                             <span class="text-[11px] font-black uppercase tracking-[0.16em] text-gray-400">Registro atual</span>
                             <strong class="block text-[22px] leading-tight mt-3 truncate">Maria Silva</strong>
-                            <span class="text-[12px] text-brand-pink font-bold">Desenvolvedora Front-end Sênior</span>
+                            <span class="text-[12px] text-brand-pink font-bold">Desenvolvedora Front-end S??nior</span>
                             </div>
                         </div>
                     </div>
@@ -384,8 +390,8 @@
                     <aside class="border-t lg:border-t-0 lg:border-l border-black/5 dark:border-white/10 p-6 md:p-8 bg-white/40 dark:bg-black/10">
                         <div class="flex items-center justify-between mb-6">
                             <div>
-                                <h3 class="text-[20px] font-black">Ação atual</h3>
-                                <p class="text-[13px] text-gray-500 dark:text-gray-400 mt-1">Operação em destaque hoje</p>
+                                <h3 class="text-[20px] font-black">A????o atual</h3>
+                                <p class="text-[13px] text-gray-500 dark:text-gray-400 mt-1">Opera????o em destaque hoje</p>
                             </div>
                             <div class="w-12 h-12 rounded-[18px] bg-brand-pink text-white flex items-center justify-center shadow-lg shadow-brand-pink/25">
                                 <i class="fa-solid fa-crosshairs"></i>
@@ -400,11 +406,11 @@
                                 <span class="text-[13px] text-brand-pink font-black">21:30</span>
                             </div>
                             <strong class="block text-[28px] leading-tight mt-5">Banco Central</strong>
-                            <p class="text-[13px] text-gray-500 dark:text-gray-400 mt-2">Direção Raze lidera a operação principal do dia.</p>
+                            <p class="text-[13px] text-gray-500 dark:text-gray-400 mt-2">Dire????o Raze lidera a opera????o principal do dia.</p>
 
                             <div class="mt-6">
                                 <div class="flex items-center justify-between text-[12px] font-bold mb-2">
-                                    <span class="text-gray-500 dark:text-gray-400">Ocupação</span>
+                                    <span class="text-gray-500 dark:text-gray-400">Ocupa????o</span>
                                     <span>12<span class="text-gray-400 dark:text-gray-500">/16</span></span>
                                 </div>
                                 <div class="h-2.5 rounded-full bg-black/10 dark:bg-white/10 overflow-hidden">
@@ -424,7 +430,7 @@
                             </div>
 
                             <div class="grid grid-cols-2 gap-3 mt-5">
-                                <button onclick="event.stopPropagation(); showToast('Participação registrada.')" class="h-12 rounded-[18px] bg-brand-pink hover:bg-brand-pinkHover text-white font-black text-[13px] transition active:scale-95">
+                                <button onclick="event.stopPropagation(); showToast('Participa????o registrada.')" class="h-12 rounded-[18px] bg-brand-pink hover:bg-brand-pinkHover text-white font-black text-[13px] transition active:scale-95">
                                     Participar
                                 </button>
                                 <button onclick="event.stopPropagation(); showToast('Reserva registrada.')" class="h-12 rounded-[18px] bg-gray-100 hover:bg-gray-200 dark:bg-white/10 dark:hover:bg-white/15 text-gray-950 dark:text-white border border-black/10 dark:border-white/15 font-black text-[13px] transition active:scale-95">
@@ -440,16 +446,16 @@
                 <section class="rounded-[30px] bg-white/75 dark:bg-[#101014]/85 border border-white/70 dark:border-white/10 shadow-sm backdrop-blur-2xl p-5 md:p-6">
                     <div class="flex items-center justify-between mb-5">
                         <div>
-                            <h2 class="text-[22px] font-black">Acesso rápido</h2>
-                            <p class="text-[13px] text-gray-500 dark:text-gray-400 mt-1">Módulos principais da Central</p>
+                            <h2 class="text-[22px] font-black">Acesso r??pido</h2>
+                            <p class="text-[13px] text-gray-500 dark:text-gray-400 mt-1">M??dulos principais da Central</p>
                         </div>
-                        <span class="text-[12px] font-black uppercase tracking-[0.16em] text-brand-pink">7 módulos</span>
+                        <span class="text-[12px] font-black uppercase tracking-[0.16em] text-brand-pink">7 m??dulos</span>
                     </div>
                     <div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
                         <button onclick="switchView('central'); switchCentralCategory('acoes')" class="group text-left rounded-[22px] bg-gray-100/90 dark:bg-white/10 border border-black/5 dark:border-white/10 p-4 transition hover:-translate-y-0.5 hover:shadow-lg active:scale-95">
                             <span class="w-10 h-10 rounded-[15px] bg-brand-pink/10 text-brand-pink flex items-center justify-center mb-4 group-hover:bg-brand-pink group-hover:text-white transition"><i class="fa-solid fa-crosshairs"></i></span>
-                            <strong class="block text-[14px]">Ações</strong>
-                            <span class="text-[12px] text-gray-500 dark:text-gray-400">Operações</span>
+                            <strong class="block text-[14px]">A????es</strong>
+                            <span class="text-[12px] text-gray-500 dark:text-gray-400">Opera????es</span>
                         </button>
                         <button onclick="switchView('central'); switchCentralCategory('farm')" class="group text-left rounded-[22px] bg-gray-100/90 dark:bg-white/10 border border-black/5 dark:border-white/10 p-4 transition hover:-translate-y-0.5 hover:shadow-lg active:scale-95">
                             <span class="w-10 h-10 rounded-[15px] bg-brand-pink/10 text-brand-pink flex items-center justify-center mb-4 group-hover:bg-brand-pink group-hover:text-white transition"><i class="fa-solid fa-boxes-stacked"></i></span>
@@ -463,17 +469,17 @@
                         </button>
                         <button onclick="switchView('central'); switchCentralCategory('punicoes')" class="group text-left rounded-[22px] bg-gray-100/90 dark:bg-white/10 border border-black/5 dark:border-white/10 p-4 transition hover:-translate-y-0.5 hover:shadow-lg active:scale-95">
                             <span class="w-10 h-10 rounded-[15px] bg-brand-pink/10 text-brand-pink flex items-center justify-center mb-4 group-hover:bg-brand-pink group-hover:text-white transition"><i class="fa-solid fa-triangle-exclamation"></i></span>
-                            <strong class="block text-[14px]">Punições</strong>
+                            <strong class="block text-[14px]">Puni????es</strong>
                             <span class="text-[12px] text-gray-500 dark:text-gray-400">Controle</span>
                         </button>
                         <button onclick="switchView('central'); switchCentralCategory('ausencia')" class="group text-left rounded-[22px] bg-gray-100/90 dark:bg-white/10 border border-black/5 dark:border-white/10 p-4 transition hover:-translate-y-0.5 hover:shadow-lg active:scale-95">
                             <span class="w-10 h-10 rounded-[15px] bg-brand-pink/10 text-brand-pink flex items-center justify-center mb-4 group-hover:bg-brand-pink group-hover:text-white transition"><i class="fa-solid fa-calendar-minus"></i></span>
-                            <strong class="block text-[14px]">Ausência</strong>
-                            <span class="text-[12px] text-gray-500 dark:text-gray-400">Licenças</span>
+                            <strong class="block text-[14px]">Aus??ncia</strong>
+                            <span class="text-[12px] text-gray-500 dark:text-gray-400">Licen??as</span>
                         </button>
                         <button onclick="switchView('central'); switchCentralCategory('promocoes')" class="group text-left rounded-[22px] bg-gray-100/90 dark:bg-white/10 border border-black/5 dark:border-white/10 p-4 transition hover:-translate-y-0.5 hover:shadow-lg active:scale-95">
                             <span class="w-10 h-10 rounded-[15px] bg-brand-pink/10 text-brand-pink flex items-center justify-center mb-4 group-hover:bg-brand-pink group-hover:text-white transition"><i class="fa-solid fa-arrow-trend-up"></i></span>
-                            <strong class="block text-[14px]">Promoções</strong>
+                            <strong class="block text-[14px]">Promo????es</strong>
                             <span class="text-[12px] text-gray-500 dark:text-gray-400">Carreira</span>
                         </button>
                     </div>
@@ -483,7 +489,7 @@
                     <div class="flex items-center justify-between mb-5">
                         <div>
                             <h2 class="text-[22px] font-black">Changelogs</h2>
-                            <p class="text-[13px] text-gray-500 dark:text-gray-400 mt-1">Histórico recente de melhorias</p>
+                            <p class="text-[13px] text-gray-500 dark:text-gray-400 mt-1">Hist??rico recente de melhorias</p>
                         </div>
                     <button onclick="showToast('Changelogs atualizados.')" class="w-10 h-10 rounded-[15px] bg-gray-100 dark:bg-white/10 text-brand-pink flex items-center justify-center transition active:scale-95">
                             <i class="fa-solid fa-rotate"></i>
@@ -497,7 +503,7 @@
                                 <strong class="text-[15px]">Hub redesenhado</strong>
                                     <span class="text-[11px] font-black uppercase tracking-[0.14em] text-brand-pink">v2.4.1</span>
                                 </div>
-                            <p class="text-[13px] text-gray-500 dark:text-gray-400 mt-1">Nova dashboard em estilo iOS com cards, atalhos e ação atual.</p>
+                            <p class="text-[13px] text-gray-500 dark:text-gray-400 mt-1">Nova dashboard em estilo iOS com cards, atalhos e a????o atual.</p>
                             </div>
                         </article>
                     <article class="rounded-[22px] bg-gray-100/90 dark:bg-white/10 border border-black/5 dark:border-white/10 p-4 flex items-start gap-4">
@@ -514,10 +520,10 @@
                         <span class="w-10 h-10 rounded-[15px] bg-brand-pink/10 text-brand-pink flex items-center justify-center shrink-0"><i class="fa-solid fa-screwdriver-wrench"></i></span>
                         <div class="min-w-0">
                             <div class="flex items-center gap-2 flex-wrap">
-                                <strong class="text-[15px]">Farm e ações</strong>
+                                <strong class="text-[15px]">Farm e a????es</strong>
                                 <span class="text-[11px] font-black uppercase tracking-[0.14em] text-brand-pink">v2.3.8</span>
                             </div>
-                            <p class="text-[13px] text-gray-500 dark:text-gray-400 mt-1">Registro de farm, criação de ações e escalação por listas.</p>
+                            <p class="text-[13px] text-gray-500 dark:text-gray-400 mt-1">Registro de farm, cria????o de a????es e escala????o por listas.</p>
                         </div>
                     </article>
                     </div>
@@ -531,7 +537,7 @@
             <div class="flex flex-col md:flex-row md:justify-between md:items-end mb-8 gap-4">
                 <div>
                     <h2 class="text-[34px] font-bold tracking-tight leading-none">Central</h2>
-                    <p class="text-[17px] text-gray-500 dark:text-gray-400 mt-3 max-w-2xl">Acompanhe rapidamente os módulos do bot e acesse os mesmos setores do Painel.</p>
+                    <p class="text-[17px] text-gray-500 dark:text-gray-400 mt-3 max-w-2xl">Acompanhe rapidamente os m??dulos do bot e acesse os mesmos setores do Painel.</p>
                 </div>
                 <button onclick="switchView('dashboard')" class="inline-flex items-center justify-center gap-2 self-start md:self-auto bg-brand-pink text-white px-5 py-3 rounded-2xl font-semibold text-[15px] transition-transform active:scale-95 shadow-lg shadow-brand-pink/25">
                     <i class="fa-solid fa-sliders"></i>
@@ -543,11 +549,11 @@
                 <div class="inline-flex items-center gap-1 rounded-full bg-black/5 dark:bg-white/10 p-1 shadow-inner border border-black/10 dark:border-white/10 min-w-max">
                     <button onclick="switchCentralCategory('registrar')" id="central-tab-registrar" class="central-tab px-4 py-2 rounded-full bg-ios-card dark:bg-ios-darkCard text-brand-pink shadow-sm font-semibold text-[14px] transition-all">Registrar</button>
                     <button onclick="switchCentralCategory('hierarquia')" id="central-tab-hierarquia" class="central-tab px-4 py-2 rounded-full text-gray-500 dark:text-gray-400 hover:text-brand-pink font-semibold text-[14px] transition-all">Hierarquia</button>
-                    <button onclick="switchCentralCategory('acoes')" id="central-tab-acoes" class="central-tab px-4 py-2 rounded-full text-gray-500 dark:text-gray-400 hover:text-brand-pink font-semibold text-[14px] transition-all">Ações</button>
-                    <button onclick="switchCentralCategory('punicoes')" id="central-tab-punicoes" class="central-tab px-4 py-2 rounded-full text-gray-500 dark:text-gray-400 hover:text-brand-pink font-semibold text-[14px] transition-all">Punições</button>
+                    <button onclick="switchCentralCategory('acoes')" id="central-tab-acoes" class="central-tab px-4 py-2 rounded-full text-gray-500 dark:text-gray-400 hover:text-brand-pink font-semibold text-[14px] transition-all">A????es</button>
+                    <button onclick="switchCentralCategory('punicoes')" id="central-tab-punicoes" class="central-tab px-4 py-2 rounded-full text-gray-500 dark:text-gray-400 hover:text-brand-pink font-semibold text-[14px] transition-all">Puni????es</button>
                     <button onclick="switchCentralCategory('farm')" id="central-tab-farm" class="central-tab px-4 py-2 rounded-full text-gray-500 dark:text-gray-400 hover:text-brand-pink font-semibold text-[14px] transition-all">Farm</button>
-                    <button onclick="switchCentralCategory('ausencia')" id="central-tab-ausencia" class="central-tab px-4 py-2 rounded-full text-gray-500 dark:text-gray-400 hover:text-brand-pink font-semibold text-[14px] transition-all">Ausência</button>
-                    <button onclick="switchCentralCategory('promocoes')" id="central-tab-promocoes" class="central-tab px-4 py-2 rounded-full text-gray-500 dark:text-gray-400 hover:text-brand-pink font-semibold text-[14px] transition-all">Promoções</button>
+                    <button onclick="switchCentralCategory('ausencia')" id="central-tab-ausencia" class="central-tab px-4 py-2 rounded-full text-gray-500 dark:text-gray-400 hover:text-brand-pink font-semibold text-[14px] transition-all">Aus??ncia</button>
+                    <button onclick="switchCentralCategory('promocoes')" id="central-tab-promocoes" class="central-tab px-4 py-2 rounded-full text-gray-500 dark:text-gray-400 hover:text-brand-pink font-semibold text-[14px] transition-all">Promo????es</button>
                 </div>
             </div>
 
@@ -635,7 +641,7 @@
                             <div>
                                 <p class="text-[12px] text-brand-pink font-bold uppercase tracking-wider">Ficha de registro</p>
                                 <h3 class="font-bold text-[24px] leading-tight mt-1">Novo membro</h3>
-                                <p class="text-[13px] text-gray-500 dark:text-gray-400 mt-1">Dados essenciais para entrada na organização.</p>
+                                <p class="text-[13px] text-gray-500 dark:text-gray-400 mt-1">Dados essenciais para entrada na organiza????o.</p>
                             </div>
                         </div>
                         <span class="self-start sm:self-center bg-ios-card dark:bg-ios-darkCard text-brand-pink px-3 py-1.5 rounded-full text-[12px] font-bold uppercase tracking-wider shadow-sm">Pendente</span>
@@ -682,12 +688,12 @@
                                             <div class="absolute bottom-0 right-0 w-3 h-3 bg-emerald-500 rounded-full border-2 border-[#111111]"></div>
                                         </div>
                                         <div>
-                                            <h5 class="text-[14px] font-bold text-white">Direção Raze</h5>
-                                            <p class="text-[11px] text-gray-500">ID: 9001 • Comando geral • Ordem 01</p>
+                                            <h5 class="text-[14px] font-bold text-white">Dire????o Raze</h5>
+                                            <p class="text-[11px] text-gray-500">ID: 9001 ??? Comando geral ??? Ordem 01</p>
                                         </div>
                                     </div>
                                     <div class="flex items-center gap-4">
-                                        <span class="text-[10px] px-2.5 py-1 rounded bg-brand-pink/10 text-brand-pink font-bold uppercase tracking-wider">Liderança</span>
+                                        <span class="text-[10px] px-2.5 py-1 rounded bg-brand-pink/10 text-brand-pink font-bold uppercase tracking-wider">Lideran??a</span>
                                         <button class="text-white/25 hover:text-white transition-colors"><i class="fa-solid fa-ellipsis-vertical"></i></button>
                                     </div>
                                 </div>
@@ -695,12 +701,12 @@
                                     <div class="flex items-center gap-4">
                                         <div class="w-11 h-11 rounded-full bg-brand-pink/10 flex items-center justify-center text-[12px] font-bold text-brand-pink">GO</div>
                                         <div>
-                                            <h5 class="text-[14px] font-bold text-white">Gerência One</h5>
-                                            <p class="text-[11px] text-gray-500">ID: 9002 • Coordenação de equipe • Ordem 02</p>
+                                            <h5 class="text-[14px] font-bold text-white">Ger??ncia One</h5>
+                                            <p class="text-[11px] text-gray-500">ID: 9002 ??? Coordena????o de equipe ??? Ordem 02</p>
                                         </div>
                                     </div>
                                     <div class="flex items-center gap-4">
-                                        <span class="text-[10px] px-2.5 py-1 rounded bg-brand-pink/10 text-brand-pink font-bold uppercase tracking-wider">Gerência</span>
+                                        <span class="text-[10px] px-2.5 py-1 rounded bg-brand-pink/10 text-brand-pink font-bold uppercase tracking-wider">Ger??ncia</span>
                                         <button class="text-white/25 hover:text-white transition-colors"><i class="fa-solid fa-ellipsis-vertical"></i></button>
                                     </div>
                                 </div>
@@ -714,12 +720,12 @@
                                     <div class="flex items-center gap-4">
                                         <div class="w-11 h-11 rounded-full bg-white/5 flex items-center justify-center text-[12px] font-bold text-white">LM</div>
                                         <div>
-                                            <h5 class="text-[14px] font-bold text-white">Líder de Missão</h5>
-                                            <p class="text-[11px] text-gray-500">ID: 9003 • Controle de operação • Ordem 03</p>
+                                            <h5 class="text-[14px] font-bold text-white">L??der de Miss??o</h5>
+                                            <p class="text-[11px] text-gray-500">ID: 9003 ??? Controle de opera????o ??? Ordem 03</p>
                                         </div>
                                     </div>
                                     <div class="flex items-center gap-4">
-                                        <span class="text-[10px] px-2.5 py-1 rounded bg-white/5 text-white/50 font-bold uppercase tracking-wider">Tática</span>
+                                        <span class="text-[10px] px-2.5 py-1 rounded bg-white/5 text-white/50 font-bold uppercase tracking-wider">T??tica</span>
                                         <button class="text-white/25 hover:text-white transition-colors"><i class="fa-solid fa-ellipsis-vertical"></i></button>
                                     </div>
                                 </div>
@@ -728,7 +734,7 @@
                                         <div class="w-11 h-11 rounded-full bg-white/5 flex items-center justify-center text-[12px] font-bold text-white">MB</div>
                                         <div>
                                             <h5 class="text-[14px] font-bold text-white">Membro</h5>
-                                            <p class="text-[11px] text-gray-500">ID: 9004 • Cargo base • Ordem 04</p>
+                                            <p class="text-[11px] text-gray-500">ID: 9004 ??? Cargo base ??? Ordem 04</p>
                                         </div>
                                     </div>
                                     <div class="flex items-center gap-4">
@@ -741,7 +747,7 @@
                                         <div class="w-11 h-11 rounded-full bg-white/5 flex items-center justify-center text-[12px] font-bold text-white">RC</div>
                                         <div>
                                             <h5 class="text-[14px] font-bold text-white">Recruta</h5>
-                                            <p class="text-[11px] text-gray-500">ID: 9005 • Em avaliação • Ordem 05</p>
+                                            <p class="text-[11px] text-gray-500">ID: 9005 ??? Em avalia????o ??? Ordem 05</p>
                                         </div>
                                     </div>
                                     <div class="flex items-center gap-4">
@@ -759,13 +765,13 @@
                 <div class="space-y-8 max-w-5xl mx-auto">
                 <header class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                     <div>
-                        <h3 class="text-[26px] font-bold tracking-tight">Ações</h3>
-                        <p class="text-[14px] text-gray-500 dark:text-gray-400 mt-1">Gerencie as operações e contingentes da central.</p>
+                        <h3 class="text-[26px] font-bold tracking-tight">A????es</h3>
+                        <p class="text-[14px] text-gray-500 dark:text-gray-400 mt-1">Gerencie as opera????es e contingentes da central.</p>
                     </div>
                 <div class="inline-flex items-center gap-1 rounded-xl bg-white dark:bg-white/10 border border-black/10 dark:border-white/10 p-1 shadow-sm">
                     <button id="central-action-create-toggle" onclick="createCentralAction()" class="inline-flex items-center justify-center gap-2 rounded-lg bg-brand-pink px-4 py-2.5 text-[13px] font-bold text-white shadow-lg shadow-brand-pink/20 transition-all active:scale-95">
                         <i class="fa-solid fa-plus text-[12px]"></i>
-                        Criar ação
+                        Criar a????o
                     </button>
                     <button id="central-action-edit-toggle" onclick="toggleCentralActionEditor()" class="inline-flex items-center justify-center gap-2 rounded-lg px-4 py-2.5 text-[13px] font-bold text-gray-700 hover:text-brand-pink dark:text-gray-200 dark:hover:text-brand-pink transition-all active:scale-95">
                         <i class="fa-solid fa-pen-to-square text-[12px]"></i>
@@ -777,8 +783,8 @@
                     <section id="central-action-editor" class="hidden rounded-2xl bg-white/90 dark:bg-[#111111] border border-black/10 dark:border-white/10 p-5 shadow-xl shadow-black/5 dark:shadow-black/20">
                         <div class="flex flex-col sm:flex-row sm:items-start justify-between gap-4 mb-5">
                             <div>
-                                <h4 class="text-[20px] font-black tracking-tight">Editar ação</h4>
-                                <p class="text-[13px] text-gray-500 dark:text-gray-400 mt-1">Selecione uma ação criada, altere os campos e salve.</p>
+                                <h4 class="text-[20px] font-black tracking-tight">Editar a????o</h4>
+                                <p class="text-[13px] text-gray-500 dark:text-gray-400 mt-1">Selecione uma a????o criada, altere os campos e salve.</p>
                             </div>
                             <button onclick="toggleCentralActionEditor(false)" class="h-9 w-9 rounded-lg border border-black/10 dark:border-white/10 text-gray-500 hover:text-brand-pink hover:border-brand-pink transition-colors">
                                 <i class="fa-solid fa-xmark"></i>
@@ -787,13 +793,13 @@
 
                         <div class="grid grid-cols-1 lg:grid-cols-[0.9fr_1.1fr] gap-5">
                             <div>
-                                <p class="text-[10px] uppercase tracking-[0.18em] text-gray-500 dark:text-gray-400 font-black mb-3">Ações criadas</p>
+                                <p class="text-[10px] uppercase tracking-[0.18em] text-gray-500 dark:text-gray-400 font-black mb-3">A????es criadas</p>
                                 <div id="central-action-edit-list" class="space-y-2"></div>
                             </div>
 
                             <form onsubmit="saveCentralEditedAction(event)" class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                                 <label class="block sm:col-span-2">
-                                    <span class="block text-[10px] uppercase tracking-wider text-gray-500 dark:text-gray-400 mb-2">Nome da ação</span>
+                                    <span class="block text-[10px] uppercase tracking-wider text-gray-500 dark:text-gray-400 mb-2">Nome da a????o</span>
                                     <input id="central-edit-action-name" class="w-full bg-gray-100 dark:bg-[#0A0A0A] border border-black/10 dark:border-white/10 rounded-xl p-4 text-[14px] outline-none focus:border-brand-pink transition-all" />
                                 </label>
                                 <label class="block">
@@ -801,7 +807,7 @@
                                     <input id="central-edit-action-date" type="date" class="w-full bg-gray-100 dark:bg-[#0A0A0A] border border-black/10 dark:border-white/10 rounded-xl p-4 text-[14px] outline-none focus:border-brand-pink transition-all" />
                                 </label>
                                 <label class="block">
-                                    <span class="block text-[10px] uppercase tracking-wider text-gray-500 dark:text-gray-400 mb-2">Horário</span>
+                                    <span class="block text-[10px] uppercase tracking-wider text-gray-500 dark:text-gray-400 mb-2">Hor??rio</span>
                                     <input id="central-edit-action-time" type="time" class="w-full bg-gray-100 dark:bg-[#0A0A0A] border border-black/10 dark:border-white/10 rounded-xl p-4 text-[14px] outline-none focus:border-brand-pink transition-all" />
                                 </label>
                                 <label class="block">
@@ -813,11 +819,11 @@
                                     <input id="central-edit-action-reserves" type="number" min="0" class="w-full bg-gray-100 dark:bg-[#0A0A0A] border border-black/10 dark:border-white/10 rounded-xl p-4 text-[14px] outline-none focus:border-brand-pink transition-all" />
                                 </label>
                                 <label class="block sm:col-span-2">
-                                    <span class="block text-[10px] uppercase tracking-wider text-gray-500 dark:text-gray-400 mb-2">Quem puxou a ação</span>
+                                    <span class="block text-[10px] uppercase tracking-wider text-gray-500 dark:text-gray-400 mb-2">Quem puxou a a????o</span>
                                     <input id="central-edit-action-leader" class="w-full bg-gray-100 dark:bg-[#0A0A0A] border border-black/10 dark:border-white/10 rounded-xl p-4 text-[14px] outline-none focus:border-brand-pink transition-all" />
                                 </label>
                                 <label class="block sm:col-span-2">
-                                    <span class="block text-[10px] uppercase tracking-wider text-gray-500 dark:text-gray-400 mb-2">Status da ação</span>
+                                    <span class="block text-[10px] uppercase tracking-wider text-gray-500 dark:text-gray-400 mb-2">Status da a????o</span>
                                     <select id="central-edit-action-status" class="w-full bg-gray-100 dark:bg-[#0A0A0A] border border-black/10 dark:border-white/10 rounded-xl p-4 text-[14px] outline-none focus:border-brand-pink transition-all">
                                         <option>Organizando</option>
                                         <option>Agendada</option>
@@ -831,7 +837,7 @@
                                 </label>
                                 <div class="sm:col-span-2 flex justify-end gap-3">
                                     <button type="button" onclick="toggleCentralActionEditor(false)" class="px-4 py-3 rounded-xl border border-black/10 dark:border-white/10 text-[13px] font-bold text-gray-600 dark:text-gray-300 hover:text-brand-pink hover:border-brand-pink transition-colors">Cancelar</button>
-                                    <button type="submit" class="px-5 py-3 rounded-xl bg-brand-pink text-white text-[13px] font-bold shadow-lg shadow-brand-pink/20 hover:bg-brand-pinkHover transition-colors">Salvar alterações</button>
+                                    <button type="submit" class="px-5 py-3 rounded-xl bg-brand-pink text-white text-[13px] font-bold shadow-lg shadow-brand-pink/20 hover:bg-brand-pinkHover transition-colors">Salvar altera????es</button>
                                 </div>
                             </form>
                         </div>
@@ -840,7 +846,7 @@
                     <section>
                         <div class="flex items-center justify-between mb-4">
                             <h4 class="text-[12px] font-bold uppercase tracking-[0.22em] text-gray-500 dark:text-gray-400">Em destaque</h4>
-                            <span class="text-[12px] font-semibold text-brand-pink">Ação de hoje</span>
+                            <span class="text-[12px] font-semibold text-brand-pink">A????o de hoje</span>
                         </div>
 
                 <article onclick="toggleCentralActionDetails('hoje', event)" class="group relative bg-[#111111] text-white rounded-2xl border border-white/10 p-5 sm:p-6 overflow-hidden transition-all hover:border-brand-pink hover:shadow-[0_0_0_1px_rgba(0,122,255,0.7),0_0_28px_rgba(0,122,255,0.45),0_18px_55px_-28px_rgba(0,122,255,0.9)] cursor-pointer">
@@ -856,20 +862,20 @@
                                     </span>
                                     <div>
                                         <h4 class="text-[30px] font-black tracking-tight leading-tight">Banco Central</h4>
-                                        <p class="text-[14px] text-gray-400 max-w-2xl mt-3">Direção Raze lidera a ação principal do dia. Contingente com armamento completo, entrada coordenada e reservas prontas.</p>
+                                        <p class="text-[14px] text-gray-400 max-w-2xl mt-3">Dire????o Raze lidera a a????o principal do dia. Contingente com armamento completo, entrada coordenada e reservas prontas.</p>
                                     </div>
 
                                     <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-4">
                                         <div><span class="block text-[10px] uppercase tracking-wider text-gray-500">Data</span><strong class="block text-[14px] mt-1">12 Jun</strong></div>
-                                        <div><span class="block text-[10px] uppercase tracking-wider text-gray-500">Horário</span><strong class="block text-[14px] mt-1">21:30</strong></div>
+                                        <div><span class="block text-[10px] uppercase tracking-wider text-gray-500">Hor??rio</span><strong class="block text-[14px] mt-1">21:30</strong></div>
                                         <div><span class="block text-[10px] uppercase tracking-wider text-gray-500">Armamento</span><strong class="block text-[14px] mt-1 text-brand-pink">Fuzil e pistola</strong></div>
-                                        <div><span class="block text-[10px] uppercase tracking-wider text-gray-500">Puxou</span><strong class="block text-[14px] mt-1">Direção Raze</strong></div>
+                                        <div><span class="block text-[10px] uppercase tracking-wider text-gray-500">Puxou</span><strong class="block text-[14px] mt-1">Dire????o Raze</strong></div>
                                     </div>
                                 </div>
 
                                 <div class="xl:w-72 flex flex-col justify-center border-t xl:border-t-0 xl:border-l border-white/10 pt-6 xl:pt-0 xl:pl-6">
                                     <div class="flex justify-between items-baseline mb-2">
-                                        <span class="text-[13px] text-gray-400">Ocupação</span>
+                                        <span class="text-[13px] text-gray-400">Ocupa????o</span>
                                         <span class="text-[24px] font-bold"><span data-action-occupancy-current>4</span><span class="text-white/35 text-[15px] font-normal">/16</span></span>
                                     </div>
                                     <div class="w-full h-1.5 bg-white/10 rounded-full overflow-hidden mb-6">
@@ -894,7 +900,7 @@
                                         </div>
                                         <div class="divide-y divide-white/5">
                                             <div class="flex items-center justify-between gap-3 px-4 py-3">
-                                                <span class="flex items-center gap-3 min-w-0"><i class="fa-solid fa-user text-amber-500 text-[12px]"></i><strong class="text-[13px] truncate">Direção Raze</strong></span><button onclick="removeActionPlayer(this, event)" class="h-7 w-7 rounded-lg text-gray-500 transition hover:bg-rose-500/10 hover:text-rose-500" title="Remover player"><i class="fa-solid fa-xmark text-[12px]"></i></button>
+                                                <span class="flex items-center gap-3 min-w-0"><i class="fa-solid fa-user text-amber-500 text-[12px]"></i><strong class="text-[13px] truncate">Dire????o Raze</strong></span><button onclick="removeActionPlayer(this, event)" class="h-7 w-7 rounded-lg text-gray-500 transition hover:bg-rose-500/10 hover:text-rose-500" title="Remover player"><i class="fa-solid fa-xmark text-[12px]"></i></button>
                                             </div>
                                             <div class="flex items-center justify-between gap-3 px-4 py-3">
                                                 <span class="flex items-center gap-3 min-w-0"><i class="fa-solid fa-user text-amber-500 text-[12px]"></i><strong class="text-[13px] truncate">Carlos Silva</strong></span><button onclick="removeActionPlayer(this, event)" class="h-7 w-7 rounded-lg text-gray-500 transition hover:bg-rose-500/10 hover:text-rose-500" title="Remover player"><i class="fa-solid fa-xmark text-[12px]"></i></button>
@@ -934,12 +940,12 @@
                         <div>
                             <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-2 mb-4">
                                 <div>
-                                    <h4 class="text-[12px] font-bold uppercase tracking-[0.22em] text-gray-500 dark:text-gray-400">Ações agendadas</h4>
-                                    <p class="text-[13px] text-gray-500 dark:text-gray-400 mt-1">Operações futuras ou em organização.</p>
+                                    <h4 class="text-[12px] font-bold uppercase tracking-[0.22em] text-gray-500 dark:text-gray-400">A????es agendadas</h4>
+                                    <p class="text-[13px] text-gray-500 dark:text-gray-400 mt-1">Opera????es futuras ou em organiza????o.</p>
                                 </div>
                                 <span class="inline-flex w-fit items-center gap-2 text-[12px] font-bold text-amber-500 bg-amber-500/10 px-3 py-1.5 rounded-full">
                                     <i class="fa-solid fa-calendar-check text-[11px]"></i>
-                                    2 agendadas
+                                    <span id="central-scheduled-count">2 agendadas</span>
                                 </span>
                             </div>
 
@@ -947,10 +953,10 @@
                                 <article class="bg-[#111111] text-white border border-white/10 p-5 rounded-xl hover:border-brand-pink/30 transition-colors">
                                     <div class="flex justify-between items-start mb-6">
                                         <span class="text-[10px] font-bold text-amber-500 uppercase tracking-widest bg-amber-500/10 px-2.5 py-1 rounded">Organizando</span>
-                                        <span class="text-[12px] text-gray-400">13 Jun • 22:00</span>
+                                        <span class="text-[12px] text-gray-400">13 Jun ??? 22:00</span>
                                     </div>
                                     <h5 class="font-bold text-[20px] mb-1">Joalheria</h5>
-                                    <p class="text-[13px] text-gray-400 mb-5">Puxada por: Gerência One</p>
+                                    <p class="text-[13px] text-gray-400 mb-5">Puxada por: Ger??ncia One</p>
                                     <div class="grid grid-cols-2 gap-3 mb-5">
                                         <div class="bg-white/[0.03] rounded-lg p-3">
                                             <span class="block text-[10px] uppercase tracking-wider text-gray-500">Armamento</span>
@@ -970,10 +976,10 @@
                                 <article class="bg-[#111111] text-white border border-white/10 p-5 rounded-xl hover:border-brand-pink/30 transition-colors">
                                     <div class="flex justify-between items-start mb-6">
                                         <span class="text-[10px] font-bold text-blue-400 uppercase tracking-widest bg-blue-400/10 px-2.5 py-1 rounded">Agendada</span>
-                                        <span class="text-[12px] text-gray-400">14 Jun • 20:30</span>
+                                        <span class="text-[12px] text-gray-400">14 Jun ??? 20:30</span>
                                     </div>
                                     <h5 class="font-bold text-[20px] mb-1">Aeroporto</h5>
-                                    <p class="text-[13px] text-gray-400 mb-5">Puxada por: Liderança Tática</p>
+                                    <p class="text-[13px] text-gray-400 mb-5">Puxada por: Lideran??a T??tica</p>
                                     <div class="grid grid-cols-2 gap-3 mb-5">
                                         <div class="bg-white/[0.03] rounded-lg p-3">
                                             <span class="block text-[10px] uppercase tracking-wider text-gray-500">Armamento</span>
@@ -995,12 +1001,12 @@
                         <div>
                             <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-2 mb-4">
                                 <div>
-                                    <h4 class="text-[12px] font-bold uppercase tracking-[0.22em] text-gray-500 dark:text-gray-400">Ações encerradas</h4>
-                                    <p class="text-[13px] text-gray-500 dark:text-gray-400 mt-1">Histórico das operações finalizadas.</p>
+                                    <h4 class="text-[12px] font-bold uppercase tracking-[0.22em] text-gray-500 dark:text-gray-400">A????es encerradas</h4>
+                                    <p class="text-[13px] text-gray-500 dark:text-gray-400 mt-1">Hist??rico das opera????es finalizadas.</p>
                                 </div>
                                 <span class="inline-flex w-fit items-center gap-2 text-[12px] font-bold text-gray-400 bg-white/5 px-3 py-1.5 rounded-full">
                                     <i class="fa-solid fa-circle-check text-[11px]"></i>
-                                    2 encerradas
+                                    <span id="central-ended-count">2 encerradas</span>
                                 </span>
                             </div>
 
@@ -1008,10 +1014,10 @@
                                 <article class="bg-[#111111] text-white border border-white/10 p-5 rounded-xl opacity-75 hover:opacity-95 transition-opacity">
                                     <div class="flex justify-between items-start mb-6">
                                         <span class="text-[10px] font-bold text-white/35 uppercase tracking-widest bg-white/5 px-2.5 py-1 rounded">Encerrado</span>
-                                        <span class="text-[12px] text-gray-500">11 Jun • 21:00</span>
+                                        <span class="text-[12px] text-gray-500">11 Jun ??? 21:00</span>
                                     </div>
                                     <h5 class="font-bold text-[20px] mb-1 text-white/60">Loja Norte</h5>
-                                    <p class="text-[13px] text-gray-500 mb-5">Puxada por: Coordenação</p>
+                                    <p class="text-[13px] text-gray-500 mb-5">Puxada por: Coordena????o</p>
                                     <div class="grid grid-cols-2 gap-3 mb-5">
                                         <div class="bg-white/[0.03] rounded-lg p-3">
                                             <span class="block text-[10px] uppercase tracking-wider text-gray-500">Armamento</span>
@@ -1019,22 +1025,22 @@
                                         </div>
                                         <div class="bg-white/[0.03] rounded-lg p-3">
                                             <span class="block text-[10px] uppercase tracking-wider text-gray-500">Resultado</span>
-                                            <strong class="block text-[13px] mt-1 text-emerald-500">Concluída</strong>
+                                            <strong class="block text-[13px] mt-1 text-emerald-500">Conclu??da</strong>
                                         </div>
                                     </div>
                                     <div class="flex items-center justify-between pt-4 border-t border-white/10">
                                         <span class="text-[13px] text-white/35 font-semibold">10/10 vagas</span>
-                                        <button class="text-[11px] px-3 py-1.5 border border-white/10 rounded-lg hover:text-brand-pink hover:border-brand-pink transition-colors">Relatório</button>
+                                        <button class="text-[11px] px-3 py-1.5 border border-white/10 rounded-lg hover:text-brand-pink hover:border-brand-pink transition-colors">Relat??rio</button>
                                     </div>
                                 </article>
 
                                 <article class="bg-[#111111] text-white border border-white/10 p-5 rounded-xl opacity-75 hover:opacity-95 transition-opacity">
                                     <div class="flex justify-between items-start mb-6">
                                         <span class="text-[10px] font-bold text-white/35 uppercase tracking-widest bg-white/5 px-2.5 py-1 rounded">Encerrado</span>
-                                        <span class="text-[12px] text-gray-500">10 Jun • 23:15</span>
+                                        <span class="text-[12px] text-gray-500">10 Jun ??? 23:15</span>
                                     </div>
                                     <h5 class="font-bold text-[20px] mb-1 text-white/60">Porto Sul</h5>
-                                    <p class="text-[13px] text-gray-500 mb-5">Puxada por: Direção Raze</p>
+                                    <p class="text-[13px] text-gray-500 mb-5">Puxada por: Dire????o Raze</p>
                                     <div class="grid grid-cols-2 gap-3 mb-5">
                                         <div class="bg-white/[0.03] rounded-lg p-3">
                                             <span class="block text-[10px] uppercase tracking-wider text-gray-500">Armamento</span>
@@ -1042,12 +1048,12 @@
                                         </div>
                                         <div class="bg-white/[0.03] rounded-lg p-3">
                                             <span class="block text-[10px] uppercase tracking-wider text-gray-500">Resultado</span>
-                                            <strong class="block text-[13px] mt-1 text-emerald-500">Concluída</strong>
+                                            <strong class="block text-[13px] mt-1 text-emerald-500">Conclu??da</strong>
                                         </div>
                                     </div>
                                     <div class="flex items-center justify-between pt-4 border-t border-white/10">
                                         <span class="text-[13px] text-white/35 font-semibold">14/16 vagas</span>
-                                        <button class="text-[11px] px-3 py-1.5 border border-white/10 rounded-lg hover:text-brand-pink hover:border-brand-pink transition-colors">Relatório</button>
+                                        <button class="text-[11px] px-3 py-1.5 border border-white/10 rounded-lg hover:text-brand-pink hover:border-brand-pink transition-colors">Relat??rio</button>
                                     </div>
                                 </article>
                             </div>
@@ -1059,22 +1065,22 @@
             <section id="central-section-punicoes" class="central-section hidden">
                 <div class="space-y-10 max-w-4xl mx-auto">
                     <header>
-                        <h3 class="text-[30px] font-bold tracking-tight">Gestão de Punições</h3>
-                        <p class="text-[15px] text-gray-500 dark:text-gray-400 mt-2">Controle detalhado de sanções disciplinares.</p>
+                        <h3 class="text-[30px] font-bold tracking-tight">Gest??o de Puni????es</h3>
+                        <p class="text-[15px] text-gray-500 dark:text-gray-400 mt-2">Controle detalhado de san????es disciplinares.</p>
                     </header>
 
                     <section class="grid grid-cols-1 md:grid-cols-3 gap-4">
                         <article class="bg-[#1A1A1A] text-white p-5 rounded-2xl border border-white/10">
                             <span class="text-[11px] uppercase text-gray-400 font-bold tracking-widest">Ativas</span>
-                            <p class="text-[32px] font-black mt-2">12</p>
+                            <p id="punishment-active-count" class="text-[32px] font-black mt-2">0</p>
                         </article>
                         <article class="bg-[#1A1A1A] text-white p-5 rounded-2xl border border-white/10">
                             <span class="text-[11px] uppercase text-gray-400 font-bold tracking-widest">Total mensal</span>
-                            <p class="text-[32px] font-black mt-2">48</p>
+                            <p id="punishment-month-count" class="text-[32px] font-black mt-2">0</p>
                         </article>
                         <article class="bg-[#1A1A1A] text-white p-5 rounded-2xl border border-white/10">
                             <span class="text-[11px] uppercase text-gray-400 font-bold tracking-widest">Severidade alta</span>
-                            <p class="text-[32px] font-black mt-2 text-rose-500">03</p>
+                            <p id="punishment-high-count" class="text-[32px] font-black mt-2 text-rose-500">0</p>
                         </article>
                     </section>
 
@@ -1084,42 +1090,37 @@
                                 <div class="w-9 h-9 rounded-lg bg-brand-pink/10 flex items-center justify-center text-brand-pink">
                                     <i class="fa-solid fa-circle-exclamation"></i>
                                 </div>
-                                <h4 class="text-[18px] font-bold tracking-tight">Nova sanção disciplinar</h4>
+                                <h4 class="text-[18px] font-bold tracking-tight">Nova san????o disciplinar</h4>
                             </div>
 
                             <div class="space-y-6">
                                 <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
                                     <label class="md:col-span-2">
                                         <span class="block text-[10px] uppercase tracking-wider text-gray-400 mb-2">Membro</span>
-                                        <input type="text" class="w-full bg-[#0A0A0A] border border-white/10 rounded-xl p-4 text-[14px] text-white outline-none focus:border-brand-pink transition-all" placeholder="Nome ou ID do colaborador..." />
-                                    </label>
-                                    <label class="md:col-span-2">
-                                        <span class="block text-[10px] uppercase tracking-wider text-gray-400 mb-2">Descrição da infração</span>
-                                        <textarea class="w-full bg-[#0A0A0A] border border-white/10 rounded-xl p-4 text-[14px] text-white outline-none focus:border-brand-pink transition-all h-32 resize-none placeholder-white/20" placeholder="Descreva os fatos detalhadamente..."></textarea>
-                                    </label>
-                                    <label>
-                                        <span class="block text-[10px] uppercase tracking-wider text-gray-400 mb-2">Tipo de sanção</span>
-                                        <select class="w-full bg-[#0A0A0A] border border-white/10 rounded-xl p-4 text-[14px] text-white outline-none focus:border-brand-pink transition-all">
-                                            <option>Advertência Formal</option>
-                                            <option>Suspensão (3 dias)</option>
-                                            <option>Suspensão (7 dias)</option>
-                                            <option>Desligamento</option>
+                                        <select id="punishment-member-select" class="w-full bg-[#0A0A0A] border border-white/10 rounded-xl p-4 text-[14px] text-white outline-none focus:border-brand-pink transition-all">
+                                            <option value="">Carregando usuarios do servidor...</option>
                                         </select>
                                     </label>
-                                    <label>
-                                        <span class="block text-[10px] uppercase tracking-wider text-gray-400 mb-2">Expira em</span>
-                                        <input type="date" class="w-full bg-[#0A0A0A] border border-white/10 rounded-xl p-4 text-[14px] text-white outline-none focus:border-brand-pink transition-all" />
+                                    <label class="md:col-span-2">
+                                        <span class="block text-[10px] uppercase tracking-wider text-gray-400 mb-2">Descri????o da infra????o</span>
+                                        <textarea id="punishment-description" class="w-full bg-[#0A0A0A] border border-white/10 rounded-xl p-4 text-[14px] text-white outline-none focus:border-brand-pink transition-all h-32 resize-none placeholder-white/20" placeholder="Descreva os fatos detalhadamente..."></textarea>
+                                    </label>
+                                    <label class="md:col-span-2">
+                                        <span class="block text-[10px] uppercase tracking-wider text-gray-400 mb-2">Tipo de san????o</span>
+                                        <select id="punishment-sanction-select" class="w-full bg-[#0A0A0A] border border-white/10 rounded-xl p-4 text-[14px] text-white outline-none focus:border-brand-pink transition-all">
+                                            <option value="">Configure os cargos em Painel > Puni????es</option>
+                                        </select>
                                     </label>
                                 </div>
 
-                                <button class="w-full py-4 bg-white text-black font-bold rounded-xl hover:bg-brand-pink hover:text-white transition-all shadow-lg hover:shadow-brand-pink/20">Confirmar punição</button>
+                                <button onclick="submitPunishment()" type="button" class="w-full py-4 bg-white text-black font-bold rounded-xl hover:bg-brand-pink hover:text-white transition-all shadow-lg hover:shadow-brand-pink/20">Confirmar puni????o</button>
                             </div>
                         </div>
                     </section>
 
                     <section>
-                        <h4 class="text-[12px] font-bold uppercase tracking-widest text-gray-500 dark:text-gray-400 mb-5 pl-1">Histórico recente</h4>
-                        <div class="space-y-4">
+                        <h4 class="text-[12px] font-bold uppercase tracking-widest text-gray-500 dark:text-gray-400 mb-5 pl-1">Hist??rico recente</h4>
+                        <div id="punishment-history" class="space-y-4">
                             <article class="bg-[#1A1A1A] text-white border border-white/10 p-5 sm:p-6 rounded-2xl flex flex-col sm:flex-row sm:items-center justify-between gap-4 hover:border-brand-pink/50 transition-all">
                                 <div class="flex items-center gap-5">
                                     <div class="w-12 h-12 rounded-xl bg-[#0A0A0A] border border-white/10 flex items-center justify-center font-bold text-[18px]">AS</div>
@@ -1129,7 +1130,7 @@
                                     </div>
                                 </div>
                                 <div class="sm:text-right">
-                                    <span class="inline-block text-[10px] px-3 py-1 rounded-full bg-rose-500/10 text-rose-500 font-bold uppercase tracking-wider mb-1">Suspensão</span>
+                                    <span class="inline-block text-[10px] px-3 py-1 rounded-full bg-rose-500/10 text-rose-500 font-bold uppercase tracking-wider mb-1">Suspens??o</span>
                                     <p class="text-[12px] text-gray-400">Expira: 15 Jun</p>
                                 </div>
                             </article>
@@ -1138,12 +1139,12 @@
                                 <div class="flex items-center gap-5">
                                     <div class="w-12 h-12 rounded-xl bg-[#0A0A0A] border border-white/10 flex items-center justify-center font-bold text-[18px]">JP</div>
                                     <div>
-                                        <h5 class="font-bold">João Pedro</h5>
-                                        <p class="text-[12px] text-gray-400 mt-0.5">Motivo: Ausência não justificada</p>
+                                        <h5 class="font-bold">Jo??o Pedro</h5>
+                                        <p class="text-[12px] text-gray-400 mt-0.5">Motivo: Aus??ncia n??o justificada</p>
                                     </div>
                                 </div>
                                 <div class="sm:text-right">
-                                    <span class="inline-block text-[10px] px-3 py-1 rounded-full bg-amber-500/10 text-amber-500 font-bold uppercase tracking-wider mb-1">Advertência</span>
+                                    <span class="inline-block text-[10px] px-3 py-1 rounded-full bg-amber-500/10 text-amber-500 font-bold uppercase tracking-wider mb-1">Advert??ncia</span>
                                     <p class="text-[12px] text-gray-400">Expira: 12 Jun</p>
                                 </div>
                             </article>
@@ -1155,7 +1156,7 @@
             <section id="central-section-farm" class="central-section hidden">
                 <div class="space-y-10 max-w-5xl mx-auto">
                     <header>
-                        <h3 class="text-[30px] font-bold tracking-tight">Gestão de Farm</h3>
+                        <h3 class="text-[30px] font-bold tracking-tight">Gest??o de Farm</h3>
                         <p class="text-[15px] text-gray-500 dark:text-gray-400 mt-2">Controle de entregas, metas e produtividade da equipe.</p>
                     </header>
 
@@ -1266,7 +1267,7 @@
                                     <div class="w-16 h-16 rounded-2xl bg-[#0A0A0A] border border-white/10 flex items-center justify-center font-black text-[20px] text-brand-pink">AS</div>
                                     <div>
                                         <h4 class="font-bold text-[18px]">Ana Silva</h4>
-                                        <p class="text-[10px] uppercase tracking-widest text-gray-500">ID: 089 • Operador</p>
+                                        <p class="text-[10px] uppercase tracking-widest text-gray-500">ID: 089 ??? Operador</p>
                                     </div>
                                 </div>
 
@@ -1293,14 +1294,14 @@
                                     </div>
 
                                     <div class="border-t border-white/10 pt-6">
-                                        <h5 class="text-[10px] uppercase tracking-wider text-gray-500 mb-4">Últimas entregas</h5>
+                                        <h5 class="text-[10px] uppercase tracking-wider text-gray-500 mb-4">??ltimas entregas</h5>
                                         <div class="space-y-3">
                                             <div class="flex justify-between items-center text-[14px]">
-                                                <span>Peças</span>
+                                                <span>Pe??as</span>
                                                 <span class="font-mono text-gray-400">50x</span>
                                             </div>
                                             <div class="flex justify-between items-center text-[14px]">
-                                                <span>Minérios</span>
+                                                <span>Min??rios</span>
                                                 <span class="font-mono text-gray-400">20x</span>
                                             </div>
                                         </div>
@@ -1315,37 +1316,37 @@
             <section id="central-section-ausencia" class="central-section hidden">
                 <div class="space-y-10 max-w-3xl mx-auto">
                     <header>
-                        <h3 class="text-[26px] font-bold tracking-tight">Gestão de Ausências</h3>
-                        <p class="text-[14px] text-gray-500 dark:text-gray-400 mt-1">Solicite licenças ou registre períodos de indisponibilidade.</p>
+                        <h3 class="text-[26px] font-bold tracking-tight">Gest??o de Aus??ncias</h3>
+                        <p class="text-[14px] text-gray-500 dark:text-gray-400 mt-1">Solicite licen??as ou registre per??odos de indisponibilidade.</p>
                     </header>
 
                     <section>
                         <div class="bg-[#111111] text-white rounded-xl border border-white/10 p-6">
-                            <h4 class="text-[12px] font-bold uppercase tracking-widest text-brand-pink mb-6">Nova solicitação</h4>
+                            <h4 class="text-[12px] font-bold uppercase tracking-widest text-brand-pink mb-6">Nova solicita????o</h4>
                             <div class="space-y-6">
                                 <div>
-                                    <label class="block text-[10px] uppercase tracking-wider text-gray-400 mb-2">Motivo da ausência</label>
+                                    <label class="block text-[10px] uppercase tracking-wider text-gray-400 mb-2">Motivo da aus??ncia</label>
                                     <textarea class="w-full bg-[#0A0A0A] border border-white/10 rounded-lg p-3 text-[14px] text-white outline-none focus:border-brand-pink transition-colors h-24 resize-none placeholder-white/20" placeholder="Descreva brevemente o motivo..."></textarea>
                                 </div>
 
                                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                                     <label>
-                                        <span class="block text-[10px] uppercase tracking-wider text-gray-400 mb-2">Início</span>
+                                        <span class="block text-[10px] uppercase tracking-wider text-gray-400 mb-2">In??cio</span>
                                         <input type="date" class="w-full bg-[#0A0A0A] border border-white/10 rounded-lg p-3 text-[14px] text-white outline-none focus:border-brand-pink transition-colors" />
                                     </label>
                                     <label>
-                                        <span class="block text-[10px] uppercase tracking-wider text-gray-400 mb-2">Término</span>
+                                        <span class="block text-[10px] uppercase tracking-wider text-gray-400 mb-2">T??rmino</span>
                                         <input type="date" class="w-full bg-[#0A0A0A] border border-white/10 rounded-lg p-3 text-[14px] text-white outline-none focus:border-brand-pink transition-colors" />
                                     </label>
                                 </div>
 
-                            <button class="w-full py-3 bg-brand-pink text-white text-[14px] font-bold rounded-lg hover:bg-brand-pinkHover transition-colors">Enviar solicitação</button>
+                            <button class="w-full py-3 bg-brand-pink text-white text-[14px] font-bold rounded-lg hover:bg-brand-pinkHover transition-colors">Enviar solicita????o</button>
                             </div>
                         </div>
                     </section>
 
                     <section>
-                        <h4 class="text-[11px] font-bold uppercase tracking-widest text-white/40 mb-4">Histórico recente</h4>
+                        <h4 class="text-[11px] font-bold uppercase tracking-widest text-white/40 mb-4">Hist??rico recente</h4>
                         <div class="bg-[#111111] text-white rounded-xl border border-white/10 overflow-hidden">
                             <div class="p-4 border-b border-white/10 flex items-center justify-between hover:bg-white/[0.03] transition-colors">
                                 <div>
@@ -1356,7 +1357,7 @@
                             </div>
                             <div class="p-4 border-b border-white/10 flex items-center justify-between hover:bg-white/[0.03] transition-colors">
                                 <div>
-                                    <h5 class="text-[14px] font-semibold">Consulta médica</h5>
+                                    <h5 class="text-[14px] font-semibold">Consulta m??dica</h5>
                                     <p class="text-[11px] text-gray-500 mt-0.5">18 Jun</p>
                                 </div>
                                 <span class="text-[10px] px-2.5 py-1 rounded bg-amber-500/10 text-amber-500 font-bold uppercase tracking-wider">Pendente</span>
@@ -1376,13 +1377,13 @@
             <section id="central-section-promocoes" class="central-section hidden">
                 <div class="space-y-10 max-w-5xl mx-auto">
                     <header>
-                        <h3 class="text-[30px] font-bold tracking-tight">Promoções & Rebaixamentos</h3>
-                        <p class="text-[15px] text-gray-500 dark:text-gray-400 mt-2">Gerencie a evolução de carreira e disciplina da equipe.</p>
+                        <h3 class="text-[30px] font-bold tracking-tight">Promo????es & Rebaixamentos</h3>
+                        <p class="text-[15px] text-gray-500 dark:text-gray-400 mt-2">Gerencie a evolu????o de carreira e disciplina da equipe.</p>
                     </header>
 
                     <section class="grid grid-cols-1 md:grid-cols-3 gap-4">
                         <article class="bg-[#1A1A1A] text-white p-5 rounded-2xl border border-white/10">
-                            <span class="text-[10px] uppercase text-gray-400 font-bold tracking-widest">Promoções no mês</span>
+                            <span class="text-[10px] uppercase text-gray-400 font-bold tracking-widest">Promo????es no m??s</span>
                             <p class="text-[28px] font-black mt-2">18</p>
                         </article>
                         <article class="bg-[#1A1A1A] text-white p-5 rounded-2xl border border-white/10">
@@ -1390,7 +1391,7 @@
                             <p class="text-[28px] font-black mt-2 text-rose-500">02</p>
                         </article>
                         <article class="bg-[#1A1A1A] text-white p-5 rounded-2xl border border-white/10">
-                            <span class="text-[10px] uppercase text-gray-400 font-bold tracking-widest">Promovíveis</span>
+                            <span class="text-[10px] uppercase text-gray-400 font-bold tracking-widest">Promov??veis</span>
                             <p class="text-[28px] font-black mt-2 text-emerald-500">07</p>
                         </article>
                     </section>
@@ -1399,24 +1400,22 @@
                         <div class="bg-[#1A1A1A] text-white rounded-2xl border border-white/10 p-6 sm:p-8">
                             <h4 class="text-[20px] font-bold mb-7 flex items-center gap-3">
                                 <span class="w-1.5 h-7 bg-brand-pink rounded-full"></span>
-                                Nova ação administrativa
+                                Nova a????o administrativa
                             </h4>
 
                             <div class="space-y-6">
                                 <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
                                     <label>
                                         <span class="block text-[10px] uppercase tracking-wider text-gray-400 mb-2">Selecionar membro</span>
-                                        <select class="w-full bg-[#0A0A0A] border border-white/10 rounded-xl p-4 text-[14px] text-white outline-none focus:border-brand-pink transition-all">
-                                            <option>Carlos Silva (ID: 001)</option>
-                                            <option>Maria Souza (ID: 042)</option>
-                                            <option>Ana Jardim (ID: 089)</option>
+                                        <select id="promotion-member-select" class="w-full bg-[#0A0A0A] border border-white/10 rounded-xl p-4 text-[14px] text-white outline-none focus:border-brand-pink transition-all">
+                                            <option value="">Carregando usuarios do servidor...</option>
                                         </select>
                                     </label>
 
                                     <label>
                                         <span class="block text-[10px] uppercase tracking-wider text-gray-400 mb-2">Novo cargo / patente</span>
-                                        <select class="w-full bg-[#0A0A0A] border border-white/10 rounded-xl p-4 text-[14px] text-white outline-none focus:border-brand-pink transition-all">
-                                            <option>Líder de Operações</option>
+                                        <select id="promotion-target-role-select" class="w-full bg-[#0A0A0A] border border-white/10 rounded-xl p-4 text-[14px] text-white outline-none focus:border-brand-pink transition-all">
+                                            <option>L??der de Opera????es</option>
                                             <option>Operador Especialista</option>
                                             <option>Operador de Campo</option>
                                             <option>Cadete</option>
@@ -1424,13 +1423,13 @@
                                     </label>
 
                                     <label class="md:col-span-2">
-                                        <span class="block text-[10px] uppercase tracking-wider text-gray-400 mb-2">Justificativa da ação</span>
-                                        <textarea class="w-full bg-[#0A0A0A] border border-white/10 rounded-xl p-4 text-[14px] text-white outline-none focus:border-brand-pink transition-all h-24 resize-none placeholder-white/20" placeholder="Descreva os motivos técnicos da promoção ou rebaixamento..."></textarea>
+                                        <span class="block text-[10px] uppercase tracking-wider text-gray-400 mb-2">Justificativa da a????o</span>
+                                        <textarea class="w-full bg-[#0A0A0A] border border-white/10 rounded-xl p-4 text-[14px] text-white outline-none focus:border-brand-pink transition-all h-24 resize-none placeholder-white/20" placeholder="Descreva os motivos t??cnicos da promo????o ou rebaixamento..."></textarea>
                                     </label>
                                 </div>
 
                                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                                    <button class="py-4 bg-emerald-500 text-black font-bold rounded-xl hover:bg-emerald-400 transition-all">Confirmar promoção</button>
+                                    <button class="py-4 bg-emerald-500 text-black font-bold rounded-xl hover:bg-emerald-400 transition-all">Confirmar promo????o</button>
                                     <button class="py-4 bg-rose-500 text-white font-bold rounded-xl hover:bg-rose-400 transition-all">Confirmar rebaixamento</button>
                                 </div>
                             </div>
@@ -1438,12 +1437,12 @@
                     </section>
 
                     <section>
-                        <h4 class="text-[12px] font-bold uppercase tracking-widest text-gray-500 dark:text-gray-400 mb-5 pl-1">Histórico de movimentações</h4>
+                        <h4 class="text-[12px] font-bold uppercase tracking-widest text-gray-500 dark:text-gray-400 mb-5 pl-1">Hist??rico de movimenta????es</h4>
                         <div class="bg-[#1A1A1A] text-white border border-white/10 rounded-2xl overflow-hidden">
                             <div class="hidden md:grid grid-cols-4 gap-4 p-4 border-b border-white/10 text-[10px] font-bold uppercase tracking-widest text-gray-500 bg-[#0A0A0A]/50">
                                 <div>Membro</div>
-                                <div>Ação</div>
-                                <div>Responsável</div>
+                                <div>A????o</div>
+                                <div>Respons??vel</div>
                                 <div class="text-right">Data</div>
                             </div>
 
@@ -1455,7 +1454,7 @@
                             </div>
 
                             <div class="grid grid-cols-1 md:grid-cols-4 gap-2 md:gap-4 p-4 border-b border-white/10 items-center hover:bg-[#0A0A0A]/30 transition-all">
-                                <div class="font-semibold text-[14px]">João Pedro</div>
+                                <div class="font-semibold text-[14px]">Jo??o Pedro</div>
                                 <div><span class="px-2.5 py-1 rounded bg-rose-500/10 text-rose-500 text-[10px] font-bold uppercase tracking-wider">Rebaixado</span></div>
                                 <div class="text-[13px] text-gray-400">Maria Souza</div>
                                 <div class="md:text-right text-[12px] text-gray-500">10/06/2026 - 14:30</div>
@@ -1479,7 +1478,7 @@
             <div class="flex flex-col md:flex-row md:justify-between md:items-end mb-8 gap-4">
                 <div>
                     <h2 class="text-[34px] font-bold tracking-tight leading-none">Painel</h2>
-                    <p class="text-[17px] text-gray-500 dark:text-gray-400 mt-3 max-w-2xl">Configure os módulos do bot por categoria.</p>
+                    <p class="text-[17px] text-gray-500 dark:text-gray-400 mt-3 max-w-2xl">Configure os m??dulos do bot por categoria.</p>
                 </div>
                 <button onclick="saveBotSettings()" class="inline-flex items-center justify-center gap-2 self-start md:self-auto bg-brand-pink text-white px-5 py-3 rounded-2xl font-semibold text-[15px] transition-transform active:scale-95 shadow-lg shadow-brand-pink/25">
                     <i class="fa-solid fa-floppy-disk"></i>
@@ -1491,11 +1490,11 @@
                 <div class="inline-flex items-center gap-1 rounded-full bg-black/5 dark:bg-white/10 p-1 shadow-inner border border-black/10 dark:border-white/10 min-w-max">
                     <button onclick="switchPanelCategory('registrar')" id="panel-tab-registrar" class="panel-tab px-4 py-2 rounded-full bg-ios-card dark:bg-ios-darkCard text-brand-pink shadow-sm font-semibold text-[14px] transition-all">Registrar</button>
                     <button onclick="switchPanelCategory('hierarquia')" id="panel-tab-hierarquia" class="panel-tab px-4 py-2 rounded-full text-gray-500 dark:text-gray-400 hover:text-brand-pink font-semibold text-[14px] transition-all">Hierarquia</button>
-                    <button onclick="switchPanelCategory('acoes')" id="panel-tab-acoes" class="panel-tab px-4 py-2 rounded-full text-gray-500 dark:text-gray-400 hover:text-brand-pink font-semibold text-[14px] transition-all">Ações</button>
-                    <button onclick="switchPanelCategory('punicoes')" id="panel-tab-punicoes" class="panel-tab px-4 py-2 rounded-full text-gray-500 dark:text-gray-400 hover:text-brand-pink font-semibold text-[14px] transition-all">Punições</button>
+                    <button onclick="switchPanelCategory('acoes')" id="panel-tab-acoes" class="panel-tab px-4 py-2 rounded-full text-gray-500 dark:text-gray-400 hover:text-brand-pink font-semibold text-[14px] transition-all">A????es</button>
+                    <button onclick="switchPanelCategory('punicoes')" id="panel-tab-punicoes" class="panel-tab px-4 py-2 rounded-full text-gray-500 dark:text-gray-400 hover:text-brand-pink font-semibold text-[14px] transition-all">Puni????es</button>
                     <button onclick="switchPanelCategory('farm')" id="panel-tab-farm" class="panel-tab px-4 py-2 rounded-full text-gray-500 dark:text-gray-400 hover:text-brand-pink font-semibold text-[14px] transition-all">Farm</button>
-                    <button onclick="switchPanelCategory('ausencia')" id="panel-tab-ausencia" class="panel-tab px-4 py-2 rounded-full text-gray-500 dark:text-gray-400 hover:text-brand-pink font-semibold text-[14px] transition-all">Ausência</button>
-                    <button onclick="switchPanelCategory('promocoes')" id="panel-tab-promocoes" class="panel-tab px-4 py-2 rounded-full text-gray-500 dark:text-gray-400 hover:text-brand-pink font-semibold text-[14px] transition-all">Promoções</button>
+                    <button onclick="switchPanelCategory('ausencia')" id="panel-tab-ausencia" class="panel-tab px-4 py-2 rounded-full text-gray-500 dark:text-gray-400 hover:text-brand-pink font-semibold text-[14px] transition-all">Aus??ncia</button>
+                    <button onclick="switchPanelCategory('promocoes')" id="panel-tab-promocoes" class="panel-tab px-4 py-2 rounded-full text-gray-500 dark:text-gray-400 hover:text-brand-pink font-semibold text-[14px] transition-all">Promo????es</button>
                 </div>
             </div>
 
@@ -1508,7 +1507,7 @@
                                     <i class="fa-solid fa-user-check text-2xl"></i>
                                 </div>
                                 <div>
-                                    <p class="text-[12px] text-brand-pink font-bold uppercase tracking-wider">Configuração de registro</p>
+                                    <p class="text-[12px] text-brand-pink font-bold uppercase tracking-wider">Configura????o de registro</p>
                                     <h3 class="font-bold text-[24px] leading-tight mt-1">Registrar</h3>
                                     <p class="text-[13px] text-gray-500 dark:text-gray-400 mt-1">Defina os cargos usados no fluxo de entrada pelo Discord.</p>
                                 </div>
@@ -1521,7 +1520,7 @@
                                 <select id="panel-register-entry-role" class="bg-transparent text-black dark:text-white text-[16px] font-semibold outline-none">
                                     <option value="">Carregue os cargos do Discord</option>
                                 </select>
-                                <small class="normal-case tracking-normal text-[12px] text-gray-500 dark:text-gray-400">Cargo entregue automaticamente quando o usuário entra no servidor.</small>
+                                <small class="normal-case tracking-normal text-[12px] text-gray-500 dark:text-gray-400">Cargo entregue automaticamente quando o usu??rio entra no servidor.</small>
                             </label>
                             <label class="grid gap-2 bg-gray-100 dark:bg-gray-800 rounded-[20px] p-4 border border-black/5 dark:border-white/5 text-[12px] font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wider">
                                 <span><i class="fa-solid fa-user-shield text-brand-pink mr-1.5"></i>Cargo de Membro</span>
@@ -1548,8 +1547,8 @@
                         <div class="p-5 border-b border-ios-separator dark:border-ios-darkSeparator flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                             <div>
                                 <p class="text-[12px] text-brand-pink font-bold uppercase tracking-wider">Registros Pendentes</p>
-                                <h3 class="font-bold text-[24px] leading-tight mt-1">Fila de aprovação</h3>
-                                <p class="text-[13px] text-gray-500 dark:text-gray-400 mt-1">Analise os membros aguardando liberação.</p>
+                                <h3 class="font-bold text-[24px] leading-tight mt-1">Fila de aprova????o</h3>
+                                <p class="text-[13px] text-gray-500 dark:text-gray-400 mt-1">Analise os membros aguardando libera????o.</p>
                             </div>
                             <span id="panel-pending-register-count" class="bg-brand-pink/10 text-brand-pink px-3 py-1.5 rounded-full text-[12px] font-black uppercase tracking-wider">3 pendentes</span>
                         </div>
@@ -1560,7 +1559,7 @@
                                         <span class="h-11 w-11 rounded-full bg-brand-pink text-white flex items-center justify-center text-[13px] font-black">CS</span>
                                         <div class="min-w-0">
                                             <h4 class="font-bold text-[16px] truncate">Carlos Silva</h4>
-                                            <p class="text-[12px] text-gray-500 dark:text-gray-400">ID: 001 • Tel: (11) 99876-4321 • Recrutado por Direção Raze</p>
+                                            <p class="text-[12px] text-gray-500 dark:text-gray-400">ID: 001 ??? Tel: (11) 99876-4321 ??? Recrutado por Dire????o Raze</p>
                                         </div>
                                     </div>
                                     <div class="flex gap-2">
@@ -1575,7 +1574,7 @@
                                         <span class="h-11 w-11 rounded-full bg-brand-pink text-white flex items-center justify-center text-[13px] font-black">AJ</span>
                                         <div class="min-w-0">
                                             <h4 class="font-bold text-[16px] truncate">Ana Jardim</h4>
-                                            <p class="text-[12px] text-gray-500 dark:text-gray-400">ID: 089 • Tel: (21) 98765-2110 • Indicado por Maria Silva</p>
+                                            <p class="text-[12px] text-gray-500 dark:text-gray-400">ID: 089 ??? Tel: (21) 98765-2110 ??? Indicado por Maria Silva</p>
                                         </div>
                                     </div>
                                     <div class="flex gap-2">
@@ -1590,7 +1589,7 @@
                                         <span class="h-11 w-11 rounded-full bg-brand-pink text-white flex items-center justify-center text-[13px] font-black">RL</span>
                                         <div class="min-w-0">
                                             <h4 class="font-bold text-[16px] truncate">Rafael Lima</h4>
-                                            <p class="text-[12px] text-gray-500 dark:text-gray-400">ID: 142 • Tel: (31) 90012-8844 • Recrutado por Carlos Mendes</p>
+                                            <p class="text-[12px] text-gray-500 dark:text-gray-400">ID: 142 ??? Tel: (31) 90012-8844 ??? Recrutado por Carlos Mendes</p>
                                         </div>
                                     </div>
                                     <div class="flex gap-2">
@@ -1614,12 +1613,12 @@
                             <div>
                                 <p class="text-[12px] text-brand-pink font-bold uppercase tracking-wider">Cadastro de membro</p>
                                 <h3 class="font-bold text-[24px] leading-tight mt-1">Registrar</h3>
-                                <p class="text-[13px] text-gray-500 dark:text-gray-400 mt-1">Preencha a ficha principal antes de enviar para aprovação.</p>
+                                <p class="text-[13px] text-gray-500 dark:text-gray-400 mt-1">Preencha a ficha principal antes de enviar para aprova????o.</p>
                             </div>
                         </div>
                         <div class="flex flex-wrap items-center gap-2">
                             <span class="bg-ios-card dark:bg-ios-darkCard text-brand-pink px-3 py-1.5 rounded-full text-[12px] font-bold uppercase tracking-wider shadow-sm">Rascunho</span>
-                            <button onclick="showToast('Ficha enviada para aprovação.')" class="bg-brand-pink text-white px-4 py-2 rounded-full font-semibold text-[14px] shadow-lg shadow-brand-pink/25">Enviar</button>
+                            <button onclick="showToast('Ficha enviada para aprova????o.')" class="bg-brand-pink text-white px-4 py-2 rounded-full font-semibold text-[14px] shadow-lg shadow-brand-pink/25">Enviar</button>
                         </div>
                     </div>
                     <div class="p-5 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
@@ -1642,20 +1641,20 @@
                             </div>
                             <div>
                                 <h3 class="font-bold text-[20px]">Hierarquia</h3>
-                                <p class="text-[13px] text-gray-500 dark:text-gray-400 mt-0.5">Lista dos cargos configurados, ordenados por nível.</p>
+                                <p class="text-[13px] text-gray-500 dark:text-gray-400 mt-0.5">Lista dos cargos configurados, ordenados por n??vel.</p>
                             </div>
                         </div>
-                        <button onclick="showToast('Cargo hierárquico adicionado.')" class="bg-gray-100 dark:bg-gray-800 text-brand-pink px-4 py-2 rounded-full font-semibold text-[14px]">Adicionar</button>
+                        <button onclick="showToast('Cargo hier??rquico adicionado.')" class="bg-gray-100 dark:bg-gray-800 text-brand-pink px-4 py-2 rounded-full font-semibold text-[14px]">Adicionar</button>
                     </div>
                     <div class="p-5 grid gap-4">
                         <article class="flex flex-col md:flex-row md:items-center gap-4 bg-gray-100 dark:bg-gray-800 rounded-[22px] p-4 border border-black/5 dark:border-white/5">
                             <span class="h-12 w-12 rounded-full bg-brand-pink text-white flex items-center justify-center font-bold text-[17px]">1</span>
                             <div class="min-w-0 flex-1">
                                 <div class="flex flex-wrap items-center gap-2 mb-1">
-                                    <h4 class="font-bold text-[18px]">Direção</h4>
+                                    <h4 class="font-bold text-[18px]">Dire????o</h4>
                                     <span class="text-[11px] font-bold uppercase tracking-wider bg-brand-pink/10 text-brand-pink px-2 py-1 rounded-full">Topo</span>
                                 </div>
-                                <p class="text-[13px] text-gray-500 dark:text-gray-400">ID 9001 • Controle total da operação, aprovações críticas e ajustes de cargos.</p>
+                                <p class="text-[13px] text-gray-500 dark:text-gray-400">ID 9001 ??? Controle total da opera????o, aprova????es cr??ticas e ajustes de cargos.</p>
                             </div>
                             <button class="h-9 w-9 rounded-full text-gray-400 hover:text-brand-pink hover:bg-black/5 dark:hover:bg-white/10"><i class="fa-solid fa-pen text-sm"></i></button>
                         </article>
@@ -1663,10 +1662,10 @@
                             <span class="h-12 w-12 rounded-full bg-brand-pink/15 text-brand-pink flex items-center justify-center font-bold text-[17px]">2</span>
                             <div class="min-w-0 flex-1">
                                 <div class="flex flex-wrap items-center gap-2 mb-1">
-                                    <h4 class="font-bold text-[18px]">Gerência</h4>
-                                    <span class="text-[11px] font-bold uppercase tracking-wider bg-black/5 dark:bg-white/10 text-gray-500 dark:text-gray-400 px-2 py-1 rounded-full">Gestão</span>
+                                    <h4 class="font-bold text-[18px]">Ger??ncia</h4>
+                                    <span class="text-[11px] font-bold uppercase tracking-wider bg-black/5 dark:bg-white/10 text-gray-500 dark:text-gray-400 px-2 py-1 rounded-full">Gest??o</span>
                                 </div>
-                                <p class="text-[13px] text-gray-500 dark:text-gray-400">ID 9002 • Coordena membros, valida entregas e acompanha ações do grupo.</p>
+                                <p class="text-[13px] text-gray-500 dark:text-gray-400">ID 9002 ??? Coordena membros, valida entregas e acompanha a????es do grupo.</p>
                             </div>
                             <button class="h-9 w-9 rounded-full text-gray-400 hover:text-brand-pink hover:bg-black/5 dark:hover:bg-white/10"><i class="fa-solid fa-pen text-sm"></i></button>
                         </article>
@@ -1677,7 +1676,7 @@
                                     <h4 class="font-bold text-[18px]">Membro</h4>
                                     <span class="text-[11px] font-bold uppercase tracking-wider bg-black/5 dark:bg-white/10 text-gray-500 dark:text-gray-400 px-2 py-1 rounded-full">Base</span>
                                 </div>
-                                <p class="text-[13px] text-gray-500 dark:text-gray-400">ID 9003 • Cargo inicial após registro aprovado e entrada na organização.</p>
+                                <p class="text-[13px] text-gray-500 dark:text-gray-400">ID 9003 ??? Cargo inicial ap??s registro aprovado e entrada na organiza????o.</p>
                             </div>
                             <button class="h-9 w-9 rounded-full text-gray-400 hover:text-brand-pink hover:bg-black/5 dark:hover:bg-white/10"><i class="fa-solid fa-pen text-sm"></i></button>
                         </article>
@@ -1693,12 +1692,12 @@
                                 <i class="fa-solid fa-crosshairs"></i>
                             </div>
                             <div>
-                                <h3 class="font-bold text-[20px]">Lista de Ações</h3>
-                                <p class="text-[13px] text-gray-500 dark:text-gray-400 mt-0.5">Ações detalhadas com escala, reservas e responsável.</p>
+                                <h3 class="font-bold text-[20px]">Lista de A????es</h3>
+                                <p class="text-[13px] text-gray-500 dark:text-gray-400 mt-0.5">A????es detalhadas com escala, reservas e respons??vel.</p>
                             </div>
                         </div>
                         <div class="flex flex-wrap gap-2">
-                            <button onclick="createCentralAction()" class="bg-brand-pink text-white px-4 py-2 rounded-full font-semibold text-[14px] shadow-lg shadow-brand-pink/25">Nova ação</button>
+                            <button onclick="createCentralAction()" class="bg-brand-pink text-white px-4 py-2 rounded-full font-semibold text-[14px] shadow-lg shadow-brand-pink/25">Nova a????o</button>
                             <label class="bg-gray-100 dark:bg-gray-800 text-brand-pink px-4 py-2 rounded-full font-semibold text-[14px] cursor-pointer">Importar JSON<input type="file" accept="application/json" class="hidden" onchange="showToast('JSON importado.')" /></label>
                         </div>
                     </div>
@@ -1706,12 +1705,12 @@
                         <div>
                             <div class="flex items-center justify-between gap-4 mb-3">
                                 <h4 class="inline-flex items-center gap-2 font-bold text-[16px]"><i class="fa-solid fa-bolt text-brand-pink"></i>Iniciando</h4>
-                                <span class="text-[12px] font-bold uppercase tracking-wider text-brand-pink">Ação de hoje em destaque</span>
+                                <span class="text-[12px] font-bold uppercase tracking-wider text-brand-pink">A????o de hoje em destaque</span>
                             </div>
                             <article class="bg-brand-pink/10 dark:bg-brand-pink/15 rounded-[22px] p-4 border border-brand-pink/35 shadow-lg shadow-brand-pink/10">
                                 <div class="flex flex-col lg:flex-row lg:items-start justify-between gap-4 mb-4">
                                     <div>
-                                    <p class="text-[12px] text-brand-pink font-bold uppercase tracking-wider">Nome da Ação</p>
+                                    <p class="text-[12px] text-brand-pink font-bold uppercase tracking-wider">Nome da A????o</p>
                                         <h4 class="font-bold text-[22px] leading-tight mt-1">Banco Central</h4>
                                     </div>
                                     <div class="flex flex-wrap gap-2">
@@ -1721,10 +1720,10 @@
                                     </div>
                                 </div>
                                 <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-3">
-                                    <div class="bg-ios-card dark:bg-ios-darkCard rounded-[16px] p-3"><p class="text-[11px] text-gray-500 dark:text-gray-400 font-bold uppercase tracking-wider"><i class="fa-solid fa-calendar-days text-brand-pink mr-1.5"></i>Data da Ação</p><strong class="block mt-1">12/06/2026</strong></div>
-                                    <div class="bg-ios-card dark:bg-ios-darkCard rounded-[16px] p-3"><p class="text-[11px] text-gray-500 dark:text-gray-400 font-bold uppercase tracking-wider"><i class="fa-solid fa-clock text-brand-pink mr-1.5"></i>Horário</p><strong class="block mt-1">21:30</strong></div>
+                                    <div class="bg-ios-card dark:bg-ios-darkCard rounded-[16px] p-3"><p class="text-[11px] text-gray-500 dark:text-gray-400 font-bold uppercase tracking-wider"><i class="fa-solid fa-calendar-days text-brand-pink mr-1.5"></i>Data da A????o</p><strong class="block mt-1">12/06/2026</strong></div>
+                                    <div class="bg-ios-card dark:bg-ios-darkCard rounded-[16px] p-3"><p class="text-[11px] text-gray-500 dark:text-gray-400 font-bold uppercase tracking-wider"><i class="fa-solid fa-clock text-brand-pink mr-1.5"></i>Hor??rio</p><strong class="block mt-1">21:30</strong></div>
                                     <div class="bg-ios-card dark:bg-ios-darkCard rounded-[16px] p-3"><p class="text-[11px] text-gray-500 dark:text-gray-400 font-bold uppercase tracking-wider"><i class="fa-solid fa-gun text-brand-pink mr-1.5"></i>Armamento</p><strong class="block mt-1">Fuzil e pistola</strong></div>
-                                    <div class="bg-ios-card dark:bg-ios-darkCard rounded-[16px] p-3"><p class="text-[11px] text-gray-500 dark:text-gray-400 font-bold uppercase tracking-wider"><i class="fa-solid fa-user-shield text-brand-pink mr-1.5"></i>Quem Puxou</p><strong class="block mt-1">Direção Raze</strong></div>
+                                    <div class="bg-ios-card dark:bg-ios-darkCard rounded-[16px] p-3"><p class="text-[11px] text-gray-500 dark:text-gray-400 font-bold uppercase tracking-wider"><i class="fa-solid fa-user-shield text-brand-pink mr-1.5"></i>Quem Puxou</p><strong class="block mt-1">Dire????o Raze</strong></div>
                                 </div>
                             </article>
                         </div>
@@ -1732,13 +1731,13 @@
                         <div>
                             <div class="flex items-center justify-between gap-4 mb-3">
                                 <h4 class="inline-flex items-center gap-2 font-bold text-[16px]"><i class="fa-solid fa-list-check text-brand-pink"></i>Organizando</h4>
-                                <span class="text-[12px] font-bold uppercase tracking-wider text-gray-500 dark:text-gray-400">Próximas ações</span>
+                                <span class="text-[12px] font-bold uppercase tracking-wider text-gray-500 dark:text-gray-400">Pr??ximas a????es</span>
                             </div>
                             <div class="grid grid-cols-1 xl:grid-cols-2 gap-4">
                                 <article class="bg-gray-100 dark:bg-gray-800 rounded-[22px] p-4 border border-black/5 dark:border-white/5">
                                     <div class="flex flex-col lg:flex-row lg:items-start justify-between gap-4 mb-4">
                                         <div>
-                                        <p class="text-[12px] text-brand-pink font-bold uppercase tracking-wider">Nome da Ação</p>
+                                        <p class="text-[12px] text-brand-pink font-bold uppercase tracking-wider">Nome da A????o</p>
                                             <h4 class="font-bold text-[22px] leading-tight mt-1">Joalheria</h4>
                                         </div>
                                         <div class="flex flex-wrap gap-2">
@@ -1748,10 +1747,10 @@
                                         </div>
                                     </div>
                                     <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
-                                        <div class="bg-ios-card dark:bg-ios-darkCard rounded-[16px] p-3"><p class="text-[11px] text-gray-500 dark:text-gray-400 font-bold uppercase tracking-wider"><i class="fa-solid fa-calendar-days text-brand-pink mr-1.5"></i>Data da Ação</p><strong class="block mt-1">13/06/2026</strong></div>
-                                        <div class="bg-ios-card dark:bg-ios-darkCard rounded-[16px] p-3"><p class="text-[11px] text-gray-500 dark:text-gray-400 font-bold uppercase tracking-wider"><i class="fa-solid fa-clock text-brand-pink mr-1.5"></i>Horário</p><strong class="block mt-1">20:00</strong></div>
+                                        <div class="bg-ios-card dark:bg-ios-darkCard rounded-[16px] p-3"><p class="text-[11px] text-gray-500 dark:text-gray-400 font-bold uppercase tracking-wider"><i class="fa-solid fa-calendar-days text-brand-pink mr-1.5"></i>Data da A????o</p><strong class="block mt-1">13/06/2026</strong></div>
+                                        <div class="bg-ios-card dark:bg-ios-darkCard rounded-[16px] p-3"><p class="text-[11px] text-gray-500 dark:text-gray-400 font-bold uppercase tracking-wider"><i class="fa-solid fa-clock text-brand-pink mr-1.5"></i>Hor??rio</p><strong class="block mt-1">20:00</strong></div>
                                         <div class="bg-ios-card dark:bg-ios-darkCard rounded-[16px] p-3"><p class="text-[11px] text-gray-500 dark:text-gray-400 font-bold uppercase tracking-wider"><i class="fa-solid fa-gun text-brand-pink mr-1.5"></i>Armamento</p><strong class="block mt-1">Pistola</strong></div>
-                                        <div class="bg-ios-card dark:bg-ios-darkCard rounded-[16px] p-3"><p class="text-[11px] text-gray-500 dark:text-gray-400 font-bold uppercase tracking-wider"><i class="fa-solid fa-user-shield text-brand-pink mr-1.5"></i>Quem Puxou</p><strong class="block mt-1">Gerência One</strong></div>
+                                        <div class="bg-ios-card dark:bg-ios-darkCard rounded-[16px] p-3"><p class="text-[11px] text-gray-500 dark:text-gray-400 font-bold uppercase tracking-wider"><i class="fa-solid fa-user-shield text-brand-pink mr-1.5"></i>Quem Puxou</p><strong class="block mt-1">Ger??ncia One</strong></div>
                                     </div>
                                 </article>
                             </div>
@@ -1760,13 +1759,13 @@
                         <div>
                             <div class="flex items-center justify-between gap-4 mb-3">
                                 <h4 class="inline-flex items-center gap-2 font-bold text-[16px]"><i class="fa-solid fa-circle-check text-gray-500 dark:text-gray-400"></i>Encerrado</h4>
-                                <span class="text-[12px] font-bold uppercase tracking-wider text-gray-500 dark:text-gray-400">Histórico recente</span>
+                                <span class="text-[12px] font-bold uppercase tracking-wider text-gray-500 dark:text-gray-400">Hist??rico recente</span>
                             </div>
                             <div class="grid grid-cols-1 xl:grid-cols-2 gap-4">
                                 <article class="bg-gray-100/70 dark:bg-gray-800/70 rounded-[22px] p-4 border border-black/5 dark:border-white/5 opacity-75">
                                     <div class="flex flex-col lg:flex-row lg:items-start justify-between gap-4 mb-4">
                                         <div>
-                                        <p class="text-[12px] text-gray-500 dark:text-gray-400 font-bold uppercase tracking-wider">Nome da Ação</p>
+                                        <p class="text-[12px] text-gray-500 dark:text-gray-400 font-bold uppercase tracking-wider">Nome da A????o</p>
                                             <h4 class="font-bold text-[22px] leading-tight mt-1">Loja Norte</h4>
                                         </div>
                                         <div class="flex flex-wrap gap-2">
@@ -1776,10 +1775,10 @@
                                         </div>
                                     </div>
                                     <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
-                                        <div class="bg-ios-card dark:bg-ios-darkCard rounded-[16px] p-3"><p class="text-[11px] text-gray-500 dark:text-gray-400 font-bold uppercase tracking-wider"><i class="fa-solid fa-calendar-days mr-1.5"></i>Data da Ação</p><strong class="block mt-1">11/06/2026</strong></div>
-                                        <div class="bg-ios-card dark:bg-ios-darkCard rounded-[16px] p-3"><p class="text-[11px] text-gray-500 dark:text-gray-400 font-bold uppercase tracking-wider"><i class="fa-solid fa-clock mr-1.5"></i>Horário</p><strong class="block mt-1">22:00</strong></div>
+                                        <div class="bg-ios-card dark:bg-ios-darkCard rounded-[16px] p-3"><p class="text-[11px] text-gray-500 dark:text-gray-400 font-bold uppercase tracking-wider"><i class="fa-solid fa-calendar-days mr-1.5"></i>Data da A????o</p><strong class="block mt-1">11/06/2026</strong></div>
+                                        <div class="bg-ios-card dark:bg-ios-darkCard rounded-[16px] p-3"><p class="text-[11px] text-gray-500 dark:text-gray-400 font-bold uppercase tracking-wider"><i class="fa-solid fa-clock mr-1.5"></i>Hor??rio</p><strong class="block mt-1">22:00</strong></div>
                                         <div class="bg-ios-card dark:bg-ios-darkCard rounded-[16px] p-3"><p class="text-[11px] text-gray-500 dark:text-gray-400 font-bold uppercase tracking-wider"><i class="fa-solid fa-gun mr-1.5"></i>Armamento</p><strong class="block mt-1">Pistola</strong></div>
-                                        <div class="bg-ios-card dark:bg-ios-darkCard rounded-[16px] p-3"><p class="text-[11px] text-gray-500 dark:text-gray-400 font-bold uppercase tracking-wider"><i class="fa-solid fa-user-shield mr-1.5"></i>Quem Puxou</p><strong class="block mt-1">Coordenação</strong></div>
+                                        <div class="bg-ios-card dark:bg-ios-darkCard rounded-[16px] p-3"><p class="text-[11px] text-gray-500 dark:text-gray-400 font-bold uppercase tracking-wider"><i class="fa-solid fa-user-shield mr-1.5"></i>Quem Puxou</p><strong class="block mt-1">Coordena????o</strong></div>
                                     </div>
                                 </article>
                             </div>
@@ -1790,12 +1789,12 @@
 
             <section id="panel-section-punicoes" class="panel-section hidden grid grid-cols-1 lg:grid-cols-2 gap-6">
                 <div class="bg-ios-card dark:bg-ios-darkCard rounded-[24px] shadow-sm border border-black/5 dark:border-white/5 p-5">
-                    <h3 class="font-bold text-[20px] mb-4">Punições</h3>
+                    <h3 class="font-bold text-[20px] mb-4">Puni????es</h3>
                     <div class="grid gap-4">
-                        <label class="grid gap-2 text-[13px] font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wider">Advertência verbal<select id="punishment-role-verbal" class="bg-gray-100 dark:bg-gray-800 text-black dark:text-white rounded-2xl px-4 py-3 outline-none border border-black/5 dark:border-white/5 focus:border-brand-pink"><option value="">@Advertência verbal</option></select></label>
-                        <label class="grid gap-2 text-[13px] font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wider">1ª advertência<select id="punishment-role-first" class="bg-gray-100 dark:bg-gray-800 text-black dark:text-white rounded-2xl px-4 py-3 outline-none border border-black/5 dark:border-white/5 focus:border-brand-pink"><option value="">@Adv 1</option></select></label>
-                        <label class="grid gap-2 text-[13px] font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wider">2ª advertência<select id="punishment-role-second" class="bg-gray-100 dark:bg-gray-800 text-black dark:text-white rounded-2xl px-4 py-3 outline-none border border-black/5 dark:border-white/5 focus:border-brand-pink"><option value="">@Adv 2</option></select></label>
-                        <label class="grid gap-2 text-[13px] font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wider">3ª advertência<select id="punishment-role-third" class="bg-gray-100 dark:bg-gray-800 text-black dark:text-white rounded-2xl px-4 py-3 outline-none border border-black/5 dark:border-white/5 focus:border-brand-pink"><option value="">@Adv 3</option></select></label>
+                        <label class="grid gap-2 text-[13px] font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wider">Advert??ncia verbal<select id="punishment-role-verbal" class="bg-gray-100 dark:bg-gray-800 text-black dark:text-white rounded-2xl px-4 py-3 outline-none border border-black/5 dark:border-white/5 focus:border-brand-pink"><option value="">@Advert??ncia verbal</option></select></label>
+                        <label class="grid gap-2 text-[13px] font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wider">1?? advert??ncia<select id="punishment-role-first" class="bg-gray-100 dark:bg-gray-800 text-black dark:text-white rounded-2xl px-4 py-3 outline-none border border-black/5 dark:border-white/5 focus:border-brand-pink"><option value="">@Adv 1</option></select></label>
+                        <label class="grid gap-2 text-[13px] font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wider">2?? advert??ncia<select id="punishment-role-second" class="bg-gray-100 dark:bg-gray-800 text-black dark:text-white rounded-2xl px-4 py-3 outline-none border border-black/5 dark:border-white/5 focus:border-brand-pink"><option value="">@Adv 2</option></select></label>
+                        <label class="grid gap-2 text-[13px] font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wider">3?? advert??ncia<select id="punishment-role-third" class="bg-gray-100 dark:bg-gray-800 text-black dark:text-white rounded-2xl px-4 py-3 outline-none border border-black/5 dark:border-white/5 focus:border-brand-pink"><option value="">@Adv 3</option></select></label>
                     </div>
                 </div>
                 <div class="bg-ios-card dark:bg-ios-darkCard rounded-[24px] shadow-sm border border-black/5 dark:border-white/5 p-5">
@@ -1812,16 +1811,17 @@
                     <h3 class="font-bold text-[20px] mb-4">Cargos de metas</h3>
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
                         <label class="grid gap-2 text-[13px] font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wider sm:col-span-2">Meta global<input id="farm-global-goal" type="number" min="1" max="100" class="bg-gray-100 dark:bg-gray-800 text-black dark:text-white rounded-2xl px-4 py-3 outline-none border border-black/5 dark:border-white/5 focus:border-brand-pink" placeholder="85" /></label>
-                        <label class="grid gap-2 text-[13px] font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wider">Cargo meta concluída<select id="farm-role-complete" class="bg-gray-100 dark:bg-gray-800 text-black dark:text-white rounded-2xl px-4 py-3 outline-none border border-black/5 dark:border-white/5 focus:border-brand-pink"><option>@Meta OK</option></select></label>
+                        <label class="grid gap-2 text-[13px] font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wider">Cargo meta conclu??da<select id="farm-role-complete" class="bg-gray-100 dark:bg-gray-800 text-black dark:text-white rounded-2xl px-4 py-3 outline-none border border-black/5 dark:border-white/5 focus:border-brand-pink"><option>@Meta OK</option></select></label>
                         <label class="grid gap-2 text-[13px] font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wider">Cargo incompleta<select id="farm-role-incomplete" class="bg-gray-100 dark:bg-gray-800 text-black dark:text-white rounded-2xl px-4 py-3 outline-none border border-black/5 dark:border-white/5 focus:border-brand-pink"><option>@Meta Parcial</option></select></label>
                         <label class="grid gap-2 text-[13px] font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wider">Cargo sem entrega<select id="farm-role-no-delivery" class="bg-gray-100 dark:bg-gray-800 text-black dark:text-white rounded-2xl px-4 py-3 outline-none border border-black/5 dark:border-white/5 focus:border-brand-pink"><option>@Sem Entrega</option></select></label>
                         <label class="grid gap-2 text-[13px] font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wider">Administrador de Farm<select id="farm-role-admin" class="bg-gray-100 dark:bg-gray-800 text-black dark:text-white rounded-2xl px-4 py-3 outline-none border border-black/5 dark:border-white/5 focus:border-brand-pink"><option>Carregue os cargos do Discord</option></select></label>
+                        <button onclick="loadDiscordRoles()" class="sm:col-span-2 inline-flex items-center justify-center gap-2 rounded-2xl bg-gray-100 px-4 py-3 text-[14px] font-bold text-brand-pink transition active:scale-95 dark:bg-gray-800"><i class="fa-solid fa-rotate"></i>Carregar cargos do Discord</button>
                     </div>
                 </div>
                 <div class="bg-ios-card dark:bg-ios-darkCard rounded-[24px] shadow-sm border border-black/5 dark:border-white/5 p-5">
                     <h3 class="font-bold text-[20px] mb-4">Criar produto</h3>
                     <div class="grid gap-3 rounded-[20px] border border-black/5 bg-gray-100 p-4 dark:border-white/5 dark:bg-gray-800">
-                        <label class="grid gap-2 text-[13px] font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wider">Produto<input id="farm-product-name" class="bg-white dark:bg-gray-900 text-black dark:text-white rounded-2xl px-4 py-3 outline-none border border-black/5 dark:border-white/5 focus:border-brand-pink" placeholder="Ex: Peças" /></label>
+                        <label class="grid gap-2 text-[13px] font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wider">Produto<input id="farm-product-name" class="bg-white dark:bg-gray-900 text-black dark:text-white rounded-2xl px-4 py-3 outline-none border border-black/5 dark:border-white/5 focus:border-brand-pink" placeholder="Ex: Pe??as" /></label>
                         <label class="grid gap-2 text-[13px] font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wider">Meta<input id="farm-product-goal" type="number" class="bg-white dark:bg-gray-900 text-black dark:text-white rounded-2xl px-4 py-3 outline-none border border-black/5 dark:border-white/5 focus:border-brand-pink" placeholder="300" /></label>
                         <button onclick="addFarmProduct()" class="inline-flex items-center justify-center gap-2 rounded-2xl bg-brand-pink px-4 py-3 text-[14px] font-bold text-white transition active:scale-95"><i class="fa-solid fa-plus"></i>Criar produto</button>
                         <div id="farm-products-list" class="grid gap-2"></div>
@@ -1829,35 +1829,26 @@
                 </div>
             </section>
 
-            <section id="panel-section-ausencia" class="panel-section hidden grid grid-cols-1 lg:grid-cols-[0.8fr_1.2fr] gap-6">
-                <div class="bg-ios-card dark:bg-ios-darkCard rounded-[24px] shadow-sm border border-black/5 dark:border-white/5 p-5">
-                    <h3 class="font-bold text-[20px] mb-4">Ausência</h3>
-                    <div class="grid gap-4">
-                        <label class="grid gap-2 text-[13px] font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wider">Canal de log<input class="bg-gray-100 dark:bg-gray-800 text-black dark:text-white rounded-2xl px-4 py-3 outline-none border border-black/5 dark:border-white/5 focus:border-brand-pink" placeholder="#logs-ausencia" /></label>
-                        <label class="grid gap-2 text-[13px] font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wider">Título do painel<input class="bg-gray-100 dark:bg-gray-800 text-black dark:text-white rounded-2xl px-4 py-3 outline-none border border-black/5 dark:border-white/5 focus:border-brand-pink" value="Solicitação de Ausência" /></label>
+            <section id="panel-section-ausencia" class="panel-section hidden">
+                <div class="bg-ios-card dark:bg-ios-darkCard rounded-[24px] shadow-sm border border-black/5 dark:border-white/5 p-5 max-w-3xl">
+                    <h3 class="font-bold text-[20px] mb-4">Aus??ncia</h3>
+                    <div class="grid gap-4 sm:grid-cols-2">
+                        <label class="grid gap-2 text-[13px] font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wider">Canal de log<select id="absence-log-channel" class="bg-gray-100 dark:bg-gray-800 text-black dark:text-white rounded-2xl px-4 py-3 outline-none border border-black/5 dark:border-white/5 focus:border-brand-pink"><option value="">Carregue os canais do Discord</option></select></label>
+                        <label class="grid gap-2 text-[13px] font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wider">Cargos de Aus??ncia<select id="absence-role" class="bg-gray-100 dark:bg-gray-800 text-black dark:text-white rounded-2xl px-4 py-3 outline-none border border-black/5 dark:border-white/5 focus:border-brand-pink"><option value="">Carregue os cargos do Discord</option></select></label>
                     </div>
-                </div>
-                <div class="bg-ios-card dark:bg-ios-darkCard rounded-[24px] shadow-sm border border-black/5 dark:border-white/5 p-5">
-                    <h3 class="font-bold text-[20px] mb-4">Descrição do painel</h3>
-                    <textarea class="w-full min-h-[170px] bg-gray-100 dark:bg-gray-800 text-black dark:text-white rounded-2xl px-4 py-3 outline-none border border-black/5 dark:border-white/5 focus:border-brand-pink resize-none">Informe o período, motivo e previsão de retorno.</textarea>
                 </div>
             </section>
 
-            <section id="panel-section-promocoes" class="panel-section hidden grid grid-cols-1 lg:grid-cols-2 gap-6">
-                <div class="bg-ios-card dark:bg-ios-darkCard rounded-[24px] shadow-sm border border-black/5 dark:border-white/5 p-5">
-                    <h3 class="font-bold text-[20px] mb-4">Promoções</h3>
-                    <div class="grid gap-4">
-                        <label class="grid gap-2 text-[13px] font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wider">Cargo geral<input class="bg-gray-100 dark:bg-gray-800 text-black dark:text-white rounded-2xl px-4 py-3 outline-none border border-black/5 dark:border-white/5 focus:border-brand-pink" placeholder="@Membros" /></label>
-                        <label class="grid gap-2 text-[13px] font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wider">Cargo filtro<input class="bg-gray-100 dark:bg-gray-800 text-black dark:text-white rounded-2xl px-4 py-3 outline-none border border-black/5 dark:border-white/5 focus:border-brand-pink" placeholder="@Elegível" /></label>
-                        <label class="grid gap-2 text-[13px] font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wider">Canal de destino<input class="bg-gray-100 dark:bg-gray-800 text-black dark:text-white rounded-2xl px-4 py-3 outline-none border border-black/5 dark:border-white/5 focus:border-brand-pink" placeholder="#promocoes" /></label>
-                    </div>
-                </div>
-                <div class="bg-ios-card dark:bg-ios-darkCard rounded-[24px] shadow-sm border border-black/5 dark:border-white/5 p-5">
-                    <h3 class="font-bold text-[20px] mb-4">Cargos de movimentação</h3>
-                    <div class="grid gap-4">
-                        <label class="grid gap-2 text-[13px] font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wider">Cargo promoção<input class="bg-gray-100 dark:bg-gray-800 text-black dark:text-white rounded-2xl px-4 py-3 outline-none border border-black/5 dark:border-white/5 focus:border-brand-pink" placeholder="@Promovido" /></label>
-                        <label class="grid gap-2 text-[13px] font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wider">Cargo rebaixamento<input class="bg-gray-100 dark:bg-gray-800 text-black dark:text-white rounded-2xl px-4 py-3 outline-none border border-black/5 dark:border-white/5 focus:border-brand-pink" placeholder="@Rebaixado" /></label>
-                        <label class="grid gap-2 text-[13px] font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wider">Cargo gerência<input class="bg-gray-100 dark:bg-gray-800 text-black dark:text-white rounded-2xl px-4 py-3 outline-none border border-black/5 dark:border-white/5 focus:border-brand-pink" placeholder="@Gerência" /></label>
+            <section id="panel-section-promocoes" class="panel-section hidden">
+                <div class="bg-ios-card dark:bg-ios-darkCard rounded-[24px] shadow-sm border border-black/5 dark:border-white/5 p-5 max-w-4xl">
+                    <h3 class="font-bold text-[20px] mb-4">Promo????es</h3>
+                    <div class="grid gap-4 sm:grid-cols-2">
+                        <label class="grid gap-2 text-[13px] font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wider">Cargo Ger??ncia para men????o<select id="promotion-mention-manager-role" class="bg-gray-100 dark:bg-gray-800 text-black dark:text-white rounded-2xl px-4 py-3 outline-none border border-black/5 dark:border-white/5 focus:border-brand-pink"><option value="">Carregue os cargos do Discord</option></select></label>
+                        <label class="grid gap-2 text-[13px] font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wider">Cargos para ignorar<select id="promotion-ignore-role" class="bg-gray-100 dark:bg-gray-800 text-black dark:text-white rounded-2xl px-4 py-3 outline-none border border-black/5 dark:border-white/5 focus:border-brand-pink"><option value="">Carregue os cargos do Discord</option></select></label>
+                        <label class="grid gap-2 text-[13px] font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wider">Cargos de filtro<select id="promotion-filter-role" class="bg-gray-100 dark:bg-gray-800 text-black dark:text-white rounded-2xl px-4 py-3 outline-none border border-black/5 dark:border-white/5 focus:border-brand-pink"><option value="">Carregue os cargos do Discord</option></select></label>
+                        <label class="grid gap-2 text-[13px] font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wider">Cargos de ger??ncia<select id="promotion-manager-role" class="bg-gray-100 dark:bg-gray-800 text-black dark:text-white rounded-2xl px-4 py-3 outline-none border border-black/5 dark:border-white/5 focus:border-brand-pink"><option value="">Carregue os cargos do Discord</option></select></label>
+                        <label class="sm:col-span-2 grid gap-2 text-[13px] font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wider">Modelo de mensagem<select id="promotion-message-template-type" onchange="handlePromotionTemplateTypeChange()" class="bg-gray-100 dark:bg-gray-800 text-black dark:text-white rounded-2xl px-4 py-3 outline-none border border-black/5 dark:border-white/5 focus:border-brand-pink"><option value="promotion">Promo????o</option><option value="demotion">Rebaixar</option></select></label>
+                        <label class="sm:col-span-2 grid gap-2 text-[13px] font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wider">Texto do modelo<textarea id="promotion-message-template-text" class="min-h-[220px] bg-gray-100 dark:bg-gray-800 text-black dark:text-white rounded-2xl px-4 py-3 outline-none border border-black/5 dark:border-white/5 focus:border-brand-pink resize-y"></textarea></label>
                     </div>
                 </div>
             </section>
@@ -1980,8 +1971,8 @@
     <div onclick="event.stopPropagation()" class="w-full max-w-2xl bg-white dark:bg-[#111111] text-gray-950 dark:text-white rounded-2xl border border-black/10 dark:border-white/10 shadow-2xl shadow-black/20 dark:shadow-black/50 overflow-hidden">
         <div class="p-6 border-b border-black/10 dark:border-white/10 flex items-start justify-between gap-4">
             <div>
-                <h3 class="text-[22px] font-black tracking-tight">Nova ação</h3>
-                <p class="text-[13px] text-gray-500 dark:text-gray-400 mt-1">Preencha os dados da ação e a quantidade de vagas.</p>
+                <h3 class="text-[22px] font-black tracking-tight">Nova a????o</h3>
+                <p class="text-[13px] text-gray-500 dark:text-gray-400 mt-1">Preencha os dados da a????o e a quantidade de vagas.</p>
             </div>
             <button onclick="closeCentralActionModal()" class="h-9 w-9 rounded-lg border border-black/10 dark:border-white/10 text-gray-500 dark:text-gray-400 hover:text-brand-pink hover:border-brand-pink transition-colors">
                 <i class="fa-solid fa-xmark"></i>
@@ -1990,16 +1981,16 @@
 
         <div class="p-6 space-y-5">
             <label class="block">
-                <span class="block text-[10px] uppercase tracking-wider text-gray-500 dark:text-gray-400 mb-2">Nome da Ação</span>
+                <span class="block text-[10px] uppercase tracking-wider text-gray-500 dark:text-gray-400 mb-2">Nome da A????o</span>
                 <input id="central-action-name" type="text" placeholder="Ex: Banco Central" class="w-full bg-gray-100 dark:bg-[#0A0A0A] border border-black/10 dark:border-white/10 rounded-xl p-4 text-[14px] text-gray-950 dark:text-white outline-none focus:border-brand-pink transition-all" />
             </label>
 
             <label class="block">
                 <span class="block text-[10px] uppercase tracking-wider text-gray-500 dark:text-gray-400 mb-2">Categoria</span>
                 <select id="central-action-category" class="w-full bg-gray-100 dark:bg-[#0A0A0A] border border-black/10 dark:border-white/10 rounded-xl p-4 text-[14px] text-gray-950 dark:text-white outline-none focus:border-brand-pink transition-all">
-                    <option value="featured">Em destaque (para ações do dia)</option>
-                    <option value="scheduled">Ações Agendadas (para ações de outro dia)</option>
-                    <option value="ended">Ações Encerradas (histórico)</option>
+                    <option value="featured">Em destaque (para a????es do dia)</option>
+                    <option value="scheduled">A????es Agendadas (para a????es de outro dia)</option>
+                    <option value="ended">A????es Encerradas (hist??rico)</option>
                 </select>
             </label>
 
@@ -2020,7 +2011,7 @@
                     <input id="central-action-date" type="date" class="w-full bg-gray-100 dark:bg-[#0A0A0A] border border-black/10 dark:border-white/10 rounded-xl p-4 text-[14px] text-gray-950 dark:text-white outline-none focus:border-brand-pink transition-all" />
                 </label>
                 <label class="block">
-                    <span class="block text-[10px] uppercase tracking-wider text-gray-500 dark:text-gray-400 mb-2">Horário</span>
+                    <span class="block text-[10px] uppercase tracking-wider text-gray-500 dark:text-gray-400 mb-2">Hor??rio</span>
                     <input id="central-action-time" type="time" class="w-full bg-gray-100 dark:bg-[#0A0A0A] border border-black/10 dark:border-white/10 rounded-xl p-4 text-[14px] text-gray-950 dark:text-white outline-none focus:border-brand-pink transition-all" />
                 </label>
             </div>
@@ -2036,7 +2027,7 @@
 
         <div class="p-6 border-t border-black/10 dark:border-white/10 flex flex-col sm:flex-row justify-end gap-3">
             <button onclick="closeCentralActionModal()" class="px-4 py-3 rounded-xl border border-black/10 dark:border-white/10 text-[13px] font-bold text-gray-600 dark:text-gray-300 hover:text-brand-pink hover:border-brand-pink transition-colors">Cancelar</button>
-        <button onclick="submitCentralActionModal()" class="px-4 py-3 rounded-xl bg-brand-pink text-white text-[13px] font-bold shadow-lg shadow-brand-pink/20 hover:bg-blue-500 transition-colors">Criar Ação</button>
+        <button onclick="submitCentralActionModal()" class="px-4 py-3 rounded-xl bg-brand-pink text-white text-[13px] font-bold shadow-lg shadow-brand-pink/20 hover:bg-blue-500 transition-colors">Criar A????o</button>
         </div>
     </div>
 </div>
@@ -2098,12 +2089,12 @@
     <script>
         // --- Data ---
         const products = [
-            { id: 'bot-1', name: 'AlphaTrade', type: 'Financeiro', price: 149.90, icon: 'fa-chart-line', desc: 'Bot de trading automatizado de alta frequência para cripto e ações.', specs: ['Análise em tempo real', 'Stop-loss automático', 'Logs exportáveis'] },
-            { id: 'bot-2', name: 'ModMaster Pro', type: 'Comunidade', price: 49.90, icon: 'fa-shield-halved', desc: 'A solução definitiva para moderação de servidores Discord e Telegram.', specs: ['Anti-spam IA', 'Sistema de Tickets', 'Logs detalhados'] },
-            { id: 'bot-3', name: 'DataScraper X', type: 'Utilitário', price: 89.90, icon: 'fa-spider', desc: 'Rastreador web inteligente para extração de dados e monitoramento de preços.', specs: ['Proxy rotativo', 'Exportação JSON/CSV', 'Bypass de Captcha'] },
-            { id: 'bot-4', name: 'AutoSocial', type: 'Marketing', price: 69.90, icon: 'fa-hashtag', desc: 'Automação de postagens e engajamento orgânico para redes sociais.', specs: ['Agendamento', 'Auto-reply', 'Análise de métricas'] },
-            { id: 'bot-5', name: 'SupportGenie', type: 'Atendimento', price: 119.90, icon: 'fa-headset', desc: 'Bot de atendimento ao cliente via WhatsApp integrado com ChatGPT.', specs: ['Integração OpenAI', 'Treinamento customizado', 'Transferência humana'] },
-            { id: 'bot-6', name: 'NetworkGuard', type: 'Segurança', price: 199.90, icon: 'fa-lock', desc: 'Monitoramento ativo de rede e bloqueio de IPs maliciosos.', specs: ['Defesa DDoS', 'Alertas por SMS', 'Relatórios semanais'] },
+            { id: 'bot-1', name: 'AlphaTrade', type: 'Financeiro', price: 149.90, icon: 'fa-chart-line', desc: 'Bot de trading automatizado de alta frequ??ncia para cripto e a????es.', specs: ['An??lise em tempo real', 'Stop-loss autom??tico', 'Logs export??veis'] },
+            { id: 'bot-2', name: 'ModMaster Pro', type: 'Comunidade', price: 49.90, icon: 'fa-shield-halved', desc: 'A solu????o definitiva para modera????o de servidores Discord e Telegram.', specs: ['Anti-spam IA', 'Sistema de Tickets', 'Logs detalhados'] },
+            { id: 'bot-3', name: 'DataScraper X', type: 'Utilit??rio', price: 89.90, icon: 'fa-spider', desc: 'Rastreador web inteligente para extra????o de dados e monitoramento de pre??os.', specs: ['Proxy rotativo', 'Exporta????o JSON/CSV', 'Bypass de Captcha'] },
+            { id: 'bot-4', name: 'AutoSocial', type: 'Marketing', price: 69.90, icon: 'fa-hashtag', desc: 'Automa????o de postagens e engajamento org??nico para redes sociais.', specs: ['Agendamento', 'Auto-reply', 'An??lise de m??tricas'] },
+            { id: 'bot-5', name: 'SupportGenie', type: 'Atendimento', price: 119.90, icon: 'fa-headset', desc: 'Bot de atendimento ao cliente via WhatsApp integrado com ChatGPT.', specs: ['Integra????o OpenAI', 'Treinamento customizado', 'Transfer??ncia humana'] },
+            { id: 'bot-6', name: 'NetworkGuard', type: 'Seguran??a', price: 199.90, icon: 'fa-lock', desc: 'Monitoramento ativo de rede e bloqueio de IPs maliciosos.', specs: ['Defesa DDoS', 'Alertas por SMS', 'Relat??rios semanais'] },
         ];
 
         let cart = [];
@@ -2161,20 +2152,81 @@
     }
 
     function loginWithDiscord() {
-        showToast('Autenticando com Discord...', 'success');
-        setTimeout(() => enterOneCore(), 650);
+        window.location.href = '/api/auth/discord/login';
+    }
+
+    function applyDiscordSessionUser(user) {
+        if (!user) return;
+
+        localStorage.setItem('oneCurrentDiscordUserId', user.id);
+        const displayName = user.displayName || user.globalName || user.username || 'Usu??rio Discord';
+        localStorage.setItem('oneDiscordDisplayName', displayName);
+        const initials = displayName
+            .split(' ')
+            .filter(Boolean)
+            .slice(0, 2)
+            .map((part) => part[0])
+            .join('')
+            .toUpperCase() || 'DC';
+
+        document.querySelectorAll('[data-discord-display-name]').forEach((element) => {
+            element.textContent = displayName;
+        });
+        document.querySelectorAll('[data-discord-initials]').forEach((element) => {
+            element.textContent = initials;
+        });
+
+        const hubUser = document.getElementById('hub-user-name');
+        if (hubUser) hubUser.textContent = displayName;
+    }
+
+    function showDiscordLoginGate() {
+        document.getElementById('view-login')?.classList.remove('hidden');
+        document.getElementById('app-nav')?.classList.add('hidden');
+        ['home', 'central', 'dashboard', 'configure'].forEach((viewName) => {
+            document.getElementById(`view-${viewName}`)?.classList.add('hidden');
+        });
+    }
+
+    async function initializeDiscordLoginGate() {
+        showDiscordLoginGate();
+
+        const params = new URLSearchParams(window.location.search);
+        const authError = params.get('authError');
+        if (authError) {
+            showToast(decodeURIComponent(authError), 'error');
+            window.history.replaceState({}, document.title, window.location.pathname);
+            return;
+        }
+
+        try {
+            const response = await fetch('/api/auth/discord/me');
+            const payload = await response.json();
+            if (!response.ok || !payload.authenticated) return;
+
+            applyDiscordSessionUser(payload.user);
+            enterOneCore();
+
+            if (params.get('auth') === 'discord') {
+                showToast('Login via Discord realizado.', 'success');
+                window.history.replaceState({}, document.title, window.location.pathname);
+            }
+        } catch {
+            showDiscordLoginGate();
+        }
     }
 
     function updateHubGreeting() {
         const hour = new Date().getHours();
         const greeting = hour < 12 ? 'Bom dia' : hour < 18 ? 'Boa tarde' : 'Boa noite';
-        const emoji = hour < 12 ? '☀️' : hour < 18 ? '🌤️' : '🌙';
+        const emoji = hour < 12 ? '??????' : hour < 18 ? '???????' : '????';
         const greetingEl = document.getElementById('hub-greeting-period');
         const userEl = document.getElementById('hub-user-name');
         const emojiEl = document.getElementById('hub-greeting-emoji');
+        const savedDiscordName = localStorage.getItem('oneDiscordDisplayName') || 'Maria Silva';
 
         if (greetingEl) greetingEl.textContent = greeting;
-        if (userEl) userEl.textContent = 'Maria Silva';
+        if (userEl) userEl.textContent = savedDiscordName;
         if (emojiEl) emojiEl.textContent = emoji;
     }
 
@@ -2229,6 +2281,7 @@
         };
         let savedRegisterSettings = null;
         let discordMembers = [];
+        let discordRoles = [];
         let registerRequests = [];
         let approvedRegisterRequests = [];
 
@@ -2324,6 +2377,9 @@
                 discordMembers = payload.members || [];
                 fillDiscordMemberSelect('register-recruiter');
                 fillDiscordMemberSelect('register-indicated');
+                fillDiscordMemberSelect('punishment-member-select');
+                fillPromotionMemberSelect();
+                syncCurrentDiscordMemberRoles();
             } catch (error) {
                 showToast(error.message || 'Erro ao carregar usuarios.', 'error');
             }
@@ -2333,14 +2389,30 @@
             const select = document.getElementById(selectId);
             if (!select) return;
 
-            select.innerHTML = '<option value="">Selecione um usuario</option>';
+            const placeholder = selectId === 'punishment-member-select'
+                ? 'Selecione um membro do servidor'
+                : 'Selecione um usuario';
+            select.innerHTML = `<option value="">${placeholder}</option>`;
             discordMembers.forEach((member) => {
                 const option = document.createElement('option');
                 option.value = member.id;
-                option.textContent = member.name;
+                option.textContent = selectId === 'punishment-member-select'
+                    ? `${member.name} (ID: ${member.id})`
+                    : member.name;
                 option.dataset.memberName = member.name;
                 select.appendChild(option);
             });
+        }
+
+        function syncCurrentDiscordMemberRoles(discordUserId = localStorage.getItem('oneCurrentDiscordUserId'), updateAccess = true) {
+            if (!discordUserId) return null;
+
+            const currentMember = discordMembers.find((member) => member.id === discordUserId);
+            if (!currentMember) return null;
+
+            localStorage.setItem('oneCurrentDiscordRoleIds', JSON.stringify(currentMember.roles || []));
+            if (updateAccess) applyCentralFarmAccess();
+            return currentMember;
         }
 
         function openRegisterModal() {
@@ -2378,6 +2450,7 @@
 
             try {
                 localStorage.setItem('oneCurrentDiscordUserId', discordUserId);
+                syncCurrentDiscordMemberRoles(discordUserId);
                 const response = await fetch('/api/register-requests', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
@@ -2464,7 +2537,22 @@
         }
 
         if (activePanel === 'panel-section-farm') {
-            saveFarmAdminRole();
+            await saveFarmSettings();
+            return;
+        }
+
+        if (activePanel === 'panel-section-punicoes') {
+            savePunishmentSettings();
+            return;
+        }
+
+        if (activePanel === 'panel-section-ausencia') {
+            saveAbsenceSettings();
+            return;
+        }
+
+        if (activePanel === 'panel-section-promocoes') {
+            savePromotionSettings();
             return;
         }
 
@@ -2505,7 +2593,9 @@
                 throw new Error(channelsPayload.error || 'Nao foi possivel carregar os canais.');
             }
 
-            fillRegisterRoleSelects(payload.roles || []);
+            discordRoles = payload.roles || [];
+            fillRegisterRoleSelects(discordRoles);
+            fillPromotionTargetRoleSelect(discordRoles);
             fillDiscordChannelSelects(channelsPayload.channels || []);
             updateConfigurationState(true);
             showToast('Cargos e canais carregados do Discord.', 'success');
@@ -2526,7 +2616,12 @@
             document.getElementById('punishment-role-verbal'),
             document.getElementById('punishment-role-first'),
             document.getElementById('punishment-role-second'),
-            document.getElementById('punishment-role-third')
+            document.getElementById('punishment-role-third'),
+            document.getElementById('absence-role'),
+            document.getElementById('promotion-mention-manager-role'),
+            document.getElementById('promotion-ignore-role'),
+            document.getElementById('promotion-filter-role'),
+            document.getElementById('promotion-manager-role')
         ];
 
         selects.forEach((select) => {
@@ -2548,19 +2643,453 @@
 
         applySavedRegisterRoles();
         applySavedFarmAdminRole();
+        applySavedPunishmentSettings();
+        applySavedAbsenceSettings();
+        applySavedPromotionSettings();
     }
 
-    function saveFarmAdminRole() {
-        const adminRole = getSelectedRole('farm-role-admin');
-        saveFarmGlobalGoal();
-        if (!adminRole) {
-            applyCentralFarmAccess();
-            showToast('Meta global salva. Selecione o Administrador de Farm quando carregar os cargos.', 'success');
+    function getSavedPromotionSettings() {
+        try {
+            return JSON.parse(localStorage.getItem('onePromotionSettings') || 'null');
+        } catch {
+            return null;
+        }
+    }
+
+    const defaultPromotionMessageTemplates = {
+        promotion: `HUHU! TEMOS NOVIDADES! ????
+
+Parab??ns, (mencionar o usu??rio selecionado)! Seu esfor??o e dedica????o brilharam tanto que voc?? acaba de subir de n??vel! ???
+
+??????? Novo Cargo: (mencionar cargo escolhido)
+
+Estamos muito felizes em ver seu crescimento por aqui. Continue com esse brilho e vamos juntos! ????????`,
+        demotion: `Opa, passando para dar um aviso! ???
+
+Ol??, (mencionar usu??rio), informamos que seu cargo foi atualizado para (mencionar cargo escolhido)
+
+N??o desanime! As portas continuam abertas e estamos aqui para te apoiar a subir de novo em breve. Qualquer d??vida, ?? s?? chamar a gente! ???????`
+    };
+
+    let promotionTemplateDrafts = null;
+
+    function getPromotionTemplateDrafts() {
+        if (!promotionTemplateDrafts) {
+            const saved = getSavedPromotionSettings()?.templates || {};
+            promotionTemplateDrafts = {
+                promotion: saved.promotion || defaultPromotionMessageTemplates.promotion,
+                demotion: saved.demotion || defaultPromotionMessageTemplates.demotion
+            };
+        }
+
+        return promotionTemplateDrafts;
+    }
+
+    function syncPromotionTemplateField() {
+        const select = document.getElementById('promotion-message-template-type');
+        const textarea = document.getElementById('promotion-message-template-text');
+        if (!select || !textarea) return;
+
+        const templates = getPromotionTemplateDrafts();
+        const selectedKey = select.value || 'promotion';
+        select.dataset.currentKey = selectedKey;
+        textarea.value = templates[selectedKey] || '';
+    }
+
+    function handlePromotionTemplateTypeChange() {
+        const select = document.getElementById('promotion-message-template-type');
+        const textarea = document.getElementById('promotion-message-template-text');
+        if (!select || !textarea) return;
+
+        const templates = getPromotionTemplateDrafts();
+        const previousKey = select.dataset.currentKey || 'promotion';
+        templates[previousKey] = textarea.value;
+        select.dataset.currentKey = select.value || 'promotion';
+        textarea.value = templates[select.dataset.currentKey] || '';
+    }
+
+    function getPromotionTemplatesFromPanel() {
+        const select = document.getElementById('promotion-message-template-type');
+        const textarea = document.getElementById('promotion-message-template-text');
+        const templates = getPromotionTemplateDrafts();
+
+        if (select && textarea) {
+            templates[select.dataset.currentKey || select.value || 'promotion'] = textarea.value;
+        }
+
+        return templates;
+    }
+
+    function fillPromotionMemberSelect() {
+        const select = document.getElementById('promotion-member-select');
+        if (!select) return;
+
+        const previousValue = select.value;
+        select.innerHTML = '<option value="">Selecione um membro do servidor</option>';
+        discordMembers.forEach((member) => {
+            const option = document.createElement('option');
+            option.value = member.id;
+            option.textContent = `${member.name} (ID: ${member.id})`;
+            option.dataset.memberName = member.name;
+            select.appendChild(option);
+        });
+
+        if (previousValue && discordMembers.some((member) => member.id === previousValue)) {
+            select.value = previousValue;
+        }
+    }
+
+    function fillPromotionTargetRoleSelect(roles = discordRoles) {
+        const select = document.getElementById('promotion-target-role-select');
+        if (!select) return;
+
+        const previousValue = select.value;
+        select.innerHTML = '<option value="">Selecione o cargo escolhido</option>';
+        roles.forEach((role) => {
+            const option = document.createElement('option');
+            option.value = role.id;
+            option.textContent = `@${role.name}`;
+            option.dataset.roleName = role.name;
+            select.appendChild(option);
+        });
+
+        if (previousValue && roles.some((role) => role.id === previousValue)) {
+            select.value = previousValue;
+        }
+    }
+
+    function ensurePromotionGeneratedMessageField() {
+        let textarea = document.getElementById('promotion-generated-message');
+        if (textarea) return textarea;
+
+        const reasonLabel = document.getElementById('promotion-target-role-select')?.closest('.grid')?.querySelector('label.md\\:col-span-2');
+        if (!reasonLabel) return null;
+
+        const label = document.createElement('label');
+        label.className = 'md:col-span-2';
+        label.innerHTML = `
+            <span class="block text-[10px] uppercase tracking-wider text-gray-400 mb-2">Mensagem gerada</span>
+            <textarea id="promotion-generated-message" readonly class="w-full bg-[#0A0A0A] border border-white/10 rounded-xl p-4 text-[14px] text-white outline-none h-40 resize-none placeholder-white/20" placeholder="A mensagem com as men????es aparecer?? aqui ao confirmar."></textarea>
+        `;
+        reasonLabel.insertAdjacentElement('afterend', label);
+        return label.querySelector('textarea');
+    }
+
+    function buildPromotionMentionMessage(type) {
+        const memberSelect = document.getElementById('promotion-member-select');
+        const roleSelect = document.getElementById('promotion-target-role-select');
+        if (!memberSelect?.value || !roleSelect?.value) {
+            showToast('Selecione o membro e o cargo escolhido.', 'error');
+            return null;
+        }
+
+        const templates = getPromotionTemplateDrafts();
+        const userMention = `<@${memberSelect.value}>`;
+        const roleMention = `<@&${roleSelect.value}>`;
+
+        return (templates[type] || '')
+            .replaceAll('(mencionar o usu??rio selecionado)', userMention)
+            .replaceAll('(mencionar usu??rio)', userMention)
+            .replaceAll('(mencionar cargo escolhido)', roleMention);
+    }
+
+    function submitPromotionMovement(type) {
+        const message = buildPromotionMentionMessage(type);
+        if (!message) return;
+
+        const output = ensurePromotionGeneratedMessageField();
+        if (output) output.value = message;
+        navigator.clipboard?.writeText(message).catch(() => {});
+        showToast(type === 'promotion' ? 'Mensagem de promo????o gerada com men????es.' : 'Mensagem de rebaixamento gerada com men????es.', 'success');
+    }
+
+    function bindPromotionMovementButtons() {
+        const buttons = Array.from(document.querySelectorAll('#central-section-promocoes button'));
+        buttons.find((button) => button.textContent.includes('promo'))?.setAttribute('onclick', "submitPromotionMovement('promotion')");
+        buttons.find((button) => button.textContent.includes('rebaix'))?.setAttribute('onclick', "submitPromotionMovement('demotion')");
+        buttons.forEach((button) => {
+            if (button.textContent.includes('promo') || button.textContent.includes('rebaix')) {
+                button.type = 'button';
+            }
+        });
+        ensurePromotionGeneratedMessageField();
+    }
+
+    function savePromotionSettings() {
+        const settings = {
+            mentionManagerRole: getSelectedRole('promotion-mention-manager-role'),
+            ignoreRole: getSelectedRole('promotion-ignore-role'),
+            filterRole: getSelectedRole('promotion-filter-role'),
+            managerRole: getSelectedRole('promotion-manager-role'),
+            templates: getPromotionTemplatesFromPanel()
+        };
+
+        if (!settings.mentionManagerRole || !settings.ignoreRole || !settings.filterRole || !settings.managerRole) {
+            showToast('Selecione todos os cargos de Promo????es antes de salvar.', 'error');
             return;
         }
+
+        localStorage.setItem('onePromotionSettings', JSON.stringify(settings));
+        showToast('Configura????o de Promo????es salva.', 'success');
+    }
+
+    function applySavedPromotionSettings() {
+        const settings = getSavedPromotionSettings();
+        if (!settings) return;
+
+        setRegisterRoleSelect('promotion-mention-manager-role', settings.mentionManagerRole);
+        setRegisterRoleSelect('promotion-ignore-role', settings.ignoreRole);
+        setRegisterRoleSelect('promotion-filter-role', settings.filterRole);
+        setRegisterRoleSelect('promotion-manager-role', settings.managerRole);
+        promotionTemplateDrafts = {
+            promotion: settings.templates?.promotion || defaultPromotionMessageTemplates.promotion,
+            demotion: settings.templates?.demotion || defaultPromotionMessageTemplates.demotion
+        };
+        syncPromotionTemplateField();
+    }
+
+    function getSavedAbsenceSettings() {
+        try {
+            return JSON.parse(localStorage.getItem('oneAbsenceSettings') || 'null');
+        } catch {
+            return null;
+        }
+    }
+
+    function saveAbsenceSettings() {
+        const settings = {
+            logChannel: getSelectedChannel('absence-log-channel'),
+            role: getSelectedRole('absence-role')
+        };
+
+        if (!settings.logChannel || !settings.role) {
+            showToast('Selecione o canal de log e o cargo de Aus??ncia antes de salvar.', 'error');
+            return;
+        }
+
+        localStorage.setItem('oneAbsenceSettings', JSON.stringify(settings));
+        showToast('Configura????o de Aus??ncia salva.', 'success');
+    }
+
+    function applySavedAbsenceSettings() {
+        const settings = getSavedAbsenceSettings();
+        if (!settings) return;
+
+        setChannelSelect('absence-log-channel', settings.logChannel);
+        setRegisterRoleSelect('absence-role', settings.role);
+    }
+
+    function getSavedPunishmentSettings() {
+        try {
+            return JSON.parse(localStorage.getItem('onePunishmentSettings') || 'null');
+        } catch {
+            return null;
+        }
+    }
+
+    function getPunishmentRolesFromPanel() {
+        return {
+            verbal: getSelectedRole('punishment-role-verbal'),
+            first: getSelectedRole('punishment-role-first'),
+            second: getSelectedRole('punishment-role-second'),
+            third: getSelectedRole('punishment-role-third')
+        };
+    }
+
+    function savePunishmentSettings() {
+        const settings = {
+            roles: getPunishmentRolesFromPanel(),
+            logChannel: getSelectedChannel('punishment-log-channel')
+        };
+
+        if (!settings.roles.verbal || !settings.roles.first || !settings.roles.second || !settings.roles.third) {
+            showToast('Selecione todos os cargos de puni????o antes de salvar.', 'error');
+            return;
+        }
+
+        localStorage.setItem('onePunishmentSettings', JSON.stringify(settings));
+        renderCentralPunishmentSanctions(settings.roles);
+        renderPunishmentSummary();
+        showToast('Configura????o de Puni????es salva.', 'success');
+    }
+
+    function applySavedPunishmentSettings() {
+        const settings = getSavedPunishmentSettings();
+        if (!settings?.roles) {
+            renderCentralPunishmentSanctions(getPunishmentRolesFromPanel());
+            renderPunishmentSummary();
+            return;
+        }
+
+        setRegisterRoleSelect('punishment-role-verbal', settings.roles.verbal);
+        setRegisterRoleSelect('punishment-role-first', settings.roles.first);
+        setRegisterRoleSelect('punishment-role-second', settings.roles.second);
+        setRegisterRoleSelect('punishment-role-third', settings.roles.third);
+        renderCentralPunishmentSanctions(settings.roles);
+        renderPunishmentSummary();
+    }
+
+    function renderCentralPunishmentSanctions(roles = {}) {
+        const select = document.getElementById('punishment-sanction-select');
+        if (!select) return;
+
+        const options = [
+            ['Advert??ncia verbal', roles.verbal],
+            ['1?? advert??ncia', roles.first],
+            ['2?? advert??ncia', roles.second],
+            ['3?? advert??ncia', roles.third]
+        ].filter(([, role]) => role?.id);
+
+        select.innerHTML = options.length
+            ? '<option value="">Selecione o cargo de puni????o</option>'
+            : '<option value="">Configure os cargos em Painel > Puni????es</option>';
+
+        options.forEach(([label, role]) => {
+            const option = document.createElement('option');
+            option.value = role.id;
+            option.textContent = `${label} - @${role.name}`;
+            option.dataset.roleName = role.name;
+            option.dataset.sanctionLabel = label;
+            select.appendChild(option);
+        });
+    }
+
+    function getPunishments() {
+        try {
+            const saved = JSON.parse(localStorage.getItem('onePunishments') || '[]');
+            return Array.isArray(saved) ? saved : [];
+        } catch {
+            return [];
+        }
+    }
+
+    function savePunishments(punishments) {
+        localStorage.setItem('onePunishments', JSON.stringify(punishments));
+    }
+
+    function isCurrentMonth(dateValue) {
+        const date = new Date(dateValue);
+        const now = new Date();
+        return date.getFullYear() === now.getFullYear() && date.getMonth() === now.getMonth();
+    }
+
+    function getMemberInitials(name) {
+        return String(name || 'Membro')
+            .split(' ')
+            .filter(Boolean)
+            .slice(0, 2)
+            .map((part) => part[0])
+            .join('')
+            .toUpperCase() || 'M';
+    }
+
+    function submitPunishment() {
+        const memberSelect = document.getElementById('punishment-member-select');
+        const sanctionSelect = document.getElementById('punishment-sanction-select');
+        const descriptionInput = document.getElementById('punishment-description');
+        const memberOption = memberSelect?.selectedOptions?.[0];
+        const sanctionOption = sanctionSelect?.selectedOptions?.[0];
+        const description = descriptionInput?.value.trim();
+
+        if (!memberSelect?.value || !sanctionSelect?.value || !description) {
+            showToast('Selecione o membro, o tipo de san????o e descreva a infra????o.', 'error');
+            return;
+        }
+
+        const punishments = getPunishments();
+        punishments.unshift({
+            id: `punishment-${Date.now()}`,
+            memberId: memberSelect.value,
+            memberName: memberOption?.dataset.memberName || memberOption?.textContent || 'Membro',
+            roleId: sanctionSelect.value,
+            roleName: sanctionOption?.dataset.roleName || sanctionOption?.textContent || 'Puni????o',
+            sanctionLabel: sanctionOption?.dataset.sanctionLabel || sanctionOption?.textContent || 'Puni????o',
+            description,
+            createdAt: new Date().toISOString()
+        });
+
+        savePunishments(punishments);
+        if (descriptionInput) descriptionInput.value = '';
+        renderPunishmentSummary();
+        showToast('Puni????o registrada.', 'success');
+    }
+
+    function renderPunishmentSummary() {
+        const punishments = getPunishments();
+        const settings = getSavedPunishmentSettings();
+        const highRoleId = settings?.roles?.third?.id;
+        const activeCount = document.getElementById('punishment-active-count');
+        const monthCount = document.getElementById('punishment-month-count');
+        const highCount = document.getElementById('punishment-high-count');
+        const history = document.getElementById('punishment-history');
+
+        if (activeCount) activeCount.textContent = String(punishments.length);
+        if (monthCount) monthCount.textContent = String(punishments.filter((item) => isCurrentMonth(item.createdAt)).length);
+        if (highCount) highCount.textContent = String(punishments.filter((item) => item.roleId === highRoleId).length).padStart(2, '0');
+
+        if (!history) return;
+        if (!punishments.length) {
+            history.innerHTML = '<div class="rounded-2xl border border-white/10 bg-[#1A1A1A] p-6 text-[13px] font-semibold text-gray-400">Nenhuma puni????o registrada.</div>';
+            return;
+        }
+
+        history.innerHTML = punishments.slice(0, 6).map((item) => `
+            <article class="bg-[#1A1A1A] text-white border border-white/10 p-5 sm:p-6 rounded-2xl flex flex-col sm:flex-row sm:items-center justify-between gap-4 hover:border-brand-pink/50 transition-all">
+                <div class="flex items-center gap-5 min-w-0">
+                    <div class="w-12 h-12 rounded-xl bg-[#0A0A0A] border border-white/10 flex items-center justify-center font-bold text-[18px]">${escapeHtml(getMemberInitials(item.memberName))}</div>
+                    <div class="min-w-0">
+                        <h5 class="font-bold truncate">${escapeHtml(item.memberName)}</h5>
+                        <p class="text-[12px] text-gray-400 mt-0.5 truncate">Motivo: ${escapeHtml(item.description)}</p>
+                    </div>
+                </div>
+                <div class="sm:text-right">
+                    <span class="inline-block text-[10px] px-3 py-1 rounded-full bg-rose-500/10 text-rose-500 font-bold uppercase tracking-wider mb-1">${escapeHtml(item.sanctionLabel)}</span>
+                    <p class="text-[12px] text-gray-400">${new Date(item.createdAt).toLocaleDateString('pt-BR')}</p>
+                </div>
+            </article>
+        `).join('');
+    }
+
+    async function saveFarmSettings() {
+        const adminRole = getSelectedRole('farm-role-admin');
+        const goalRoles = {
+            complete: getSelectedRole('farm-role-complete'),
+            incomplete: getSelectedRole('farm-role-incomplete'),
+            noDelivery: getSelectedRole('farm-role-no-delivery'),
+            admin: adminRole
+        };
+        const products = getFarmProducts().filter((product) => product.name && product.goal >= 0);
+        const globalGoal = saveFarmGlobalGoal();
+        if (!adminRole || !goalRoles.complete || !goalRoles.incomplete || !goalRoles.noDelivery) {
+            applyCentralFarmAccess();
+            showToast('Selecione todos os cargos de Farm antes de salvar.', 'error');
+            return;
+        }
+
         localStorage.setItem('oneFarmAdminRole', JSON.stringify(adminRole));
-        applyCentralFarmAccess();
-        showToast('Administrador de Farm salvo.', 'success');
+        localStorage.setItem('oneFarmGoalRoles', JSON.stringify(goalRoles));
+
+        try {
+            const response = await fetch('/api/farm-settings', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    globalGoal,
+                    manager: { id: 'current-user', name: 'Maria Silva' },
+                    goalRoles,
+                    products: products.length ? products : defaultFarmProducts
+                })
+            });
+            const payload = await response.json();
+
+            if (!response.ok) throw new Error(payload.error || 'Nao foi possivel salvar o farm.');
+            applySavedFarmRoles(payload.settings?.goalRoles || goalRoles);
+            applyCentralFarmAccess();
+            showToast('Configura????o de Farm salva.', 'success');
+        } catch (error) {
+            applyCentralFarmAccess();
+            showToast(error.message || 'Erro ao salvar farm.', 'error');
+        }
     }
 
     function getSavedFarmAdminRole() {
@@ -2572,9 +3101,57 @@
     }
 
     function applySavedFarmAdminRole() {
-        setRegisterRoleSelect('farm-role-admin', getSavedFarmAdminRole());
+        const savedRoles = getSavedFarmGoalRoles();
+        applySavedFarmRoles(savedRoles);
         applyCentralFarmGlobalGoal();
         applyCentralFarmAccess();
+    }
+
+    function getSavedFarmGoalRoles() {
+        try {
+            return JSON.parse(localStorage.getItem('oneFarmGoalRoles') || 'null');
+        } catch {
+            return null;
+        }
+    }
+
+    function applySavedFarmRoles(goalRoles) {
+        if (!goalRoles) {
+            setRegisterRoleSelect('farm-role-admin', getSavedFarmAdminRole());
+            return;
+        }
+        setRegisterRoleSelect('farm-role-complete', goalRoles.complete);
+        setRegisterRoleSelect('farm-role-incomplete', goalRoles.incomplete);
+        setRegisterRoleSelect('farm-role-no-delivery', goalRoles.noDelivery);
+        setRegisterRoleSelect('farm-role-admin', goalRoles.admin || getSavedFarmAdminRole());
+    }
+
+    async function loadFarmSettings() {
+        try {
+            const response = await fetch('/api/farm-settings');
+            const payload = await response.json();
+            if (!response.ok) throw new Error(payload.error || 'Nao foi possivel carregar o farm.');
+
+            if (payload.settings?.globalGoal) {
+                localStorage.setItem('oneFarmGlobalGoal', String(payload.settings.globalGoal));
+            }
+            if (payload.settings?.goalRoles) {
+                localStorage.setItem('oneFarmGoalRoles', JSON.stringify(payload.settings.goalRoles));
+                if (payload.settings.goalRoles.admin) {
+                    localStorage.setItem('oneFarmAdminRole', JSON.stringify(payload.settings.goalRoles.admin));
+                }
+                applySavedFarmRoles(payload.settings.goalRoles);
+            }
+            if (Array.isArray(payload.settings?.products) && payload.settings.products.length) {
+                saveFarmProducts(payload.settings.products);
+                renderFarmProductSettings();
+                renderCentralFarmProducts();
+            }
+            applyCentralFarmGlobalGoal();
+            applyCentralFarmAccess();
+        } catch {
+            applySavedFarmAdminRole();
+        }
     }
 
     function getSavedFarmGlobalGoal() {
@@ -2589,6 +3166,7 @@
         localStorage.setItem('oneFarmGlobalGoal', String(safeValue));
         if (input) input.value = String(safeValue);
         applyCentralFarmGlobalGoal();
+        return safeValue;
     }
 
     function applyCentralFarmGlobalGoal() {
@@ -2602,22 +3180,29 @@
     }
 
     function fillDiscordChannelSelects(channels) {
-        const select = document.getElementById('punishment-log-channel');
-        if (!select) return;
+        const selects = [
+            document.getElementById('punishment-log-channel'),
+            document.getElementById('absence-log-channel')
+        ];
 
-        const previousValue = select.value;
-        const placeholder = select.querySelector('option')?.textContent || 'Selecione um canal';
-        select.innerHTML = `<option value="">${placeholder}</option>`;
-        channels.forEach((channel) => {
-            const option = document.createElement('option');
-            option.value = channel.id;
-            option.textContent = `#${channel.name}`;
-            option.dataset.channelName = channel.name;
-            select.appendChild(option);
+        selects.forEach((select) => {
+            if (!select) return;
+            const previousValue = select.value;
+            const placeholder = select.querySelector('option')?.textContent || 'Selecione um canal';
+            select.innerHTML = `<option value="">${placeholder}</option>`;
+            channels.forEach((channel) => {
+                const option = document.createElement('option');
+                option.value = channel.id;
+                option.textContent = `#${channel.name}`;
+                option.dataset.channelName = channel.name;
+                select.appendChild(option);
+            });
+            if (previousValue && channels.some((channel) => channel.id === previousValue)) {
+                select.value = previousValue;
+            }
         });
-        if (previousValue && channels.some((channel) => channel.id === previousValue)) {
-            select.value = previousValue;
-        }
+
+        applySavedAbsenceSettings();
     }
 
     function applySavedRegisterRoles() {
@@ -2646,6 +3231,24 @@
         select.value = role.id;
     }
 
+    function setChannelSelect(selectId, channel) {
+        if (!channel?.id) return;
+
+        const select = document.getElementById(selectId);
+        if (!select) return;
+
+        const existingOption = Array.from(select.options).find((option) => option.value === channel.id);
+        if (!existingOption) {
+            const option = document.createElement('option');
+            option.value = channel.id;
+            option.textContent = `#${channel.name}`;
+            option.dataset.channelName = channel.name;
+            select.appendChild(option);
+        }
+
+        select.value = channel.id;
+    }
+
     function getSelectedRole(selectId) {
         const select = document.getElementById(selectId);
         const option = select?.selectedOptions?.[0];
@@ -2654,6 +3257,17 @@
         return {
             id: select.value,
             name: option.dataset.roleName || option.textContent.replace(/^@/, '')
+        };
+    }
+
+    function getSelectedChannel(selectId) {
+        const select = document.getElementById(selectId);
+        const option = select?.selectedOptions?.[0];
+        if (!select?.value || !option) return null;
+
+        return {
+            id: select.value,
+            name: option.dataset.channelName || option.textContent.replace(/^#/, '')
         };
     }
 
@@ -2867,7 +3481,7 @@
         icon?.classList.add('animate-spin');
         setTimeout(() => {
             icon?.classList.remove('animate-spin');
-            if (updatedAt) updatedAt.textContent = `Atualizado às ${time}`;
+            if (updatedAt) updatedAt.textContent = `Atualizado ??s ${time}`;
             showToast('Hierarquia atualizada.', 'success');
         }, 650);
     }
@@ -2897,7 +3511,7 @@
             time: '21:30',
             slots: 16,
             reserves: 3,
-            leader: 'Direção Raze',
+            leader: 'Dire????o Raze',
             weapon: 'Fuzil e pistola',
             status: 'Iniciando'
         },
@@ -2908,7 +3522,7 @@
             time: '22:00',
             slots: 10,
             reserves: 2,
-            leader: 'Gerência One',
+            leader: 'Ger??ncia One',
             weapon: 'Pistola',
             status: 'Organizando'
         },
@@ -2919,7 +3533,7 @@
             time: '20:30',
             slots: 12,
             reserves: 1,
-            leader: 'Liderança Tática',
+            leader: 'Lideran??a T??tica',
             weapon: 'Fuzil',
             status: 'Agendada'
         }
@@ -2995,7 +3609,7 @@ function createCentralAction() {
          <article class="bg-[#111111] text-white border border-white/10 p-5 rounded-xl hover:border-brand-pink/30 transition-colors">
              <div class="flex justify-between items-start mb-6">
                  <span class="text-[10px] font-bold uppercase tracking-widest ${statusClass} px-2.5 py-1 rounded">${escapeActionText(action.status)}</span>
-                 <span class="text-[12px] text-gray-400">${formatCentralActionDate(action.date)} • ${escapeActionText(action.time)}</span>
+                 <span class="text-[12px] text-gray-400">${formatCentralActionDate(action.date)} ??? ${escapeActionText(action.time)}</span>
              </div>
              <h5 class="font-bold text-[20px] mb-1">${escapeActionText(action.name)}</h5>
              <p class="text-[13px] text-gray-400 mb-5">Puxada por: ${escapeActionText(action.leader)}</p>
@@ -3032,6 +3646,17 @@ function createCentralAction() {
          card.dataset.createdActionCard = 'true';
          container.appendChild(card);
      });
+     updateCentralActionCategoryCounts();
+ }
+
+ function updateCentralActionCategoryCounts() {
+     const scheduledCount = document.querySelectorAll('#central-scheduled-actions > article').length;
+     const endedCount = document.querySelectorAll('#central-ended-actions > article').length;
+     const scheduledBadge = document.getElementById('central-scheduled-count');
+     const endedBadge = document.getElementById('central-ended-count');
+
+     if (scheduledBadge) scheduledBadge.textContent = scheduledCount === 1 ? '1 agendada' : `${scheduledCount} agendadas`;
+     if (endedBadge) endedBadge.textContent = endedCount === 1 ? '1 encerrada' : `${endedCount} encerradas`;
  }
 
  function submitCentralActionModal() {
@@ -3044,12 +3669,12 @@ function createCentralAction() {
      const weapon = document.getElementById('central-action-weapon')?.value.trim();
 
      if (!name || !date || !time || !weapon || !min || !max) {
-         showToast('Preencha todos os campos da ação.', 'error');
+         showToast('Preencha todos os campos da a????o.', 'error');
          return;
      }
 
      if (min > max) {
-         showToast('Vagas Min não pode ser maior que Vagas Max.', 'error');
+         showToast('Vagas Min n??o pode ser maior que Vagas Max.', 'error');
          return;
      }
 
@@ -3063,7 +3688,7 @@ function createCentralAction() {
          minSlots: min,
          slots: max,
          reserves: 0,
-         leader: 'Direção Raze',
+         leader: 'Dire????o Raze',
          weapon,
          status: getCentralActionCategoryStatus(category),
          createdFromModal: true
@@ -3071,7 +3696,7 @@ function createCentralAction() {
      selectedCentralActionId = centralEditableActions[0].id;
      renderCentralActionEditor();
      renderCentralCreatedActions();
-     showToast('Ação criada com sucesso.', 'success');
+     showToast('A????o criada com sucesso.', 'success');
  }
 
  function toggleCentralActionEditor(forceOpen) {
@@ -3110,7 +3735,7 @@ function createCentralAction() {
                      <strong class="text-[14px]">${action.name}</strong>
                      <span class="text-[10px] font-black uppercase tracking-[0.14em] ${isActive ? 'text-white/80' : 'text-brand-pink'}">${action.status}</span>
                  </span>
-                 <span class="block text-[12px] mt-1 ${isActive ? 'text-white/75' : 'text-gray-500 dark:text-gray-400'}">${formatCentralActionDate(action.date)} às ${action.time} • ${action.slots} vagas</span>
+                 <span class="block text-[12px] mt-1 ${isActive ? 'text-white/75' : 'text-gray-500 dark:text-gray-400'}">${formatCentralActionDate(action.date)} ??s ${action.time} ??? ${action.slots} vagas</span>
              </button>
          `;
      }).join('');
@@ -3160,7 +3785,7 @@ function createCentralAction() {
      Object.assign(action, { name, date, time, slots, reserves, leader, status, weapon });
      renderCentralActionEditor();
      renderCentralCreatedActions();
-     showToast('Ação atualizada com sucesso.', 'success');
+     showToast('A????o atualizada com sucesso.', 'success');
  }
 
  function formatCentralActionDate(date) {
@@ -3190,8 +3815,8 @@ function createCentralAction() {
                 dotColor: 'bg-emerald-400',
                 time: '21:30',
                 name: 'Banco Central',
-                leader: 'Direção Raze',
-                description: 'lidera a operação principal do dia.',
+                leader: 'Dire????o Raze',
+                description: 'lidera a opera????o principal do dia.',
                 occupied: 12,
                 total: 16,
                 reserves: 3,
@@ -3204,8 +3829,8 @@ function createCentralAction() {
                 dotColor: 'bg-amber-400',
                 time: '20:00',
                 name: 'Joalheria',
-                leader: 'Gerência One',
-                description: 'coordena a próxima ação da escala.',
+                leader: 'Ger??ncia One',
+                description: 'coordena a pr??xima a????o da escala.',
                 occupied: 8,
                 total: 10,
                 reserves: 2,
@@ -3218,8 +3843,8 @@ function createCentralAction() {
                 dotColor: 'bg-gray-500',
                 time: '22:00',
                 name: 'Loja Norte',
-                leader: 'Coordenação',
-                description: 'conduziu o histórico recente da operação.',
+                leader: 'Coordena????o',
+                description: 'conduziu o hist??rico recente da opera????o.',
                 occupied: 10,
                 total: 10,
                 reserves: 1,
@@ -3252,7 +3877,7 @@ function createCentralAction() {
                     </div>
                     <div class="grid gap-3">
                         <div class="flex items-center justify-between text-[12px] font-bold">
-                            <span class="text-gray-400">Ocupação</span>
+                            <span class="text-gray-400">Ocupa????o</span>
                             <span class="text-white">${action.occupied}/${action.total}</span>
                         </div>
                         <div class="h-2 rounded-full bg-white/10">
@@ -3461,7 +4086,7 @@ function createCentralAction() {
                     name: product.name,
                     status: 'offline',
                     token: '',
-                    guild: 'Não vinculado',
+                    guild: 'N??o vinculado',
                     createdAt: new Date().toLocaleDateString('pt-BR'),
                     avatar: product.icon
                 });
@@ -3519,7 +4144,7 @@ function createCentralAction() {
 
         function checkout() {
             if(cart.length === 0) {
-                showToast("Seu carrinho está vazio.", "error");
+                showToast("Seu carrinho est?? vazio.", "error");
                 return;
             }
 
@@ -3540,7 +4165,7 @@ function createCentralAction() {
             updateCartBadge();
             renderCartItems();
             toggleCart();
-            showToast("Compra finalizada! Bot disponível no Painel.", "success");
+            showToast("Compra finalizada! Bot dispon??vel no Painel.", "success");
 
             setTimeout(() => switchView('dashboard'), 1000);
         }
@@ -3688,6 +4313,9 @@ function createCentralAction() {
             const adminRole = getSavedFarmAdminRole();
             if (!adminRole?.id) return false;
 
+            const currentMember = syncCurrentDiscordMemberRoles(undefined, false);
+            if (currentMember?.roles?.includes(adminRole.id)) return true;
+
             try {
                 const roleIds = JSON.parse(localStorage.getItem('oneCurrentDiscordRoleIds') || '[]');
                 const roleNames = JSON.parse(localStorage.getItem('oneCurrentDiscordRoleNames') || '[]');
@@ -3748,7 +4376,7 @@ function createCentralAction() {
         memberTrigger.classList.toggle('cursor-not-allowed', mode === 'self');
         note.classList.toggle('hidden', mode !== 'self');
         description.textContent = mode === 'self'
-            ? 'Registre apenas a sua própria entrega de farm.'
+            ? 'Registre apenas a sua pr??pria entrega de farm.'
             : 'Lance entregas para qualquer membro da equipe.';
         if (mode === 'self') selectCentralFarmMember(0, false);
         closeCentralFarmMemberList();
@@ -3795,8 +4423,8 @@ function createCentralAction() {
     }
 
     const defaultFarmProducts = [
-        { id: 'pecas', name: 'Peças', goal: 300 },
-        { id: 'minerios', name: 'Minérios', goal: 180 },
+        { id: 'pecas', name: 'Pe??as', goal: 300 },
+        { id: 'minerios', name: 'Min??rios', goal: 180 },
         { id: 'extras', name: 'Extras', goal: 0 }
     ];
 
@@ -3869,11 +4497,12 @@ function createCentralAction() {
                 return;
             }
 
-            const target = centralFarmMode === 'self' ? 'seu próprio farm' : `farm de ${member}`;
+            const target = centralFarmMode === 'self' ? 'seu pr??prio farm' : `farm de ${member}`;
             showToast(`Entrega registrada no ${target}.`, 'success');
         }
 
         document.addEventListener('DOMContentLoaded', () => {
+        initializeDiscordLoginGate();
         renderProducts();
         renderCartItems();
      updateCartBadge();
@@ -3881,9 +4510,19 @@ function createCentralAction() {
      updatePendingRegistrationCount();
      loadRegisterRequests();
      loadDiscordMembers();
+     loadFarmSettings();
+     applySavedPunishmentSettings();
+     applySavedAbsenceSettings();
+     applySavedPromotionSettings();
+     syncPromotionTemplateField();
+     fillPromotionMemberSelect();
+     fillPromotionTargetRoleSelect();
+     bindPromotionMovementButtons();
+     renderPunishmentSummary();
      renderFarmProductSettings();
      renderCentralFarmProducts();
      applyCentralFarmGlobalGoal();
+     updateCentralActionCategoryCounts();
      document.addEventListener('pointermove', updateAnimatedBackgroundPosition);
         setCentralFarmMode('any', true);
         selectCentralFarmMember(0, false);
@@ -3904,3 +4543,4 @@ function createCentralAction() {
     </script>
 </body>
 </html>
+
