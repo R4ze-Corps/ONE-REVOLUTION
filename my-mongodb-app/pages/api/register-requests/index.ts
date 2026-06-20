@@ -29,6 +29,7 @@ export type RegisterRequest = {
   updatedAt: Date;
   approvedAt?: Date;
   rejectedAt?: Date;
+  resolvedBy?: SelectedUser;
 };
 
 type RegisterResponse =
@@ -158,3 +159,4 @@ function readUser(value: unknown): SelectedUser | null {
 function readString(value: unknown) {
   return typeof value === "string" ? value.trim() : "";
 }
+

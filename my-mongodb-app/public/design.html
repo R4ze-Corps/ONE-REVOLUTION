@@ -326,10 +326,10 @@
                         <i class="fa-solid fa-moon text-lg" id="theme-icon"></i>
                     </button>
                     <button onclick="switchView('central'); switchCentralCategory('registrar')" class="group inline-flex items-center gap-2 rounded-full bg-black/5 dark:bg-white/10 hover:bg-black/10 dark:hover:bg-white/15 border border-black/5 dark:border-white/10 py-1.5 pl-1.5 pr-3 transition active:scale-95">
-                        <span data-discord-initials class="w-8 h-8 rounded-full bg-brand-pink text-white flex items-center justify-center text-[12px] font-black shadow-lg shadow-brand-pink/20">MS</span>
+                        <span data-discord-initials data-discord-avatar class="w-8 h-8 overflow-hidden rounded-full bg-brand-pink text-white flex items-center justify-center text-[12px] font-black shadow-lg shadow-brand-pink/20">MS</span>
                         <span class="hidden sm:block text-left leading-tight">
                             <span data-discord-display-name class="block text-[13px] font-bold text-gray-950 dark:text-white">Maria Silva</span>
-                            <span class="block text-[11px] font-semibold text-gray-500 dark:text-gray-400">Desenvolvedora Front-end Senior</span>
+                            <span data-discord-role-title class="block max-w-[140px] truncate text-[11px] font-semibold text-gray-500 dark:text-gray-400">Membro</span>
                         </span>
                     </button>
                 </div>
@@ -337,6 +337,44 @@
         </div>
 
     </nav>
+
+    <main id="view-registration-gate" class="hidden fixed inset-0 z-30 overflow-hidden bg-black/70 px-4 py-24 backdrop-blur-md" aria-label="Registro necessario">
+        <section class="absolute inset-0 bg-cover bg-center opacity-45 blur-[3px] scale-105" style="background-image: url('https://r2.fivemanage.com/vLUsF9vzqBOo7DSFHERFX/ChatGPTImage12dejun.de202622_44_04(1).png');"></section>
+        <section class="relative z-10 flex min-h-full items-center justify-center">
+            <div class="w-full max-w-[520px] overflow-hidden rounded-[30px] border border-white/55 bg-black/35 shadow-[0_0_0_4px_rgba(255,255,255,0.18),0_0_34px_rgba(255,255,255,0.24),0_30px_90px_rgba(0,0,0,0.42)] ring-4 ring-white/20 backdrop-blur-2xl dark:text-white">
+                <div class="relative overflow-hidden bg-black/25 px-8 pb-8 pt-9 text-center backdrop-blur-xl">
+                    <div class="absolute inset-0 opacity-30 bg-[radial-gradient(circle_at_25%_18%,rgba(255,255,255,0.22),transparent_18%),radial-gradient(circle_at_75%_10%,rgba(255,255,255,0.14),transparent_14%)]"></div>
+                    <div class="relative mx-auto grid h-20 w-20 place-items-center rounded-[26px] bg-brand-pink text-white shadow-lg shadow-brand-pink/25">
+                        <i class="fa-solid fa-id-card text-[30px]"></i>
+                    </div>
+                </div>
+                <div class="bg-black/25 px-8 pb-8 pt-7 text-center backdrop-blur-xl">
+                    <h1 class="text-[25px] font-black tracking-tight text-white">Seja bem muito bem vindo.</h1>
+                    <p class="mt-3 text-[15px] font-medium leading-6 text-gray-300">Notei que voce nao possui registro em nosso servidor, para acessar nosso servidor voce precisar fazer o seu registro!</p>
+                    <div class="mt-7 grid gap-3 sm:grid-cols-2">
+                        <button type="button" onclick="showDeveloperPasswordField()" class="inline-flex w-full items-center justify-center gap-2 rounded-2xl bg-white/10 px-5 py-4 text-[14px] font-black text-white ring-1 ring-white/15 transition hover:bg-white/15 active:scale-95">
+                            <i class="fa-solid fa-code"></i>
+                            Modo Desenvolvedor
+                        </button>
+                        <button type="button" onclick="openRegisterModal()" class="inline-flex w-full items-center justify-center gap-2 rounded-2xl bg-brand-pink px-5 py-4 text-[14px] font-black text-white shadow-[0_18px_45px_rgba(0,122,255,0.35)] transition hover:-translate-y-0.5 active:scale-95">
+                            <i class="fa-solid fa-user-plus"></i>
+                            Fazer Registro
+                        </button>
+                    </div>
+                    <form id="developer-password-form" onsubmit="enterDeveloperMode(event)" class="mt-4 hidden rounded-2xl bg-white/10 p-3 ring-1 ring-white/15">
+                        <label class="sr-only" for="developer-password-input">Senha do modo desenvolvedor</label>
+                        <div class="flex flex-col gap-3 sm:flex-row">
+                            <input id="developer-password-input" type="password" inputmode="numeric" autocomplete="off" placeholder="Senha do desenvolvedor" class="min-w-0 flex-1 rounded-xl border border-white/10 bg-black/25 px-4 py-3 text-[14px] font-bold text-white outline-none transition placeholder:text-gray-400 focus:border-brand-pink" />
+                            <button type="submit" class="inline-flex items-center justify-center gap-2 rounded-xl bg-brand-pink px-5 py-3 text-[14px] font-black text-white transition active:scale-95">
+                                <i class="fa-solid fa-lock-open"></i>
+                                Entrar
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
 
     <main id="view-home" class="pt-24 pb-20 min-h-screen hidden">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -564,11 +602,11 @@
                         <div class="p-10 lg:w-1/3 flex flex-col items-center justify-center text-center border-b lg:border-b-0 lg:border-r border-black/10 dark:border-[#262626]/80 relative">
                             <div class="relative mb-6 group">
                                 <div class="absolute inset-0 bg-brand-pink/20 rounded-full blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                                <div class="relative w-32 h-32 rounded-full bg-gray-100 dark:bg-[#262626] text-brand-pink flex items-center justify-center font-black text-[38px] tracking-tight border-2 border-black/5 dark:border-[#262626] shadow-md">MS</div>
+                                <div data-discord-initials data-discord-avatar class="relative w-32 h-32 overflow-hidden rounded-full bg-gray-100 dark:bg-[#262626] text-brand-pink flex items-center justify-center font-black text-[38px] tracking-tight border-2 border-black/5 dark:border-[#262626] shadow-md">MS</div>
                                 <span class="absolute bottom-3 right-3 w-5 h-5 bg-green-500 border-4 border-white dark:border-[#171717] rounded-full shadow-sm"></span>
                             </div>
-                            <h3 class="font-bold text-[28px] leading-tight tracking-tight mb-2">Maria Silva</h3>
-                            <p class="text-brand-pink text-[15px] font-semibold mb-6 max-w-[240px]">Desenvolvedora Front-end Senior</p>
+                            <h3 data-discord-display-name class="font-bold text-[28px] leading-tight tracking-tight mb-2">Maria Silva</h3>
+                            <p data-discord-role-title class="text-brand-pink text-[15px] font-semibold mb-6 max-w-[240px]">Membro</p>
                             <span class="inline-flex items-center px-4 py-2 rounded-full bg-gray-100 dark:bg-[#0A0A0A] border border-black/10 dark:border-[#262626] text-[12px] font-mono text-gray-700 dark:text-gray-300">
                                 <span class="text-gray-500 dark:text-gray-400 mr-1.5">ID:</span> MAT-84729
                             </span>
@@ -610,25 +648,20 @@
                                     Ativo desde 2026
                                 </span>
                                 <div class="flex items-center gap-2 text-gray-500 dark:text-gray-400">
-                                    <button class="h-9 w-9 rounded-lg hover:bg-gray-200 dark:hover:bg-[#262626] hover:text-brand-pink dark:hover:text-white transition-all duration-200" title="Copiar link"><i class="fa-solid fa-link text-[14px]"></i></button>
-                                    <button class="h-9 w-9 rounded-lg hover:bg-brand-pink/10 hover:text-brand-pink transition-all duration-200" title="Exportar perfil"><i class="fa-solid fa-arrow-up-from-bracket text-[14px]"></i></button>
+                                    <button onclick="logoutDiscord()" class="h-9 w-9 rounded-lg hover:bg-gray-200 dark:hover:bg-[#262626] hover:text-brand-pink dark:hover:text-white transition-all duration-200" title="Sair"><i class="fa-solid fa-door-open text-[14px]"></i></button>
+                                    <button onclick="openProfileImport()" class="h-9 w-9 rounded-lg hover:bg-brand-pink/10 hover:text-brand-pink transition-all duration-200 inline-flex items-center justify-center" title="Importar perfil">
+                                        <span class="relative block h-[17px] w-[17px]" aria-hidden="true">
+                                            <span class="absolute bottom-0 left-1/2 h-[4px] w-[4px] -translate-x-1/2 rounded-full bg-current"></span>
+                                            <span class="absolute bottom-[3px] left-1/2 h-[8px] w-[12px] -translate-x-1/2 rounded-t-full border-l-2 border-r-2 border-t-2 border-current"></span>
+                                            <span class="absolute bottom-[3px] left-1/2 h-[13px] w-[18px] -translate-x-1/2 rounded-t-full border-l-2 border-r-2 border-t-2 border-current"></span>
+                                        </span>
+                                    </button>
+                                    <input id="profile-import-input" type="file" accept="application/json" class="hidden" onchange="importProfile(event)" />
                                 </div>
                             </div>
                         </div>
                     </div>
                 </article>
-                <div class="flex flex-col gap-3 rounded-[24px] border border-black/5 bg-ios-card p-5 shadow-sm dark:border-white/5 dark:bg-ios-darkCard sm:flex-row sm:items-center sm:justify-between">
-                    <div>
-                        <p class="text-[12px] font-bold uppercase tracking-wider text-brand-pink">Entrada</p>
-                        <h3 class="mt-1 text-[20px] font-bold">Solicitar registro</h3>
-                        <p class="mt-1 text-[13px] text-gray-500 dark:text-gray-400">Disponivel para usuarios com o Cargo de Registro.</p>
-                    </div>
-                    <button onclick="openRegisterModal()" class="inline-flex items-center justify-center gap-2 rounded-2xl bg-brand-pink px-5 py-3 text-[15px] font-semibold text-white shadow-lg shadow-brand-pink/25 transition active:scale-95">
-                        <i class="fa-solid fa-user-plus"></i>
-                        Registrar
-                    </button>
-                </div>
-                <div id="central-approved-register-list" class="grid gap-4"></div>
                 <article class="hidden bg-ios-card dark:bg-ios-darkCard rounded-[24px] shadow-sm border border-black/5 dark:border-white/5 overflow-hidden">
                     <div class="p-5 bg-brand-pink/10 border-b border-brand-pink/15 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                         <div class="flex items-center gap-4">
@@ -1601,6 +1634,17 @@
                         </div>
                     </section>
                 </div>
+                <section class="mt-6 overflow-hidden rounded-[24px] border border-black/5 bg-ios-card shadow-sm dark:border-white/5 dark:bg-ios-darkCard">
+                    <div class="flex flex-col gap-4 border-b border-ios-separator p-5 dark:border-ios-darkSeparator sm:flex-row sm:items-center sm:justify-between">
+                        <div>
+                            <p class="text-[12px] font-bold uppercase tracking-wider text-brand-pink">Logs de Registro</p>
+                            <h3 class="mt-1 text-[24px] font-bold leading-tight">Registros resolvidos</h3>
+                            <p class="mt-1 text-[13px] text-gray-500 dark:text-gray-400">Historico dos membros aprovados e recusados pelo fluxo de registro.</p>
+                        </div>
+                        <span id="panel-approved-register-count" class="rounded-full bg-brand-pink/10 px-3 py-1.5 text-[12px] font-black uppercase tracking-wider text-brand-pink">0 logs</span>
+                    </div>
+                    <div id="panel-register-logs-list" class="grid gap-4 p-5"></div>
+                </section>
                 <div class="hidden bg-ios-card dark:bg-ios-darkCard rounded-[24px] shadow-sm border border-black/5 dark:border-white/5 overflow-hidden">
                     <div class="p-5 bg-brand-pink/10 border-b border-brand-pink/15 flex flex-col lg:flex-row lg:items-center justify-between gap-5">
                         <div class="flex items-center gap-4">
@@ -2046,11 +2090,8 @@
                 <i class="fa-solid fa-xmark"></i>
             </button>
         </div>
+        <input id="register-discord-user-id" type="hidden" />
         <div class="grid max-h-[72vh] gap-4 overflow-y-auto p-5 md:grid-cols-2">
-            <label class="grid gap-2 text-[13px] font-bold uppercase tracking-wider text-gray-500 dark:text-gray-400">
-                ID Discord do candidato
-                <input id="register-discord-user-id" type="text" inputmode="numeric" class="rounded-2xl border border-black/5 bg-gray-100 px-4 py-3 text-black outline-none transition focus:border-brand-pink dark:border-white/5 dark:bg-gray-800 dark:text-white" placeholder="ID do usuario no Discord" />
-            </label>
             <label class="grid gap-2 text-[13px] font-bold uppercase tracking-wider text-gray-500 dark:text-gray-400">
                 Nome
                 <input id="register-name" type="text" class="rounded-2xl border border-black/5 bg-gray-100 px-4 py-3 text-black outline-none transition focus:border-brand-pink dark:border-white/5 dark:bg-gray-800 dark:text-white" placeholder="Nome do personagem" />
@@ -2084,6 +2125,19 @@
             </button>
         </div>
     </form>
+</div>
+
+<div id="register-sent-modal" class="fixed inset-0 z-[55] hidden items-center justify-center bg-black/65 px-4 py-8 backdrop-blur-sm">
+    <div class="w-full max-w-md overflow-hidden rounded-[28px] border border-black/10 bg-ios-card text-center shadow-2xl dark:border-white/10 dark:bg-ios-darkCard">
+        <div class="px-8 pb-8 pt-9">
+            <div id="register-status-icon-wrap" class="mx-auto mb-6 grid h-20 w-20 place-items-center rounded-[24px] bg-brand-pink/10 text-brand-pink">
+                <i id="register-status-icon" class="fa-solid fa-hourglass-half animate-spin text-[34px]"></i>
+            </div>
+            <h3 id="register-status-title" class="text-[25px] font-black leading-tight">Seu registro foi enviado.</h3>
+            <p id="register-status-message" class="mt-3 text-[15px] font-semibold leading-6 text-gray-500 dark:text-gray-400">Aguarde ser aprovado!</p>
+            <div id="register-status-actions" class="mt-7 grid gap-3"></div>
+        </div>
+    </div>
 </div>
 
     <script>
@@ -2146,46 +2200,174 @@
 
     function enterOneCore() {
         document.getElementById('view-login')?.classList.add('hidden');
+        document.getElementById('view-registration-gate')?.classList.add('hidden');
         document.getElementById('app-nav')?.classList.remove('hidden');
         updateHubGreeting();
         switchView('home');
+    }
+
+    function showRegistrationGate() {
+        document.getElementById('view-login')?.classList.add('hidden');
+        document.getElementById('app-nav')?.classList.add('hidden');
+        ['home', 'central', 'dashboard', 'configure'].forEach((viewName) => {
+            document.getElementById(`view-${viewName}`)?.classList.add('hidden');
+        });
+        document.getElementById('view-registration-gate')?.classList.remove('hidden');
+        updateHubGreeting();
+    }
+
+    function showDeveloperPasswordField() {
+        const form = document.getElementById('developer-password-form');
+        const input = document.getElementById('developer-password-input');
+        form?.classList.remove('hidden');
+        input?.focus();
+    }
+
+    function enterDeveloperMode(event) {
+        event?.preventDefault();
+        const input = document.getElementById('developer-password-input');
+        const password = input?.value.trim() || '';
+
+        if (password !== '1507') {
+            showToast('Senha do modo desenvolvedor incorreta.', 'error');
+            if (input) {
+                input.value = '';
+                input.focus();
+            }
+            return;
+        }
+
+        sessionStorage.setItem('oneDeveloperMode', 'true');
+        enterOneCore();
     }
 
     function loginWithDiscord() {
         window.location.href = '/api/auth/discord/login';
     }
 
-    function applyDiscordSessionUser(user) {
-        if (!user) return;
+    function logoutDiscord() {
+        sessionStorage.removeItem('oneDeveloperMode');
+        localStorage.removeItem('oneCurrentDiscordUserId');
+        localStorage.removeItem('oneCurrentDiscordRoleIds');
+        localStorage.removeItem('oneCurrentDiscordRoleNames');
+        window.location.href = '/api/auth/discord/logout';
+    }
 
-        localStorage.setItem('oneCurrentDiscordUserId', user.id);
-        const displayName = user.displayName || user.globalName || user.username || 'Usu??rio Discord';
-        localStorage.setItem('oneDiscordDisplayName', displayName);
-        const initials = displayName
+    function openProfileImport() {
+        document.getElementById('profile-import-input')?.click();
+    }
+
+    async function importProfile(event) {
+        const file = event.target?.files?.[0];
+        if (!file) return;
+
+        try {
+            const profile = JSON.parse(await file.text());
+            const displayName = profile.displayName || profile.name || localStorage.getItem('oneDiscordDisplayName') || 'Usuario Discord';
+            const roleName = profile.roleName || profile.highestRoleName || localStorage.getItem('oneDiscordRoleName') || 'Membro';
+
+            localStorage.setItem('oneImportedProfile', JSON.stringify(profile));
+            localStorage.setItem('oneDiscordDisplayName', displayName);
+            localStorage.setItem('oneDiscordRoleName', roleName);
+            if (profile.avatarUrl) localStorage.setItem('oneDiscordAvatarUrl', profile.avatarUrl);
+
+            applyDiscordIdentity({
+                displayName,
+                avatarUrl: profile.avatarUrl || localStorage.getItem('oneDiscordAvatarUrl') || '',
+                roleName
+            });
+
+            showToast('Perfil importado.', 'success');
+        } catch {
+            showToast('Arquivo de perfil invalido.', 'error');
+        } finally {
+            event.target.value = '';
+        }
+    }
+
+    function getInitials(name) {
+        return name
             .split(' ')
             .filter(Boolean)
             .slice(0, 2)
             .map((part) => part[0])
             .join('')
             .toUpperCase() || 'DC';
+    }
+
+    function applyDiscordIdentity({ displayName, avatarUrl = '', roleName = '' }) {
+        const safeDisplayName = displayName || 'Usuario Discord';
+        const initials = getInitials(safeDisplayName);
+
+        localStorage.setItem('oneDiscordDisplayName', safeDisplayName);
+        if (avatarUrl) localStorage.setItem('oneDiscordAvatarUrl', avatarUrl);
+        if (roleName) localStorage.setItem('oneDiscordRoleName', roleName);
 
         document.querySelectorAll('[data-discord-display-name]').forEach((element) => {
-            element.textContent = displayName;
+            element.textContent = safeDisplayName;
         });
         document.querySelectorAll('[data-discord-initials]').forEach((element) => {
             element.textContent = initials;
         });
+        document.querySelectorAll('[data-discord-avatar]').forEach((element) => {
+            element.innerHTML = avatarUrl
+                ? `<img src="${escapeHtml(avatarUrl)}" alt="" class="h-full w-full rounded-full object-cover" />`
+                : initials;
+        });
+        document.querySelectorAll('[data-discord-role-title]').forEach((element) => {
+            element.textContent = roleName || 'Membro';
+        });
 
         const hubUser = document.getElementById('hub-user-name');
-        if (hubUser) hubUser.textContent = displayName;
+        if (hubUser) hubUser.textContent = safeDisplayName;
+    }
+
+    function applyDiscordSessionUser(user) {
+        if (!user) return;
+        localStorage.setItem('oneCurrentDiscordUserId', user.id);
+        applyDiscordIdentity({
+            displayName: user.displayName || user.globalName || user.username || 'Usuario Discord',
+            avatarUrl: user.avatarUrl || localStorage.getItem('oneDiscordAvatarUrl') || '',
+            roleName: localStorage.getItem('oneDiscordRoleName') || 'Membro'
+        });
+        syncCurrentDiscordMemberRoles(user.id);
     }
 
     function showDiscordLoginGate() {
         document.getElementById('view-login')?.classList.remove('hidden');
+        document.getElementById('view-registration-gate')?.classList.add('hidden');
         document.getElementById('app-nav')?.classList.add('hidden');
         ['home', 'central', 'dashboard', 'configure'].forEach((viewName) => {
             document.getElementById(`view-${viewName}`)?.classList.add('hidden');
         });
+    }
+
+    async function getCurrentUserRegistrationStatus(discordUserId) {
+        if (!discordUserId) return false;
+
+        const statuses = ['approved', 'pending', 'rejected'];
+        const responses = await Promise.all(
+            statuses.map(async (status) => {
+                const response = await fetch(`/api/register-requests?status=${status}`);
+                const payload = await response.json();
+
+                if (!response.ok) {
+                    throw new Error(payload.error || 'Nao foi possivel verificar o registro.');
+                }
+
+                return {
+                    status,
+                    request: (payload.requests || []).find((request) => request.discordUserId === discordUserId)
+                };
+            })
+        );
+
+        return responses.find((entry) => entry.request) || null;
+    }
+
+    async function currentUserHasApprovedRegistration(discordUserId) {
+        const registration = await getCurrentUserRegistrationStatus(discordUserId);
+        return registration?.status === 'approved';
     }
 
     async function initializeDiscordLoginGate() {
@@ -2205,7 +2387,23 @@
             if (!response.ok || !payload.authenticated) return;
 
             applyDiscordSessionUser(payload.user);
-            enterOneCore();
+            let registrationStatus = null;
+            try {
+                registrationStatus = await getCurrentUserRegistrationStatus(payload.user.id);
+            } catch (error) {
+                showToast(error.message || 'Nao foi possivel verificar o registro.', 'error');
+            }
+
+            if (sessionStorage.getItem('oneDeveloperMode') === 'true') {
+                enterOneCore();
+            } else if (registrationStatus?.status === 'approved') {
+                enterOneCore();
+                showRegisterStatusModal('approved');
+            } else {
+                showRegistrationGate();
+                if (registrationStatus?.status === 'pending') showRegisterStatusModal('pending');
+                if (registrationStatus?.status === 'rejected') showRegisterStatusModal('rejected');
+            }
 
             if (params.get('auth') === 'discord') {
                 showToast('Login via Discord realizado.', 'success');
@@ -2228,6 +2426,12 @@
         if (greetingEl) greetingEl.textContent = greeting;
         if (userEl) userEl.textContent = savedDiscordName;
         if (emojiEl) emojiEl.textContent = emoji;
+
+        applyDiscordIdentity({
+            displayName: savedDiscordName,
+            avatarUrl: localStorage.getItem('oneDiscordAvatarUrl') || '',
+            roleName: localStorage.getItem('oneDiscordRoleName') || 'Membro'
+        });
     }
 
     function updateAnimatedBackgroundPosition(event) {
@@ -2239,6 +2443,7 @@
     }
 
     function switchView(viewName) {
+            document.getElementById('view-registration-gate')?.classList.add('hidden');
             document.getElementById('view-home').classList.add('hidden');
             document.getElementById('view-central').classList.add('hidden');
             document.getElementById('view-dashboard').classList.add('hidden');
@@ -2282,6 +2487,7 @@
         let savedRegisterSettings = null;
         let discordMembers = [];
         let discordRoles = [];
+        let discordChannels = [];
         let registerRequests = [];
         let approvedRegisterRequests = [];
 
@@ -2404,18 +2610,48 @@
             });
         }
 
+        function getDiscordRoleNames(roleIds = []) {
+            return roleIds
+                .map((roleId) => discordRoles.find((role) => role.id === roleId)?.name)
+                .filter(Boolean);
+        }
+
         function syncCurrentDiscordMemberRoles(discordUserId = localStorage.getItem('oneCurrentDiscordUserId'), updateAccess = true) {
             if (!discordUserId) return null;
 
             const currentMember = discordMembers.find((member) => member.id === discordUserId);
             if (!currentMember) return null;
 
+            const roleNames = currentMember.roleNames?.length
+                ? currentMember.roleNames
+                : getDiscordRoleNames(currentMember.roles || []);
+            const roleName = currentMember.highestRoleName || roleNames[0] || 'Membro';
+
             localStorage.setItem('oneCurrentDiscordRoleIds', JSON.stringify(currentMember.roles || []));
+            localStorage.setItem('oneCurrentDiscordRoleNames', JSON.stringify(roleNames));
+            applyDiscordIdentity({
+                displayName: currentMember.name,
+                avatarUrl: currentMember.avatarUrl || localStorage.getItem('oneDiscordAvatarUrl') || '',
+                roleName
+            });
             if (updateAccess) applyCentralFarmAccess();
             return currentMember;
         }
 
-        function openRegisterModal() {
+        async function openRegisterModal(options = {}) {
+            const allowRejectedRetry = Boolean(options.allowRejectedRetry);
+            const discordUserId = localStorage.getItem('oneCurrentDiscordUserId') || '';
+            try {
+                const registrationStatus = await getCurrentUserRegistrationStatus(discordUserId);
+                if (registrationStatus?.status && !(allowRejectedRetry && registrationStatus.status === 'rejected')) {
+                    showRegisterStatusModal(registrationStatus.status);
+                    return;
+                }
+            } catch (error) {
+                showToast(error.message || 'Nao foi possivel verificar o registro.', 'error');
+                return;
+            }
+
             const modal = document.getElementById('register-modal');
             const userIdInput = document.getElementById('register-discord-user-id');
             if (userIdInput && !userIdInput.value.trim()) {
@@ -2433,10 +2669,75 @@
             modal?.classList.remove('flex');
         }
 
+        function showRegisterStatusModal(status = 'pending') {
+            const states = {
+                pending: {
+                    title: 'Seu registro foi enviado.',
+                    message: 'Aguarde ser aprovado!',
+                    icon: 'fa-solid fa-hourglass-half animate-spin text-[34px]',
+                    wrapClass: 'mx-auto mb-6 grid h-20 w-20 place-items-center rounded-[24px] bg-brand-pink/10 text-brand-pink'
+                },
+                rejected: {
+                    title: 'Registro Recusado.',
+                    message: 'infelizmente voc\u00ea n\u00e3o foi aprovado para o time!',
+                    icon: 'fa-solid fa-circle-xmark text-[36px]',
+                    wrapClass: 'mx-auto mb-6 grid h-20 w-20 place-items-center rounded-[24px] bg-rose-500/10 text-rose-500'
+                },
+                approved: {
+                    title: 'Registro aprovado.',
+                    message: 'Parab\u00e9ns seja muito bem vindo a Press\u00e1gio',
+                    icon: 'fa-solid fa-circle-check text-[36px]',
+                    wrapClass: 'mx-auto mb-6 grid h-20 w-20 place-items-center rounded-[24px] bg-emerald-500/10 text-emerald-500'
+                }
+            };
+            const current = states[status] || states.pending;
+            const modal = document.getElementById('register-sent-modal');
+            const iconWrap = document.getElementById('register-status-icon-wrap');
+            const icon = document.getElementById('register-status-icon');
+            const title = document.getElementById('register-status-title');
+            const message = document.getElementById('register-status-message');
+            const actions = document.getElementById('register-status-actions');
+
+            if (iconWrap) iconWrap.className = current.wrapClass;
+            if (icon) icon.className = current.icon;
+            if (title) title.textContent = current.title;
+            if (message) message.textContent = current.message;
+            if (actions) {
+                const understoodAction = status === 'approved' ? 'closeRegisterSentModalAndEnterHub()' : 'closeRegisterSentModal()';
+                actions.className = status === 'rejected' ? 'mt-7 grid gap-3 sm:grid-cols-2' : 'mt-7 grid gap-3';
+                actions.innerHTML = status === 'rejected'
+                    ? `
+                        <button type="button" onclick="closeRegisterSentModal()" class="inline-flex w-full items-center justify-center rounded-2xl bg-gray-100 px-5 py-4 text-[15px] font-black text-gray-700 transition active:scale-95 dark:bg-gray-800 dark:text-gray-200">Entendi</button>
+                        <button type="button" onclick="retryRejectedRegistration()" class="inline-flex w-full items-center justify-center rounded-2xl bg-brand-pink px-5 py-4 text-[15px] font-black text-white shadow-lg shadow-brand-pink/25 transition active:scale-95">Tentar Novamente</button>
+                    `
+                    : `<button type="button" onclick="${understoodAction}" class="inline-flex w-full items-center justify-center rounded-2xl bg-brand-pink px-5 py-4 text-[15px] font-black text-white shadow-lg shadow-brand-pink/25 transition active:scale-95">Entendi</button>`;
+            }
+
+            modal?.classList.remove('hidden');
+            modal?.classList.add('flex');
+        }
+
+        function closeRegisterSentModal() {
+            const modal = document.getElementById('register-sent-modal');
+            modal?.classList.add('hidden');
+            modal?.classList.remove('flex');
+        }
+
+        function closeRegisterSentModalAndEnterHub() {
+            closeRegisterSentModal();
+            enterOneCore();
+        }
+
+        function retryRejectedRegistration() {
+            closeRegisterSentModal();
+            openRegisterModal({ allowRejectedRetry: true });
+        }
+
         async function submitRegisterRequest(event) {
             event.preventDefault();
 
-            const discordUserId = document.getElementById('register-discord-user-id')?.value.trim();
+            const discordUserIdInput = document.getElementById('register-discord-user-id');
+            const discordUserId = discordUserIdInput?.value.trim() || localStorage.getItem('oneCurrentDiscordUserId') || '';
             const name = document.getElementById('register-name')?.value.trim();
             const gameId = document.getElementById('register-game-id')?.value.trim();
             const phone = document.getElementById('register-phone')?.value.trim();
@@ -2449,6 +2750,14 @@
             }
 
             try {
+                const existingRegistration = await getCurrentUserRegistrationStatus(discordUserId);
+                if (existingRegistration?.status && existingRegistration.status !== 'rejected') {
+                    closeRegisterModal();
+                    showRegisterStatusModal(existingRegistration.status);
+                    return;
+                }
+
+                if (discordUserIdInput) discordUserIdInput.value = discordUserId;
                 localStorage.setItem('oneCurrentDiscordUserId', discordUserId);
                 syncCurrentDiscordMemberRoles(discordUserId);
                 const response = await fetch('/api/register-requests', {
@@ -2464,7 +2773,7 @@
 
                 closeRegisterModal();
                 event.target.reset();
-                showToast('Registro enviado para aprovacao.', 'success');
+                showRegisterStatusModal('pending');
                 await loadRegisterRequests();
             } catch (error) {
                 showToast(error.message || 'Erro ao enviar registro.', 'error');
@@ -2594,9 +2903,10 @@
             }
 
             discordRoles = payload.roles || [];
+            discordChannels = channelsPayload.channels || [];
             fillRegisterRoleSelects(discordRoles);
             fillPromotionTargetRoleSelect(discordRoles);
-            fillDiscordChannelSelects(channelsPayload.channels || []);
+            fillDiscordChannelSelects(discordChannels);
             updateConfigurationState(true);
             showToast('Cargos e canais carregados do Discord.', 'success');
         } catch (error) {
@@ -2605,29 +2915,14 @@
     }
 
     function fillRegisterRoleSelects(roles) {
-        const selects = [
-            document.getElementById('panel-register-entry-role'),
-            document.getElementById('panel-register-member-role'),
-            document.getElementById('panel-register-mention-role'),
-            document.getElementById('farm-role-complete'),
-            document.getElementById('farm-role-incomplete'),
-            document.getElementById('farm-role-no-delivery'),
-            document.getElementById('farm-role-admin'),
-            document.getElementById('punishment-role-verbal'),
-            document.getElementById('punishment-role-first'),
-            document.getElementById('punishment-role-second'),
-            document.getElementById('punishment-role-third'),
-            document.getElementById('absence-role'),
-            document.getElementById('promotion-mention-manager-role'),
-            document.getElementById('promotion-ignore-role'),
-            document.getElementById('promotion-filter-role'),
-            document.getElementById('promotion-manager-role')
-        ];
+        const selects = Array.from(document.querySelectorAll('select[id*="role"], select[id*="cargo"]'))
+            .filter((select) => select.id !== 'promotion-message-template-type');
 
         selects.forEach((select) => {
             if (!select) return;
             const previousValue = select.value;
-            const placeholder = select.querySelector('option')?.textContent || 'Selecione um cargo';
+            const placeholder = select.dataset.placeholder || getSelectPlaceholder(select, 'Selecione um cargo');
+            select.dataset.placeholder = placeholder;
             select.innerHTML = `<option value="">${placeholder}</option>`;
             roles.forEach((role) => {
                 const option = document.createElement('option');
@@ -2744,7 +3039,9 @@ N??o desanime! As portas continuam abertas e estamos aqui para te apoiar a subir
         if (!select) return;
 
         const previousValue = select.value;
-        select.innerHTML = '<option value="">Selecione o cargo escolhido</option>';
+        const placeholder = select.dataset.placeholder || 'Selecione o cargo escolhido';
+        select.dataset.placeholder = placeholder;
+        select.innerHTML = `<option value="">${placeholder}</option>`;
         roles.forEach((role) => {
             const option = document.createElement('option');
             option.value = role.id;
@@ -2902,8 +3199,8 @@ N??o desanime! As portas continuam abertas e estamos aqui para te apoiar a subir
             logChannel: getSelectedChannel('punishment-log-channel')
         };
 
-        if (!settings.roles.verbal || !settings.roles.first || !settings.roles.second || !settings.roles.third) {
-            showToast('Selecione todos os cargos de puni????o antes de salvar.', 'error');
+        if (!settings.roles.verbal || !settings.roles.first || !settings.roles.second || !settings.roles.third || !settings.logChannel) {
+            showToast('Selecione todos os cargos e o canal de log de puni????o antes de salvar.', 'error');
             return;
         }
 
@@ -2925,6 +3222,7 @@ N??o desanime! As portas continuam abertas e estamos aqui para te apoiar a subir
         setRegisterRoleSelect('punishment-role-first', settings.roles.first);
         setRegisterRoleSelect('punishment-role-second', settings.roles.second);
         setRegisterRoleSelect('punishment-role-third', settings.roles.third);
+        setChannelSelect('punishment-log-channel', settings.logChannel);
         renderCentralPunishmentSanctions(settings.roles);
         renderPunishmentSummary();
     }
@@ -2983,16 +3281,48 @@ N??o desanime! As portas continuam abertas e estamos aqui para te apoiar a subir
             .toUpperCase() || 'M';
     }
 
-    function submitPunishment() {
+    async function submitPunishment() {
         const memberSelect = document.getElementById('punishment-member-select');
         const sanctionSelect = document.getElementById('punishment-sanction-select');
         const descriptionInput = document.getElementById('punishment-description');
         const memberOption = memberSelect?.selectedOptions?.[0];
         const sanctionOption = sanctionSelect?.selectedOptions?.[0];
         const description = descriptionInput?.value.trim();
+        const settings = getSavedPunishmentSettings();
+        const logChannel = getSelectedChannel('punishment-log-channel') || settings?.logChannel;
 
         if (!memberSelect?.value || !sanctionSelect?.value || !description) {
             showToast('Selecione o membro, o tipo de san????o e descreva a infra????o.', 'error');
+            return;
+        }
+
+        if (!logChannel?.id) {
+            showToast('Configure o canal de log em Painel > Puni????es antes de confirmar.', 'error');
+            return;
+        }
+
+        const memberName = memberOption?.dataset.memberName || memberOption?.textContent || 'Membro';
+        const roleName = sanctionOption?.dataset.roleName || sanctionOption?.textContent || 'Puni????o';
+        const sanctionLabel = sanctionOption?.dataset.sanctionLabel || sanctionOption?.textContent || 'Puni????o';
+
+        try {
+            const response = await fetch('/api/punishments', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    channelId: logChannel.id,
+                    memberName,
+                    punishment: sanctionLabel,
+                    reason: description
+                })
+            });
+            const payload = await response.json();
+
+            if (!response.ok) {
+                throw new Error(payload.error || 'Nao foi possivel enviar a punicao no canal configurado.');
+            }
+        } catch (error) {
+            showToast(error.message || 'Erro ao enviar punicao no Discord.', 'error');
             return;
         }
 
@@ -3000,10 +3330,10 @@ N??o desanime! As portas continuam abertas e estamos aqui para te apoiar a subir
         punishments.unshift({
             id: `punishment-${Date.now()}`,
             memberId: memberSelect.value,
-            memberName: memberOption?.dataset.memberName || memberOption?.textContent || 'Membro',
+            memberName,
             roleId: sanctionSelect.value,
-            roleName: sanctionOption?.dataset.roleName || sanctionOption?.textContent || 'Puni????o',
-            sanctionLabel: sanctionOption?.dataset.sanctionLabel || sanctionOption?.textContent || 'Puni????o',
+            roleName,
+            sanctionLabel,
             description,
             createdAt: new Date().toISOString()
         });
@@ -3011,7 +3341,7 @@ N??o desanime! As portas continuam abertas e estamos aqui para te apoiar a subir
         savePunishments(punishments);
         if (descriptionInput) descriptionInput.value = '';
         renderPunishmentSummary();
-        showToast('Puni????o registrada.', 'success');
+        showToast('Puni????o registrada e enviada no canal configurado.', 'success');
     }
 
     function renderPunishmentSummary() {
@@ -3180,15 +3510,13 @@ N??o desanime! As portas continuam abertas e estamos aqui para te apoiar a subir
     }
 
     function fillDiscordChannelSelects(channels) {
-        const selects = [
-            document.getElementById('punishment-log-channel'),
-            document.getElementById('absence-log-channel')
-        ];
+        const selects = Array.from(document.querySelectorAll('select[id*="channel"], select[id*="canal"]'));
 
         selects.forEach((select) => {
             if (!select) return;
             const previousValue = select.value;
-            const placeholder = select.querySelector('option')?.textContent || 'Selecione um canal';
+            const placeholder = select.dataset.placeholder || getSelectPlaceholder(select, 'Selecione um canal');
+            select.dataset.placeholder = placeholder;
             select.innerHTML = `<option value="">${placeholder}</option>`;
             channels.forEach((channel) => {
                 const option = document.createElement('option');
@@ -3203,6 +3531,16 @@ N??o desanime! As portas continuam abertas e estamos aqui para te apoiar a subir
         });
 
         applySavedAbsenceSettings();
+        applySavedPunishmentSettings();
+    }
+
+    function getSelectPlaceholder(select, fallback) {
+        const firstOption = select.querySelector('option');
+        const text = firstOption?.textContent?.trim();
+
+        if (!text || firstOption?.value) return fallback;
+        if (text.startsWith('@') || text.startsWith('#')) return fallback;
+        return text;
     }
 
     function applySavedRegisterRoles() {
@@ -3306,12 +3644,14 @@ N??o desanime! As portas continuam abertas e estamos aqui para te apoiar a subir
 
     async function loadRegisterRequests() {
         try {
-            const [pendingResponse, approvedResponse] = await Promise.all([
+            const [pendingResponse, approvedResponse, rejectedResponse] = await Promise.all([
                 fetch('/api/register-requests?status=pending'),
-                fetch('/api/register-requests?status=approved')
+                fetch('/api/register-requests?status=approved'),
+                fetch('/api/register-requests?status=rejected')
             ]);
             const pendingPayload = await pendingResponse.json();
             const approvedPayload = await approvedResponse.json();
+            const rejectedPayload = await rejectedResponse.json();
 
             if (!pendingResponse.ok) {
                 throw new Error(pendingPayload.error || 'Nao foi possivel carregar registros pendentes.');
@@ -3321,8 +3661,15 @@ N??o desanime! As portas continuam abertas e estamos aqui para te apoiar a subir
                 throw new Error(approvedPayload.error || 'Nao foi possivel carregar registros aprovados.');
             }
 
+            if (!rejectedResponse.ok) {
+                throw new Error(rejectedPayload.error || 'Nao foi possivel carregar registros recusados.');
+            }
+
             registerRequests = pendingPayload.requests || [];
-            approvedRegisterRequests = approvedPayload.requests || [];
+            approvedRegisterRequests = [
+                ...(approvedPayload.requests || []),
+                ...(rejectedPayload.requests || [])
+            ].sort((a, b) => new Date(b.updatedAt || b.createdAt || 0) - new Date(a.updatedAt || a.createdAt || 0));
             renderPendingRegistrations();
             renderApprovedRegistrations();
         } catch (error) {
@@ -3369,32 +3716,75 @@ N??o desanime! As portas continuam abertas e estamos aqui para te apoiar a subir
     }
 
     function renderApprovedRegistrations() {
-        const list = document.getElementById('central-approved-register-list');
+        const list = document.getElementById('panel-register-logs-list');
+        const countBadge = document.getElementById('panel-approved-register-count');
         if (!list) return;
 
+        if (countBadge) {
+            const count = approvedRegisterRequests.length;
+            countBadge.textContent = count === 1 ? '1 log' : `${count} logs`;
+        }
+
         if (!approvedRegisterRequests.length) {
-            list.innerHTML = '<div class="rounded-[24px] border border-dashed border-black/10 bg-ios-card p-5 text-center text-[13px] font-semibold text-gray-500 dark:border-white/10 dark:bg-ios-darkCard dark:text-gray-400">Nenhum registro aprovado ainda.</div>';
+            list.innerHTML = '<div class="rounded-[20px] border border-dashed border-black/10 p-5 text-center text-[13px] font-semibold text-gray-500 dark:border-white/10 dark:text-gray-400">Nenhuma log de registro ainda.</div>';
             return;
         }
 
-        list.innerHTML = approvedRegisterRequests.map((request) => `
-            <article class="overflow-hidden rounded-[24px] border border-black/5 bg-ios-card shadow-sm dark:border-white/5 dark:bg-ios-darkCard">
-                <div class="flex flex-col gap-5 p-5 sm:flex-row sm:items-center">
-                    ${renderUserAvatar(request, 'h-16 w-16 text-[18px]')}
-                    <div class="min-w-0 flex-1">
-                        <p class="text-[12px] font-bold uppercase tracking-wider text-brand-pink">Registro aprovado</p>
-                        <h3 class="mt-1 truncate text-[24px] font-bold">${escapeHtml(request.gameId)} | ${escapeHtml(request.name)}</h3>
-                        <p class="mt-1 text-[13px] text-gray-500 dark:text-gray-400">${escapeHtml(request.discordName || 'Discord')}</p>
+        list.innerHTML = approvedRegisterRequests.map((request) => {
+            const isRejected = request.status === 'rejected';
+            const statusLabel = isRejected ? 'Recusado' : 'Aprovado';
+            const statusClass = isRejected
+                ? 'bg-rose-500/10 text-rose-500'
+                : 'bg-emerald-500/10 text-emerald-500';
+            const resolverLabel = isRejected ? 'Recusado por' : 'Aprovado por';
+            const resolverName = request.resolvedBy?.name || 'Sistema';
+            const deleteButton = sessionStorage.getItem('oneDeveloperMode') === 'true'
+                ? `
+                    <div class="md:col-span-2 xl:col-span-4 flex justify-end border-t border-ios-separator pt-4 dark:border-ios-darkSeparator">
+                        <button type="button" onclick="deleteResolvedRegistration('${request.id}')" class="inline-flex items-center justify-center gap-2 rounded-full bg-rose-500 px-4 py-2 text-[12px] font-black text-white shadow-lg shadow-rose-500/20 transition hover:bg-rose-600 active:scale-95">
+                            <i class="fa-solid fa-trash-can"></i>
+                            Excluir registro
+                        </button>
                     </div>
-                </div>
-                <div class="grid gap-4 border-t border-ios-separator p-5 dark:border-ios-darkSeparator md:grid-cols-2 xl:grid-cols-4">
-                    <p class="text-[13px]"><span class="block text-[11px] font-bold uppercase tracking-wider text-gray-500">Telefone</span><strong>${escapeHtml(request.phone)}</strong></p>
-                    <p class="text-[13px]"><span class="block text-[11px] font-bold uppercase tracking-wider text-gray-500">Recrutador</span><strong>${escapeHtml(request.recruiter?.name || '-')}</strong></p>
-                    <p class="text-[13px]"><span class="block text-[11px] font-bold uppercase tracking-wider text-gray-500">Indicado</span><strong>${escapeHtml(request.indicated?.name || '-')}</strong></p>
-                    <p class="text-[13px]"><span class="block text-[11px] font-bold uppercase tracking-wider text-gray-500">Discord ID</span><strong>${escapeHtml(request.discordUserId)}</strong></p>
+                `
+                : '';
+
+            return `
+            <article class="overflow-hidden rounded-[18px] border border-black/5 bg-ios-card shadow-sm dark:border-white/5 dark:bg-ios-darkCard">
+                <button type="button" onclick="toggleApprovedRegistrationDetails('${request.id}')" class="flex w-full items-center gap-4 p-4 text-left transition hover:bg-black/[0.03] dark:hover:bg-white/[0.03]">
+                    <span id="approved-register-chevron-${request.id}" class="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-black/5 text-gray-500 transition-transform dark:bg-white/10 dark:text-gray-300">
+                        <i class="fa-solid fa-chevron-right text-[12px]"></i>
+                    </span>
+                    ${renderUserAvatar(request, 'h-12 w-12 text-[13px]')}
+                    <div class="min-w-0 flex-1">
+                        <div class="flex min-w-0 flex-wrap items-center gap-2">
+                            <h3 class="truncate text-[18px] font-bold">${escapeHtml(request.gameId)} | ${escapeHtml(request.name)}</h3>
+                            <span class="shrink-0 rounded-full px-2.5 py-1 text-[10px] font-black uppercase tracking-wider ${statusClass}">${statusLabel}</span>
+                        </div>
+                        <p class="mt-0.5 truncate text-[12px] text-gray-500 dark:text-gray-400">${escapeHtml(request.discordName || 'Discord')}</p>
+                    </div>
+                </button>
+                <div id="approved-register-details-${request.id}" class="hidden grid gap-4 border-t border-ios-separator bg-black/[0.02] p-4 dark:border-ios-darkSeparator dark:bg-white/[0.02] md:grid-cols-2 xl:grid-cols-4">
+                    <p class="text-[12px]"><span class="block text-[10px] font-bold uppercase tracking-wider text-gray-500">Telefone</span><strong>${escapeHtml(request.phone)}</strong></p>
+                    <p class="text-[12px]"><span class="block text-[10px] font-bold uppercase tracking-wider text-gray-500">Recrutador</span><strong>${escapeHtml(request.recruiter?.name || '-')}</strong></p>
+                    <p class="text-[12px]"><span class="block text-[10px] font-bold uppercase tracking-wider text-gray-500">Indicado</span><strong>${escapeHtml(request.indicated?.name || '-')}</strong></p>
+                    <p class="text-[12px]"><span class="block text-[10px] font-bold uppercase tracking-wider text-gray-500">${resolverLabel}</span><strong>${escapeHtml(resolverName)}</strong></p>
+                    <p class="text-[12px]"><span class="block text-[10px] font-bold uppercase tracking-wider text-gray-500">Discord ID</span><strong>${escapeHtml(request.discordUserId)}</strong></p>
+                    ${deleteButton}
                 </div>
             </article>
-        `).join('');
+        `;
+        }).join('');
+    }
+
+    function toggleApprovedRegistrationDetails(requestId) {
+        const details = document.getElementById(`approved-register-details-${requestId}`);
+        const chevron = document.getElementById(`approved-register-chevron-${requestId}`);
+        if (!details) return;
+
+        const shouldExpand = details.classList.contains('hidden');
+        details.classList.toggle('hidden', !shouldExpand);
+        chevron?.classList.toggle('rotate-90', shouldExpand);
     }
 
     function togglePendingRegistrationDetails(requestId) {
@@ -3414,10 +3804,38 @@ N??o desanime! As portas continuam abertas e estamos aqui para te apoiar a subir
                 throw new Error(payload.error || 'Nao foi possivel resolver o registro.');
             }
 
-            showToast(action === 'approve' ? 'Registro aprovado e cargos aplicados.' : 'Registro recusado.', action === 'approve' ? 'success' : 'error');
+            showToast(payload.warning || (action === 'approve' ? 'Registro aprovado e cargos aplicados.' : 'Registro recusado.'), action === 'approve' ? 'success' : 'error');
             await loadRegisterRequests();
         } catch (error) {
             showToast(error.message || 'Erro ao resolver registro.', 'error');
+        }
+    }
+
+    async function deleteResolvedRegistration(requestId) {
+        if (sessionStorage.getItem('oneDeveloperMode') !== 'true') {
+            showToast('Ative o modo desenvolvedor para excluir registros.', 'error');
+            return;
+        }
+
+        if (!confirm('Excluir este registro e devolver o usu??rio ao Cargo de Registro?')) {
+            return;
+        }
+
+        try {
+            const response = await fetch(`/api/register-requests/${requestId}`, {
+                method: 'DELETE',
+                headers: { 'X-One-Developer-Mode': 'true' }
+            });
+            const payload = await response.json();
+
+            if (!response.ok) {
+                throw new Error(payload.error || 'Nao foi possivel excluir o registro.');
+            }
+
+            showToast('Registro excluido, cargos revertidos e apelido removido.', 'success');
+            await loadRegisterRequests();
+        } catch (error) {
+            showToast(error.message || 'Erro ao excluir registro.', 'error');
         }
     }
 
@@ -3502,42 +3920,8 @@ N??o desanime! As portas continuam abertas e estamos aqui para te apoiar a subir
         'porto-sul': 'Porto Sul'
     };
 
-    let selectedCentralActionId = 'acao-banco-central';
-    let centralEditableActions = [
-        {
-            id: 'acao-banco-central',
-            name: 'Banco Central',
-            date: '2026-06-12',
-            time: '21:30',
-            slots: 16,
-            reserves: 3,
-            leader: 'Dire????o Raze',
-            weapon: 'Fuzil e pistola',
-            status: 'Iniciando'
-        },
-        {
-            id: 'acao-joalheria',
-            name: 'Joalheria',
-            date: '2026-06-13',
-            time: '22:00',
-            slots: 10,
-            reserves: 2,
-            leader: 'Ger??ncia One',
-            weapon: 'Pistola',
-            status: 'Organizando'
-        },
-        {
-            id: 'acao-aeroporto',
-            name: 'Aeroporto',
-            date: '2026-06-14',
-            time: '20:30',
-            slots: 12,
-            reserves: 1,
-            leader: 'Lideran??a T??tica',
-            weapon: 'Fuzil',
-            status: 'Agendada'
-        }
-    ];
+    let selectedCentralActionId = '';
+    let centralEditableActions = [];
 
 function createCentralAction() {
   const modal = document.getElementById('central-action-modal');
@@ -3657,6 +4041,23 @@ function createCentralAction() {
 
      if (scheduledBadge) scheduledBadge.textContent = scheduledCount === 1 ? '1 agendada' : `${scheduledCount} agendadas`;
      if (endedBadge) endedBadge.textContent = endedCount === 1 ? '1 encerrada' : `${endedCount} encerradas`;
+ }
+
+ function removeCentralActionTestModels() {
+     document.getElementById('central-action-details-hoje')?.closest('article')?.remove();
+
+     ['central-scheduled-actions', 'central-ended-actions', 'central-featured-actions'].forEach((containerId) => {
+         const container = document.getElementById(containerId);
+         if (container) container.innerHTML = '';
+     });
+
+     const featuredLabel = document.querySelector('#central-section-acoes section h4 + span');
+     if (featuredLabel) featuredLabel.textContent = 'Nenhuma acao em destaque';
+
+     centralEditableActions = centralEditableActions.filter((action) => action.createdFromModal);
+     selectedCentralActionId = centralEditableActions[0]?.id || '';
+     renderCentralActionEditor();
+     updateCentralActionCategoryCounts();
  }
 
  function submitCentralActionModal() {
@@ -4522,6 +4923,7 @@ function createCentralAction() {
      renderFarmProductSettings();
      renderCentralFarmProducts();
      applyCentralFarmGlobalGoal();
+     removeCentralActionTestModels();
      updateCentralActionCategoryCounts();
      document.addEventListener('pointermove', updateAnimatedBackgroundPosition);
         setCentralFarmMode('any', true);
@@ -4543,4 +4945,5 @@ function createCentralAction() {
     </script>
 </body>
 </html>
+
 

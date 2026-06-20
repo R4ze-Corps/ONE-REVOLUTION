@@ -23,7 +23,6 @@ type FarmSettings = {
     complete: FarmRole;
     incomplete: FarmRole;
     noDelivery: FarmRole;
-    admin: FarmRole;
   };
   products: FarmProduct[];
   updatedAt: Date;
@@ -128,7 +127,6 @@ function defaultGoalRoles(): FarmSettings["goalRoles"] {
     complete: { id: "", name: "Meta OK" },
     incomplete: { id: "", name: "Meta Parcial" },
     noDelivery: { id: "", name: "Sem Entrega" },
-    admin: { id: "", name: "Administrador de Farm" },
   };
 }
 
@@ -149,10 +147,9 @@ function readGoalRoles(value: unknown): FarmSettings["goalRoles"] | null {
   const complete = readRole(record.complete);
   const incomplete = readRole(record.incomplete) || readRole(record.partial);
   const noDelivery = readRole(record.noDelivery);
-  const admin = readRole(record.admin);
 
   return complete && incomplete && noDelivery
-    ? { complete, incomplete, noDelivery, admin: admin || { id: "", name: "Administrador de Farm" } }
+    ? { complete, incomplete, noDelivery }
     : null;
 }
 

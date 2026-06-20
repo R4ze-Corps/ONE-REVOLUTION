@@ -73,3 +73,4 @@ export function getDiscordMemberName(member: DiscordGuildMember) {
     "Membro Discord"
   );
 }
+

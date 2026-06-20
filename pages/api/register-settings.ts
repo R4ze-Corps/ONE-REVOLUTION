@@ -112,3 +112,4 @@ function readRole(value: unknown): SelectedRole | null {
 function readString(value: unknown) {
   return typeof value === "string" ? value.trim() : "";
 }
+

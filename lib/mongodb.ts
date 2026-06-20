@@ -40,3 +40,4 @@ attachDatabasePool(client);
 // separate module, the client can be shared across functions.
 
 export default client;
+

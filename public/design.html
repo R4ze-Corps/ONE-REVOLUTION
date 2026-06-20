@@ -326,10 +326,10 @@
                         <i class="fa-solid fa-moon text-lg" id="theme-icon"></i>
                     </button>
                     <button onclick="switchView('central'); switchCentralCategory('registrar')" class="group inline-flex items-center gap-2 rounded-full bg-black/5 dark:bg-white/10 hover:bg-black/10 dark:hover:bg-white/15 border border-black/5 dark:border-white/10 py-1.5 pl-1.5 pr-3 transition active:scale-95">
-                        <span data-discord-initials class="w-8 h-8 rounded-full bg-brand-pink text-white flex items-center justify-center text-[12px] font-black shadow-lg shadow-brand-pink/20">MS</span>
+                        <span data-discord-initials data-discord-avatar class="w-8 h-8 overflow-hidden rounded-full bg-brand-pink text-white flex items-center justify-center text-[12px] font-black shadow-lg shadow-brand-pink/20">MS</span>
                         <span class="hidden sm:block text-left leading-tight">
                             <span data-discord-display-name class="block text-[13px] font-bold text-gray-950 dark:text-white">Maria Silva</span>
-                            <span class="block text-[11px] font-semibold text-gray-500 dark:text-gray-400">Desenvolvedora Front-end Senior</span>
+                            <span data-discord-role-title class="block max-w-[140px] truncate text-[11px] font-semibold text-gray-500 dark:text-gray-400">Membro</span>
                         </span>
                     </button>
                 </div>
@@ -337,6 +337,34 @@
         </div>
 
     </nav>
+
+    <main id="view-registration-gate" class="hidden fixed inset-0 z-30 overflow-hidden bg-black/70 px-4 py-24 backdrop-blur-md" aria-label="Registro necessario">
+        <section class="absolute inset-0 bg-cover bg-center opacity-45 blur-[3px] scale-105" style="background-image: url('https://r2.fivemanage.com/vLUsF9vzqBOo7DSFHERFX/ChatGPTImage12dejun.de202622_44_04(1).png');"></section>
+        <section class="relative z-10 flex min-h-full items-center justify-center">
+            <div class="w-full max-w-[520px] overflow-hidden rounded-[30px] border border-white/55 bg-black/35 shadow-[0_0_0_4px_rgba(255,255,255,0.18),0_0_34px_rgba(255,255,255,0.24),0_30px_90px_rgba(0,0,0,0.42)] ring-4 ring-white/20 backdrop-blur-2xl dark:text-white">
+                <div class="relative overflow-hidden bg-black/25 px-8 pb-8 pt-9 text-center backdrop-blur-xl">
+                    <div class="absolute inset-0 opacity-30 bg-[radial-gradient(circle_at_25%_18%,rgba(255,255,255,0.22),transparent_18%),radial-gradient(circle_at_75%_10%,rgba(255,255,255,0.14),transparent_14%)]"></div>
+                    <div class="relative mx-auto grid h-20 w-20 place-items-center rounded-[26px] bg-brand-pink text-white shadow-lg shadow-brand-pink/25">
+                        <i class="fa-solid fa-id-card text-[30px]"></i>
+                    </div>
+                </div>
+                <div class="bg-black/25 px-8 pb-8 pt-7 text-center backdrop-blur-xl">
+                    <h1 class="text-[25px] font-black tracking-tight text-white">Seja bem muito bem vindo.</h1>
+                    <p class="mt-3 text-[15px] font-medium leading-6 text-gray-300">Notei que voce nao possui registro em nosso servidor, para acessar nosso servidor voce precisar fazer o seu registro!</p>
+                    <div class="mt-7 grid gap-3 sm:grid-cols-2">
+                        <button type="button" onclick="enterDeveloperMode()" class="inline-flex w-full items-center justify-center gap-2 rounded-2xl bg-white/10 px-5 py-4 text-[14px] font-black text-white ring-1 ring-white/15 transition hover:bg-white/15 active:scale-95">
+                            <i class="fa-solid fa-code"></i>
+                            Modo Desenvolvedor
+                        </button>
+                        <button type="button" onclick="openRegisterModal()" class="inline-flex w-full items-center justify-center gap-2 rounded-2xl bg-brand-pink px-5 py-4 text-[14px] font-black text-white shadow-[0_18px_45px_rgba(0,122,255,0.35)] transition hover:-translate-y-0.5 active:scale-95">
+                            <i class="fa-solid fa-user-plus"></i>
+                            Fazer Registro
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
 
     <main id="view-home" class="pt-24 pb-20 min-h-screen hidden">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -610,8 +638,9 @@
                                     Ativo desde 2026
                                 </span>
                                 <div class="flex items-center gap-2 text-gray-500 dark:text-gray-400">
-                                    <button class="h-9 w-9 rounded-lg hover:bg-gray-200 dark:hover:bg-[#262626] hover:text-brand-pink dark:hover:text-white transition-all duration-200" title="Copiar link"><i class="fa-solid fa-link text-[14px]"></i></button>
-                                    <button class="h-9 w-9 rounded-lg hover:bg-brand-pink/10 hover:text-brand-pink transition-all duration-200" title="Exportar perfil"><i class="fa-solid fa-arrow-up-from-bracket text-[14px]"></i></button>
+                                    <button onclick="logoutDiscord()" class="h-9 w-9 rounded-lg hover:bg-gray-200 dark:hover:bg-[#262626] hover:text-brand-pink dark:hover:text-white transition-all duration-200" title="Sair"><i class="fa-solid fa-door-open text-[14px]"></i></button>
+                                    <button onclick="openProfileImport()" class="h-9 w-9 rounded-lg hover:bg-brand-pink/10 hover:text-brand-pink transition-all duration-200" title="Importar perfil"><i class="fa-solid fa-arrow-down-to-bracket text-[14px]"></i></button>
+                                    <input id="profile-import-input" type="file" accept="application/json" class="hidden" onchange="importProfile(event)" />
                                 </div>
                             </div>
                         </div>
@@ -2114,11 +2143,8 @@
                 <i class="fa-solid fa-xmark"></i>
             </button>
         </div>
+        <input id="register-discord-user-id" type="hidden" />
         <div class="grid max-h-[72vh] gap-4 overflow-y-auto p-5 md:grid-cols-2">
-            <label class="grid gap-2 text-[13px] font-bold uppercase tracking-wider text-gray-500 dark:text-gray-400">
-                ID Discord do candidato
-                <input id="register-discord-user-id" type="text" inputmode="numeric" class="rounded-2xl border border-black/5 bg-gray-100 px-4 py-3 text-black outline-none transition focus:border-brand-pink dark:border-white/5 dark:bg-gray-800 dark:text-white" placeholder="ID do usuario no Discord" />
-            </label>
             <label class="grid gap-2 text-[13px] font-bold uppercase tracking-wider text-gray-500 dark:text-gray-400">
                 Nome
                 <input id="register-name" type="text" class="rounded-2xl border border-black/5 bg-gray-100 px-4 py-3 text-black outline-none transition focus:border-brand-pink dark:border-white/5 dark:bg-gray-800 dark:text-white" placeholder="Nome do personagem" />
@@ -2214,46 +2240,136 @@
 
     function enterOneCore() {
         document.getElementById('view-login')?.classList.add('hidden');
+        document.getElementById('view-registration-gate')?.classList.add('hidden');
         document.getElementById('app-nav')?.classList.remove('hidden');
         updateHubGreeting();
         switchView('home');
+    }
+
+    function showRegistrationGate() {
+        document.getElementById('view-login')?.classList.add('hidden');
+        document.getElementById('app-nav')?.classList.add('hidden');
+        ['home', 'central', 'dashboard', 'configure'].forEach((viewName) => {
+            document.getElementById(`view-${viewName}`)?.classList.add('hidden');
+        });
+        document.getElementById('view-registration-gate')?.classList.remove('hidden');
+        updateHubGreeting();
+    }
+
+    function enterDeveloperMode() {
+        sessionStorage.setItem('oneDeveloperMode', 'true');
+        enterOneCore();
     }
 
     function loginWithDiscord() {
         window.location.href = '/api/auth/discord/login';
     }
 
-    function applyDiscordSessionUser(user) {
-        if (!user) return;
+    function logoutDiscord() {
+        sessionStorage.removeItem('oneDeveloperMode');
+        localStorage.removeItem('oneCurrentDiscordUserId');
+        localStorage.removeItem('oneCurrentDiscordRoleIds');
+        localStorage.removeItem('oneCurrentDiscordRoleNames');
+        window.location.href = '/api/auth/discord/logout';
+    }
 
-        localStorage.setItem('oneCurrentDiscordUserId', user.id);
-        const displayName = user.displayName || user.globalName || user.username || 'Usu??rio Discord';
-        localStorage.setItem('oneDiscordDisplayName', displayName);
-        const initials = displayName
+    function openProfileImport() {
+        document.getElementById('profile-import-input')?.click();
+    }
+
+    async function importProfile(event) {
+        const file = event.target?.files?.[0];
+        if (!file) return;
+
+        try {
+            const profile = JSON.parse(await file.text());
+            localStorage.setItem('oneImportedProfile', JSON.stringify(profile));
+
+            applyDiscordIdentity({
+                displayName: profile.displayName || profile.name || localStorage.getItem('oneDiscordDisplayName') || 'Usuario Discord',
+                avatarUrl: profile.avatarUrl || localStorage.getItem('oneDiscordAvatarUrl') || '',
+                roleName: profile.roleName || profile.highestRoleName || localStorage.getItem('oneDiscordRoleName') || 'Membro'
+            });
+
+            showToast('Perfil importado.', 'success');
+        } catch {
+            showToast('Arquivo de perfil invalido.', 'error');
+        } finally {
+            event.target.value = '';
+        }
+    }
+
+    function getInitialsFromName(name) {
+        return name
             .split(' ')
             .filter(Boolean)
             .slice(0, 2)
             .map((part) => part[0])
             .join('')
             .toUpperCase() || 'DC';
+    }
+
+    function applyDiscordIdentity({ displayName, avatarUrl = '', roleName = '' }) {
+        const safeDisplayName = displayName || 'Usuario Discord';
+        const initials = getInitialsFromName(safeDisplayName);
+
+        localStorage.setItem('oneDiscordDisplayName', safeDisplayName);
+        if (avatarUrl) localStorage.setItem('oneDiscordAvatarUrl', avatarUrl);
+        if (roleName) localStorage.setItem('oneDiscordRoleName', roleName);
 
         document.querySelectorAll('[data-discord-display-name]').forEach((element) => {
-            element.textContent = displayName;
+            element.textContent = safeDisplayName;
         });
         document.querySelectorAll('[data-discord-initials]').forEach((element) => {
             element.textContent = initials;
         });
+        document.querySelectorAll('[data-discord-avatar]').forEach((element) => {
+            element.innerHTML = avatarUrl
+                ? `<img src="${escapeHtml(avatarUrl)}" alt="" class="h-full w-full rounded-full object-cover" />`
+                : initials;
+        });
+        document.querySelectorAll('[data-discord-role-title]').forEach((element) => {
+            element.textContent = roleName || 'Membro';
+        });
 
         const hubUser = document.getElementById('hub-user-name');
-        if (hubUser) hubUser.textContent = displayName;
+        if (hubUser) hubUser.textContent = safeDisplayName;
+    }
+
+    function applyDiscordSessionUser(user) {
+        if (!user) return;
+
+        localStorage.setItem('oneCurrentDiscordUserId', user.id);
+        const displayName = user.displayName || user.globalName || user.username || 'Usuario Discord';
+
+        applyDiscordIdentity({
+            displayName,
+            avatarUrl: user.avatarUrl || localStorage.getItem('oneDiscordAvatarUrl') || '',
+            roleName: localStorage.getItem('oneDiscordRoleName') || 'Membro'
+        });
+        syncCurrentDiscordMemberRoles(user.id);
     }
 
     function showDiscordLoginGate() {
         document.getElementById('view-login')?.classList.remove('hidden');
+        document.getElementById('view-registration-gate')?.classList.add('hidden');
         document.getElementById('app-nav')?.classList.add('hidden');
         ['home', 'central', 'dashboard', 'configure'].forEach((viewName) => {
             document.getElementById(`view-${viewName}`)?.classList.add('hidden');
         });
+    }
+
+    async function currentUserHasApprovedRegistration(discordUserId) {
+        if (!discordUserId) return false;
+
+        const response = await fetch('/api/register-requests?status=approved');
+        const payload = await response.json();
+
+        if (!response.ok) {
+            throw new Error(payload.error || 'Nao foi possivel verificar o registro.');
+        }
+
+        return (payload.requests || []).some((request) => request.discordUserId === discordUserId);
     }
 
     async function initializeDiscordLoginGate() {
@@ -2273,7 +2389,20 @@
             if (!response.ok || !payload.authenticated) return;
 
             applyDiscordSessionUser(payload.user);
-            enterOneCore();
+            let hasApprovedRegistration = false;
+            try {
+                hasApprovedRegistration = await currentUserHasApprovedRegistration(payload.user.id);
+            } catch (error) {
+                showToast(error.message || 'Nao foi possivel verificar o registro.', 'error');
+            }
+
+            if (sessionStorage.getItem('oneDeveloperMode') === 'true') {
+                enterOneCore();
+            } else if (hasApprovedRegistration) {
+                enterOneCore();
+            } else {
+                showRegistrationGate();
+            }
 
             if (params.get('auth') === 'discord') {
                 showToast('Login via Discord realizado.', 'success');
@@ -2296,6 +2425,12 @@
         if (greetingEl) greetingEl.textContent = greeting;
         if (userEl) userEl.textContent = savedDiscordName;
         if (emojiEl) emojiEl.textContent = emoji;
+
+        applyDiscordIdentity({
+            displayName: savedDiscordName,
+            avatarUrl: localStorage.getItem('oneDiscordAvatarUrl') || '',
+            roleName: localStorage.getItem('oneDiscordRoleName') || 'Membro'
+        });
     }
 
     function updateAnimatedBackgroundPosition(event) {
@@ -2307,6 +2442,7 @@
     }
 
     function switchView(viewName) {
+            document.getElementById('view-registration-gate')?.classList.add('hidden');
             document.getElementById('view-home').classList.add('hidden');
             document.getElementById('view-central').classList.add('hidden');
             document.getElementById('view-dashboard').classList.add('hidden');
@@ -2484,13 +2620,30 @@
             });
         }
 
+        function getDiscordRoleNames(roleIds = []) {
+            return roleIds
+                .map((roleId) => discordRoles.find((role) => role.id === roleId)?.name)
+                .filter(Boolean);
+        }
+
         function syncCurrentDiscordMemberRoles(discordUserId = localStorage.getItem('oneCurrentDiscordUserId'), updateAccess = true) {
             if (!discordUserId) return null;
 
             const currentMember = discordMembers.find((member) => member.id === discordUserId);
             if (!currentMember) return null;
 
+            const roleNames = currentMember.roleNames?.length
+                ? currentMember.roleNames
+                : getDiscordRoleNames(currentMember.roles || []);
+            const roleName = currentMember.highestRoleName || roleNames[0] || 'Membro';
+
             localStorage.setItem('oneCurrentDiscordRoleIds', JSON.stringify(currentMember.roles || []));
+            localStorage.setItem('oneCurrentDiscordRoleNames', JSON.stringify(roleNames));
+            applyDiscordIdentity({
+                displayName: currentMember.name,
+                avatarUrl: currentMember.avatarUrl || localStorage.getItem('oneDiscordAvatarUrl') || '',
+                roleName
+            });
             if (updateAccess) applyCentralFarmAccess();
             return currentMember;
         }
@@ -2697,7 +2850,8 @@
         async function submitRegisterRequest(event) {
             event.preventDefault();
 
-            const discordUserId = document.getElementById('register-discord-user-id')?.value.trim();
+            const discordUserIdInput = document.getElementById('register-discord-user-id');
+            const discordUserId = discordUserIdInput?.value.trim() || localStorage.getItem('oneCurrentDiscordUserId') || '';
             const name = document.getElementById('register-name')?.value.trim();
             const gameId = document.getElementById('register-game-id')?.value.trim();
             const phone = document.getElementById('register-phone')?.value.trim();
@@ -2710,6 +2864,7 @@
             }
 
             try {
+                if (discordUserIdInput) discordUserIdInput.value = discordUserId;
                 localStorage.setItem('oneCurrentDiscordUserId', discordUserId);
                 syncCurrentDiscordMemberRoles(discordUserId);
                 const response = await fetch('/api/register-requests', {
@@ -4672,4 +4827,5 @@ function createCentralAction() {
     </script>
 </body>
 </html>
+
 

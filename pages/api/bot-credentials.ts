@@ -123,3 +123,4 @@ function maskSecret(value: string) {
 function readString(value: unknown) {
   return typeof value === "string" ? value.trim() : "";
 }
+

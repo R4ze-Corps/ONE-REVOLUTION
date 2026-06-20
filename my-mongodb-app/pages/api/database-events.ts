@@ -101,3 +101,4 @@ async function listDatabaseEvents(
     return res.status(500).json({ error: message });
   }
 }
+

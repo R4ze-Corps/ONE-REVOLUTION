@@ -146,3 +146,4 @@ function toPublicRequest(request: RegisterRequest) {
 function readString(value: unknown) {
   return typeof value === "string" ? value.trim() : "";
 }
+
