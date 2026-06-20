@@ -16,6 +16,9 @@ type DiscordRole = {
 type MemberOption = {
   id: string;
   name: string;
+  nick: string;
+  displayName: string;
+  username: string;
   avatarUrl: string;
   roles: string[];
   roleNames: string[];
@@ -68,6 +71,9 @@ export default async function handler(
           return {
             id: member.user!.id,
             name: getDiscordMemberName(member),
+            nick: member.nick || "",
+            displayName: member.user?.global_name || "",
+            username: member.user?.username || "",
             avatarUrl: getDiscordAvatarUrl(member),
             roles: member.roles,
             roleNames: memberRoles.map((role) => role.name),

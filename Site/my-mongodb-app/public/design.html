@@ -1201,13 +1201,13 @@
                         </article>
                         <article class="bg-[#1A1A1A] text-white p-5 rounded-2xl border border-white/10">
                             <span class="text-[10px] uppercase text-gray-400 font-bold tracking-widest">Entregas hoje</span>
-                            <p class="text-[26px] font-black mt-2">142</p>
-                            <span class="text-[12px] text-emerald-500 font-semibold">+18 desde ontem</span>
+                            <p data-central-farm-today-count class="text-[26px] font-black mt-2">0</p>
+                            <span data-central-farm-today-delta class="text-[12px] text-emerald-500 font-semibold">0 desde ontem</span>
                         </article>
                         <article class="bg-[#1A1A1A] text-white p-5 rounded-2xl border border-white/10">
                             <span class="text-[10px] uppercase text-gray-400 font-bold tracking-widest">Membros ativos</span>
-                            <p class="text-[26px] font-black mt-2">24</p>
-                            <span class="text-[12px] text-gray-500 font-semibold">3 sem entrega</span>
+                            <p data-central-farm-active-members class="text-[26px] font-black mt-2">0</p>
+                            <span data-central-farm-inactive-members class="text-[12px] text-gray-500 font-semibold">0 sem entrega</span>
                         </article>
                     </section>
 
@@ -1286,7 +1286,7 @@
                                     <div class="grid grid-cols-1 sm:grid-cols-[1fr_auto] gap-3">
                                         <label>
                                             <span class="block text-[10px] uppercase tracking-wider text-gray-400 mb-2">Quantidade entregue</span>
-                                            <input id="central-farm-quantity" type="number" class="w-full bg-[#0A0A0A] border border-white/10 rounded-xl p-4 text-[14px] text-white outline-none focus:border-brand-pink transition-all" placeholder="Ex: 50" />
+                                            <input id="central-farm-quantity" type="text" inputmode="numeric" class="w-full bg-[#0A0A0A] border border-white/10 rounded-xl p-4 text-[14px] text-white outline-none focus:border-brand-pink transition-all" placeholder="Ex: 100.000" />
                                         </label>
                                         <button onclick="submitCentralFarm()" type="button" class="self-end px-6 py-4 bg-white text-black font-bold rounded-xl hover:bg-brand-pink hover:text-white transition-all">Confirmar</button>
                                     </div>
@@ -1296,11 +1296,11 @@
 
                         <aside>
                             <div class="bg-[#1A1A1A] text-white rounded-2xl border border-white/10 p-6 h-full">
-                                <div class="flex items-center gap-4 mb-8">
-                                    <div class="w-16 h-16 rounded-2xl bg-[#0A0A0A] border border-white/10 flex items-center justify-center font-black text-[20px] text-brand-pink">AS</div>
-                                    <div>
-                                        <h4 class="font-bold text-[18px]">Ana Silva</h4>
-                                        <p class="text-[10px] uppercase tracking-widest text-gray-500">ID: 089 ??? Operador</p>
+                                <div class="flex items-center gap-4 mb-8 rounded-2xl bg-[#0A0A0A]/60 border border-white/10 p-3">
+                                    <div data-central-farm-profile-avatar class="w-14 h-14 overflow-hidden rounded-full bg-[#0A0A0A] border border-white/10 flex items-center justify-center font-black text-[18px] text-brand-pink ring-2 ring-brand-pink/20">AS</div>
+                                    <div class="min-w-0">
+                                        <h4 data-central-farm-profile-name class="font-black text-[18px] leading-tight truncate">Ana Silva</h4>
+                                        <p data-central-farm-profile-meta class="hidden"></p>
                                     </div>
                                 </div>
 
@@ -1308,36 +1308,27 @@
                                     <div>
                                         <div class="flex justify-between mb-2">
                                             <span class="text-[10px] uppercase text-gray-400 font-bold tracking-wider">Progresso da meta</span>
-                                            <span class="text-[10px] font-bold">850 / 1000</span>
+                                            <span data-central-farm-profile-progress-text class="text-[10px] font-bold">0 / 0</span>
                                         </div>
                                         <div class="w-full h-2 bg-[#0A0A0A] rounded-full overflow-hidden">
-                                            <div class="h-full bg-brand-pink w-[85%] rounded-full"></div>
+                                            <div data-central-farm-profile-progress-bar class="h-full bg-brand-pink rounded-full" style="width: 0%"></div>
                                         </div>
                                     </div>
 
                                     <div class="grid grid-cols-2 gap-3">
                                         <div class="bg-[#0A0A0A] p-4 rounded-xl border border-white/10">
                                             <p class="text-[10px] text-gray-500 uppercase">Entregas</p>
-                                            <p class="text-[20px] font-bold">12</p>
+                                            <p data-central-farm-profile-delivery-count class="text-[20px] font-bold">0</p>
                                         </div>
                                         <div class="bg-[#0A0A0A] p-4 rounded-xl border border-white/10">
                                             <p class="text-[10px] text-gray-500 uppercase">Rating</p>
-                                            <p class="text-[20px] font-bold text-emerald-500">A+</p>
+                                            <p data-central-farm-profile-rating class="text-[20px] font-bold text-emerald-500">-</p>
                                         </div>
                                     </div>
 
                                     <div class="border-t border-white/10 pt-6">
                                         <h5 class="text-[10px] uppercase tracking-wider text-gray-500 mb-4">??ltimas entregas</h5>
-                                        <div class="space-y-3">
-                                            <div class="flex justify-between items-center text-[14px]">
-                                                <span>Pe??as</span>
-                                                <span class="font-mono text-gray-400">50x</span>
-                                            </div>
-                                            <div class="flex justify-between items-center text-[14px]">
-                                                <span>Min??rios</span>
-                                                <span class="font-mono text-gray-400">20x</span>
-                                            </div>
-                                        </div>
+                                        <div data-central-farm-profile-deliveries class="space-y-3"></div>
                                     </div>
                                 </div>
                             </div>
@@ -1866,7 +1857,7 @@
                     <h3 class="font-bold text-[20px] mb-4">Criar produto</h3>
                     <div class="grid gap-3 rounded-[20px] border border-black/5 bg-gray-100 p-4 dark:border-white/5 dark:bg-gray-800">
                         <label class="grid gap-2 text-[13px] font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wider">Produto<input id="farm-product-name" class="bg-white dark:bg-gray-900 text-black dark:text-white rounded-2xl px-4 py-3 outline-none border border-black/5 dark:border-white/5 focus:border-brand-pink" placeholder="Ex: Pe??as" /></label>
-                        <label class="grid gap-2 text-[13px] font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wider">Meta<input id="farm-product-goal" type="number" class="bg-white dark:bg-gray-900 text-black dark:text-white rounded-2xl px-4 py-3 outline-none border border-black/5 dark:border-white/5 focus:border-brand-pink" placeholder="300" /></label>
+                        <label class="grid gap-2 text-[13px] font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wider">Meta<input id="farm-product-goal" type="text" inputmode="numeric" class="bg-white dark:bg-gray-900 text-black dark:text-white rounded-2xl px-4 py-3 outline-none border border-black/5 dark:border-white/5 focus:border-brand-pink" placeholder="Ex: 100.000" /></label>
                         <button onclick="addFarmProduct()" class="inline-flex items-center justify-center gap-2 rounded-2xl bg-brand-pink px-4 py-3 text-[14px] font-bold text-white transition active:scale-95"><i class="fa-solid fa-plus"></i>Criar produto</button>
                         <div id="farm-products-list" class="grid gap-2"></div>
                     </div>
@@ -2242,7 +2233,12 @@
     }
 
     function loginWithDiscord() {
-        window.location.href = '/api/auth/discord/login';
+        const target = `${window.location.origin}/api/auth/discord/login`;
+        if (window.top && window.top !== window.self) {
+            window.top.location.href = target;
+            return;
+        }
+        window.location.href = target;
     }
 
     function logoutDiscord() {
@@ -2250,7 +2246,12 @@
         localStorage.removeItem('oneCurrentDiscordUserId');
         localStorage.removeItem('oneCurrentDiscordRoleIds');
         localStorage.removeItem('oneCurrentDiscordRoleNames');
-        window.location.href = '/api/auth/discord/logout';
+        const target = `${window.location.origin}/api/auth/discord/logout`;
+        if (window.top && window.top !== window.self) {
+            window.top.location.href = target;
+            return;
+        }
+        window.location.href = target;
     }
 
     function openProfileImport() {
@@ -2440,7 +2441,7 @@
         const today = new Date().toISOString().slice(0, 10);
         const todayCount = actions.filter((action) => action.date === today || action.category === 'featured').length;
         const actionCount = actions.length;
-        const farmGoal = getSavedFarmGlobalGoal();
+        const farmGoal = typeof getCentralFarmSummary === 'function' ? getCentralFarmSummary().percent : getSavedFarmGlobalGoal();
         const memberCount = Array.isArray(discordMembers) ? discordMembers.length : 0;
 
         document.querySelectorAll('[data-dashboard-actions-count]').forEach((element) => {
@@ -2609,6 +2610,8 @@
                 fillDiscordMemberSelect('punishment-member-select');
                 fillPromotionMemberSelect();
                 renderCentralFarmMemberSelect();
+                renderCentralFarmProfileCard();
+                updateCentralFarmSummary();
                 syncCurrentDiscordMemberRoles();
                 updateDashboardSummary();
                 syncCurrentRegisterDetails();
@@ -2627,12 +2630,13 @@
                 : 'Selecione um usuario';
             select.innerHTML = `<option value="">${placeholder}</option>`;
             discordMembers.forEach((member) => {
+                const memberName = getCentralFarmMemberName(member);
                 const option = document.createElement('option');
                 option.value = member.id;
                 option.textContent = selectId === 'punishment-member-select'
-                    ? `${member.name} (ID: ${member.id})`
-                    : member.name;
-                option.dataset.memberName = member.name;
+                    ? `${memberName} (ID: ${member.id})`
+                    : memberName;
+                option.dataset.memberName = memberName;
                 if (member.avatarUrl) option.dataset.avatarUrl = member.avatarUrl;
                 select.appendChild(option);
             });
@@ -2658,7 +2662,7 @@
             localStorage.setItem('oneCurrentDiscordRoleIds', JSON.stringify(currentMember.roles || []));
             localStorage.setItem('oneCurrentDiscordRoleNames', JSON.stringify(roleNames));
             applyDiscordIdentity({
-                displayName: currentMember.name,
+                displayName: getCentralFarmMemberName(currentMember),
                 avatarUrl: currentMember.avatarUrl || localStorage.getItem('oneDiscordAvatarUrl') || '',
                 roleName
             });
@@ -3050,10 +3054,11 @@ N??o desanime! As portas continuam abertas e estamos aqui para te apoiar a subir
         const previousValue = select.value;
         select.innerHTML = '<option value="">Selecione um membro do servidor</option>';
         discordMembers.forEach((member) => {
+            const memberName = getCentralFarmMemberName(member);
             const option = document.createElement('option');
             option.value = member.id;
-            option.textContent = `${member.name} (ID: ${member.id})`;
-            option.dataset.memberName = member.name;
+            option.textContent = `${memberName} (ID: ${member.id})`;
+            option.dataset.memberName = memberName;
             select.appendChild(option);
         });
 
@@ -3374,10 +3379,23 @@ N??o desanime! As portas continuam abertas e estamos aqui para te apoiar a subir
         showToast('Puni????o registrada e enviada no canal configurado.', 'success');
     }
 
-    function getPunishmentMemberAvatar(item) {
-        const member = discordMembers.find((discordMember) =>
-            discordMember.id === item.memberId || discordMember.name === item.memberName
+    function getDiscordMemberForSavedItem(item) {
+        const savedName = String(item.memberName || '').trim().toLowerCase();
+        return discordMembers.find((discordMember) =>
+            discordMember.id === item.memberId
+            || [discordMember.name, discordMember.nick, discordMember.displayName, discordMember.username]
+                .filter(Boolean)
+                .some((name) => String(name).trim().toLowerCase() === savedName)
         );
+    }
+
+    function getSavedItemServerMemberName(item) {
+        const member = getDiscordMemberForSavedItem(item);
+        return member ? getCentralFarmMemberName(member) : item.memberName;
+    }
+
+    function getPunishmentMemberAvatar(item) {
+        const member = getDiscordMemberForSavedItem(item);
         return item.memberAvatarUrl || member?.avatarUrl || '';
     }
 
@@ -3389,7 +3407,7 @@ N??o desanime! As portas continuam abertas e estamos aqui para te apoiar a subir
             return `<img src="${escapeHtml(avatarUrl)}" alt="" class="${classes}" />`;
         }
 
-        return `<span class="h-12 w-12 shrink-0 rounded-full bg-brand-pink text-white flex items-center justify-center font-black text-[14px] ring-2 ring-white/10">${escapeHtml(getMemberInitials(item.memberName))}</span>`;
+        return `<span class="h-12 w-12 shrink-0 rounded-full bg-brand-pink text-white flex items-center justify-center font-black text-[14px] ring-2 ring-white/10">${escapeHtml(getMemberInitials(getSavedItemServerMemberName(item)))}</span>`;
     }
 
     function renderPunishmentSummary() {
@@ -3416,7 +3434,7 @@ N??o desanime! As portas continuam abertas e estamos aqui para te apoiar a subir
                 <div class="flex items-center gap-5 min-w-0">
                     ${renderPunishmentMemberAvatar(item)}
                     <div class="min-w-0">
-                        <h5 class="font-bold truncate">${escapeHtml(item.memberName)}</h5>
+                        <h5 class="font-bold truncate">${escapeHtml(getSavedItemServerMemberName(item))}</h5>
                         <p class="text-[12px] text-gray-400 mt-0.5 truncate">Motivo: ${escapeHtml(item.description)}</p>
                     </div>
                 </div>
@@ -3436,7 +3454,7 @@ N??o desanime! As portas continuam abertas e estamos aqui para te apoiar a subir
             noDelivery: getSelectedRole('farm-role-no-delivery'),
             admin: adminRole
         };
-        const products = getFarmProducts().filter((product) => product.name && product.goal >= 0);
+        const products = getFarmProducts().filter((product) => product.name && getFarmNumericValue(product.goal) >= 0);
         const globalGoal = saveFarmGlobalGoal();
         if (!adminRole || !goalRoles.complete || !goalRoles.incomplete || !goalRoles.noDelivery) {
             applyCentralFarmAccess();
@@ -3550,11 +3568,8 @@ N??o desanime! As portas continuam abertas e estamos aqui para te apoiar a subir
     function applyCentralFarmGlobalGoal() {
         const value = getSavedFarmGlobalGoal();
         const input = document.getElementById('farm-global-goal');
-        const label = document.querySelector('[data-central-farm-global-goal]');
-        const bar = document.querySelector('[data-central-farm-global-bar]');
         if (input && !input.value) input.value = String(value);
-        if (label) label.textContent = `${value}%`;
-        if (bar) bar.style.width = `${value}%`;
+        updateCentralFarmSummary();
         updateDashboardSummary();
     }
 
@@ -3845,7 +3860,7 @@ N??o desanime! As portas continuam abertas e estamos aqui para te apoiar a subir
     function syncCurrentRegisterDetails() {
         const registration = getCurrentApprovedRegistration();
         const currentMember = syncCurrentDiscordMemberRoles(undefined, false);
-        const displayName = currentMember?.name
+        const displayName = (currentMember ? getCentralFarmMemberName(currentMember) : '')
             || registration?.discordName
             || localStorage.getItem('oneDiscordDisplayName')
             || 'Usuario Discord';
@@ -4988,7 +5003,7 @@ function createCentralAction() {
     }
 
     function getCentralFarmMemberName(member) {
-        return member?.name || member?.displayName || member?.nick || member?.username || 'Membro';
+        return member?.nick || member?.name || member?.displayName || member?.username || 'Membro';
     }
 
     function getCentralFarmMemberSubtitle(member, isCurrentUser = false) {
@@ -5006,6 +5021,180 @@ function createCentralAction() {
         }
 
         return `<span class="${sizeClass} shrink-0 rounded-full bg-brand-pink/10 text-[11px] font-black text-brand-pink grid place-items-center ring-1 ring-white/10">${escapeHtml(getInitials(name))}</span>`;
+    }
+
+    function getFarmDeliveries() {
+        try {
+            const saved = JSON.parse(localStorage.getItem('oneFarmDeliveries') || '[]');
+            return Array.isArray(saved) ? saved : [];
+        } catch {
+            return [];
+        }
+    }
+
+    function saveFarmDeliveries(deliveries) {
+        localStorage.setItem('oneFarmDeliveries', JSON.stringify(deliveries));
+    }
+
+    function getSelectedCentralFarmMember() {
+        const memberSelect = document.getElementById('central-farm-member-select');
+        const memberId = memberSelect?.value || '';
+        return discordMembers.find((member) => member.id === memberId) || null;
+    }
+
+    function getSelectedCentralFarmProduct() {
+        return getFarmProducts()[0] || { id: 'extras', name: 'Extras', goal: 0 };
+    }
+
+    function getFarmRating(percent) {
+        if (percent >= 100) return 'S';
+        if (percent >= 85) return 'A+';
+        if (percent >= 70) return 'A';
+        if (percent >= 50) return 'B';
+        if (percent > 0) return 'C';
+        return '-';
+    }
+
+    function parseFarmValue(value) {
+        const cleaned = String(value || '').replace(/\D/g, '');
+        return cleaned ? Number(cleaned) : 0;
+    }
+
+    function formatFarmValue(value) {
+        const number = typeof value === 'number' ? value : parseFarmValue(value);
+        if (!Number.isFinite(number)) return '0';
+        return Math.round(number).toLocaleString('pt-BR');
+    }
+
+    function getFarmNumericValue(value) {
+        if (typeof value === 'number') return Number.isFinite(value) ? value : 0;
+        return parseFarmValue(value);
+    }
+
+    function bindFarmValueInput(inputId) {
+        const input = document.getElementById(inputId);
+        if (!input || input.dataset.farmValueBound) return;
+        input.dataset.farmValueBound = 'true';
+        input.addEventListener('input', () => {
+            input.value = input.value.replace(/[^\d.]/g, '');
+        });
+        input.addEventListener('blur', () => {
+            const value = parseFarmValue(input.value);
+            input.value = value ? formatFarmValue(value) : '';
+        });
+    }
+
+    function getCentralFarmProfileNickname(member) {
+        return getCentralFarmMemberName(member);
+    }
+
+    function getFarmDateKey(value = new Date()) {
+        const date = value instanceof Date ? value : new Date(value);
+        if (Number.isNaN(date.getTime())) return '';
+        const local = new Date(date.getTime() - date.getTimezoneOffset() * 60000);
+        return local.toISOString().slice(0, 10);
+    }
+
+    function getCentralFarmSummary() {
+        const product = getSelectedCentralFarmProduct();
+        const deliveries = getFarmDeliveries().filter((item) => {
+            if (!item || getFarmNumericValue(item.quantity) <= 0) return false;
+            return !product.id || item.productId === product.id;
+        });
+        const today = getFarmDateKey();
+        const yesterdayDate = new Date();
+        yesterdayDate.setDate(yesterdayDate.getDate() - 1);
+        const yesterday = getFarmDateKey(yesterdayDate);
+        const totalDelivered = deliveries.reduce((sum, item) => sum + getFarmNumericValue(item.quantity), 0);
+        const activeMemberIds = new Set(deliveries.map((item) => item.memberId).filter(Boolean));
+        const todayMemberIds = new Set(deliveries
+            .filter((item) => getFarmDateKey(item.createdAt) === today)
+            .map((item) => item.memberId)
+            .filter(Boolean));
+        const yesterdayMemberIds = new Set(deliveries
+            .filter((item) => getFarmDateKey(item.createdAt) === yesterday)
+            .map((item) => item.memberId)
+            .filter(Boolean));
+        const goal = getFarmNumericValue(product.goal || getSavedFarmGlobalGoal());
+        const goalBase = goal * Math.max(activeMemberIds.size, 1);
+        const percent = goalBase ? Math.min(100, Math.round((totalDelivered / goalBase) * 100)) : 0;
+
+        return {
+            percent,
+            totalDelivered,
+            activeCount: activeMemberIds.size,
+            todayCount: todayMemberIds.size,
+            delta: todayMemberIds.size - yesterdayMemberIds.size,
+            inactiveCount: Math.max((Array.isArray(discordMembers) ? discordMembers.length : 0) - activeMemberIds.size, 0)
+        };
+    }
+
+    function updateCentralFarmSummary() {
+        const summary = getCentralFarmSummary();
+        const goalLabel = document.querySelector('[data-central-farm-global-goal]');
+        const goalBar = document.querySelector('[data-central-farm-global-bar]');
+        const todayCount = document.querySelector('[data-central-farm-today-count]');
+        const todayDelta = document.querySelector('[data-central-farm-today-delta]');
+        const activeMembers = document.querySelector('[data-central-farm-active-members]');
+        const inactiveMembers = document.querySelector('[data-central-farm-inactive-members]');
+        const deltaPrefix = summary.delta > 0 ? '+' : '';
+
+        if (goalLabel) goalLabel.textContent = `${summary.percent}%`;
+        if (goalBar) goalBar.style.width = `${summary.percent}%`;
+        if (todayCount) todayCount.textContent = String(summary.todayCount);
+        if (todayDelta) {
+            todayDelta.textContent = `${deltaPrefix}${summary.delta} desde ontem`;
+            todayDelta.classList.toggle('text-emerald-500', summary.delta >= 0);
+            todayDelta.classList.toggle('text-rose-500', summary.delta < 0);
+        }
+        if (activeMembers) activeMembers.textContent = String(summary.activeCount);
+        if (inactiveMembers) inactiveMembers.textContent = `${summary.inactiveCount} sem entrega`;
+    }
+
+    function renderCentralFarmProfileCard() {
+        const member = getSelectedCentralFarmMember() || discordMembers[0] || null;
+        const avatar = document.querySelector('[data-central-farm-profile-avatar]');
+        const name = document.querySelector('[data-central-farm-profile-name]');
+        const meta = document.querySelector('[data-central-farm-profile-meta]');
+        const progressText = document.querySelector('[data-central-farm-profile-progress-text]');
+        const progressBar = document.querySelector('[data-central-farm-profile-progress-bar]');
+        const deliveryCount = document.querySelector('[data-central-farm-profile-delivery-count]');
+        const rating = document.querySelector('[data-central-farm-profile-rating]');
+        const deliveriesList = document.querySelector('[data-central-farm-profile-deliveries]');
+
+        if (!avatar || !name || !meta || !progressText || !progressBar || !deliveryCount || !rating || !deliveriesList) return;
+
+        if (!member) {
+            avatar.textContent = '-';
+            name.textContent = 'Nenhum membro';
+            meta.textContent = '';
+            progressText.textContent = '0 / 0';
+            progressBar.style.width = '0%';
+            deliveryCount.textContent = '0';
+            rating.textContent = '-';
+            deliveriesList.innerHTML = '<p class="text-[13px] font-semibold text-gray-500">Nenhuma entrega registrada.</p>';
+            return;
+        }
+
+        const product = getSelectedCentralFarmProduct();
+        const deliveries = getFarmDeliveries().filter((item) => item.memberId === member.id);
+        const totalDelivered = deliveries.reduce((sum, item) => sum + getFarmNumericValue(item.quantity), 0);
+        const goal = getFarmNumericValue(product.goal || getSavedFarmGlobalGoal());
+        const percent = goal ? Math.min(100, Math.round((totalDelivered / goal) * 100)) : 0;
+
+        avatar.innerHTML = renderCentralFarmMemberAvatar(member, 'h-full w-full').replace('shrink-0 ', '');
+        name.textContent = getCentralFarmProfileNickname(member);
+        meta.textContent = '';
+        progressText.textContent = `${formatFarmValue(totalDelivered)} / ${formatFarmValue(goal)}`;
+        progressBar.style.width = `${percent}%`;
+        deliveryCount.textContent = String(deliveries.length);
+        rating.textContent = getFarmRating(percent);
+        deliveriesList.innerHTML = deliveries.slice(0, 4).map((item) => `
+            <div class="flex justify-between items-center text-[14px]">
+                <span>${escapeHtml(item.productName)}</span>
+                <span class="font-mono text-gray-400">${formatFarmValue(item.quantity)}x</span>
+            </div>
+        `).join('') || '<p class="text-[13px] font-semibold text-gray-500">Nenhuma entrega registrada.</p>';
     }
 
     function renderCentralFarmMemberSelect() {
@@ -5078,6 +5267,7 @@ function createCentralAction() {
         });
 
         if (shouldClose) closeCentralFarmMemberList();
+        renderCentralFarmProfileCard();
     }
 
     const removedFarmProductIds = ['pecas', 'minerios'];
@@ -5097,8 +5287,13 @@ function createCentralAction() {
             const saved = JSON.parse(localStorage.getItem('oneFarmProducts') || 'null');
             if (!Array.isArray(saved) || !saved.length) return defaultFarmProducts;
 
-            const filtered = saved.filter((product) => !isRemovedFarmProduct(product));
-            if (filtered.length !== saved.length) saveFarmProducts(filtered);
+            const filtered = saved
+                .filter((product) => !isRemovedFarmProduct(product))
+                .map((product) => ({
+                    ...product,
+                    goal: getFarmNumericValue(product.goal)
+                }));
+            if (filtered.length !== saved.length || JSON.stringify(filtered) !== JSON.stringify(saved)) saveFarmProducts(filtered);
             return filtered.length ? filtered : defaultFarmProducts;
         } catch {
             return defaultFarmProducts;
@@ -5118,9 +5313,11 @@ function createCentralAction() {
             <button type="button" data-farm-product-id="${product.id}" class="bg-[#0A0A0A] border ${index === 0 ? 'border-brand-pink/40' : 'border-white/10'} p-4 rounded-xl text-left hover:border-brand-pink transition-all">
                 <i class="fa-solid ${iconClasses[index % iconClasses.length]} ${index === 0 ? 'text-brand-pink' : 'text-gray-400'} mb-3"></i>
                 <p class="text-[13px] font-bold">${escapeHtml(product.name)}</p>
-                <span class="text-[11px] text-gray-500">${product.goal ? `Meta ${product.goal}` : 'Opcional'}</span>
+                <span class="text-[11px] text-gray-500">${product.goal ? `Meta ${formatFarmValue(product.goal)}` : 'Opcional'}</span>
             </button>
         `).join('');
+        renderCentralFarmProfileCard();
+        updateCentralFarmSummary();
     }
 
     function renderFarmProductSettings() {
@@ -5130,7 +5327,7 @@ function createCentralAction() {
         list.innerHTML = getFarmProducts().map((product) => `
             <div class="flex items-center justify-between gap-3 rounded-2xl bg-white px-4 py-3 text-[13px] font-bold text-black dark:bg-gray-900 dark:text-white">
                 <span>${escapeHtml(product.name)}</span>
-                <span class="text-gray-500">${product.goal ? `Meta ${product.goal}` : 'Opcional'}</span>
+                <span class="text-gray-500">${product.goal ? `Meta ${formatFarmValue(product.goal)}` : 'Opcional'}</span>
             </div>
         `).join('');
     }
@@ -5139,7 +5336,7 @@ function createCentralAction() {
         const nameInput = document.getElementById('farm-product-name');
         const goalInput = document.getElementById('farm-product-goal');
         const name = nameInput?.value.trim();
-        const goal = Number(goalInput?.value || 0);
+        const goal = parseFarmValue(goalInput?.value);
 
         if (!name) {
             showToast('Informe o nome do produto.', 'error');
@@ -5147,7 +5344,7 @@ function createCentralAction() {
         }
 
         const products = getFarmProducts();
-        products.push({ id: `produto-${Date.now()}`, name, goal: Number.isNaN(goal) ? 0 : goal });
+        products.push({ id: `produto-${Date.now()}`, name, goal });
         saveFarmProducts(products);
         if (nameInput) nameInput.value = '';
         if (goalInput) goalInput.value = '';
@@ -5158,7 +5355,9 @@ function createCentralAction() {
 
     function submitCentralFarm() {
         const quantity = document.getElementById('central-farm-quantity')?.value;
+        const quantityInput = document.getElementById('central-farm-quantity');
         const memberSelect = document.getElementById('central-farm-member-select');
+        const memberId = memberSelect?.value || '';
         const member = memberSelect?.selectedOptions?.[0]?.dataset.memberName || memberSelect?.selectedOptions?.[0]?.textContent || 'membro selecionado';
 
             if (!quantity) {
@@ -5166,6 +5365,28 @@ function createCentralAction() {
                 return;
             }
 
+            const amount = parseFarmValue(quantity);
+            if (!Number.isFinite(amount) || amount <= 0) {
+                showToast('Informe uma quantidade valida.', 'error');
+                return;
+            }
+
+            const product = getSelectedCentralFarmProduct();
+            const deliveries = getFarmDeliveries();
+            deliveries.unshift({
+                id: `farm-${Date.now()}`,
+                memberId,
+                memberName: member,
+                productId: product.id,
+                productName: product.name,
+                quantity: amount,
+                createdAt: new Date().toISOString()
+            });
+            saveFarmDeliveries(deliveries);
+            if (quantityInput) quantityInput.value = '';
+            renderCentralFarmProfileCard();
+            updateCentralFarmSummary();
+            updateDashboardSummary();
             const target = centralFarmMode === 'self' ? 'seu pr??prio farm' : `farm de ${member}`;
             showToast(`Entrega registrada no ${target}.`, 'success');
         }
@@ -5191,6 +5412,9 @@ function createCentralAction() {
      renderFarmProductSettings();
      renderCentralFarmProducts();
      applyCentralFarmGlobalGoal();
+     updateCentralFarmSummary();
+     bindFarmValueInput('farm-product-goal');
+     bindFarmValueInput('central-farm-quantity');
      removeCentralActionTestModels();
      updateCentralActionCategoryCounts();
      document.addEventListener('pointermove', updateAnimatedBackgroundPosition);
