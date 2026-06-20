@@ -1,0 +1,9 @@
+{
+  "private": true,
+  "scripts": {
+    "install": "npm install --prefix Site/my-mongodb-app",
+    "build": "npm run build --prefix Site/my-mongodb-app",
+    "dev": "npm run dev --prefix Site/my-mongodb-app",
+    "start": "npm run start --prefix Site/my-mongodb-app"
+  }
+}

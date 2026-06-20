@@ -1,0 +1,5 @@
+{
+  "installCommand": "npm install --prefix Site/my-mongodb-app",
+  "buildCommand": "npm run build --prefix Site/my-mongodb-app",
+  "framework": "nextjs"
+}
