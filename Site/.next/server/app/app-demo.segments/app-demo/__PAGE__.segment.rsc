@@ -1,6 +1,0 @@
-1:"$Sreact.fragment"
-2:I[22016,["/_next/static/chunks/05-c3ty_6dwfk.js","/_next/static/chunks/14mrh2-p_w84d.js","/_next/static/chunks/1rxncug86bump.js"],""]
-3:I[97367,["/_next/static/chunks/05-c3ty_6dwfk.js","/_next/static/chunks/14mrh2-p_w84d.js"],"OutletBoundary"]
-4:"$Sreact.suspense"
-0:{"rsc":["$","$1","c",{"children":[["$","main",null,{"className":"grid min-h-screen place-items-center bg-black px-6 text-white","children":["$","section",null,{"className":"max-w-md text-center","children":[["$","p",null,{"className":"text-sm font-semibold uppercase tracking-[0.2em] text-blue-400","children":"ONE NETWORK"}],["$","h1",null,{"className":"mt-4 text-3xl font-black","children":"Painel restaurado"}],["$","p",null,{"className":"mt-3 text-sm text-white/60","children":"A interface principal foi restaurada a partir do design em HTML."}],["$","$L2",null,{"href":"/","className":"mt-6 inline-flex rounded-full bg-blue-500 px-5 py-3 text-sm font-bold text-white transition hover:bg-blue-400","children":"Abrir painel"}]]}]}],[["$","script","script-0",{"src":"/_next/static/chunks/1rxncug86bump.js","async":true}]],["$","$L3",null,{"children":["$","$4",null,{"name":"Next.MetadataOutlet","children":"$@5"}]}]]}],"isPartial":false,"staleTime":300,"varyParams":null,"buildId":"UfPor5MGCcyk-zuV664Z8"}
-5:null
