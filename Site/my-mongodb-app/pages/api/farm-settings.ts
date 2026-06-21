@@ -183,7 +183,8 @@ function readProduct(value: unknown): FarmProduct | null {
 }
 
 function readNumber(value: unknown) {
-  const number = Number(value);
+  const number =
+    typeof value === "string" ? Number(value.replace(/\D/g, "")) : Number(value);
   return Number.isFinite(number) && number > 0 ? number : 0;
 }
 
