@@ -1,4 +1,7 @@
 {
   "rootDirectory": "Site/my-mongodb-app",
-  "framework": "nextjs"
+  "framework": "nextjs",
+  "github": {
+    "silent": true
+  }
 }
